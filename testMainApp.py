@@ -558,9 +558,6 @@ class ClockWindow(QtWidgets.QDialog):
         # Close connection
         con.close()
 
-# TESTEN
-        # Print
-        # print("Update ended")
 
     def update_text(self, timer):
         # Initialise sqlite

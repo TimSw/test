@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../GrowPiProject/.idea/GrowPi.iml" filepath="$PROJECT_DIR$/../GrowPiProject/.idea/GrowPi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../relayTest/.idea/relayTest.iml" filepath="$PROJECT_DIR$/../relayTest/.idea/relayTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/test.iml" filepath="$PROJECT_DIR$/.idea/test.iml" />
+    </modules>
+  </component>
+</project>

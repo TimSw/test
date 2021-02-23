@@ -32,32 +32,32 @@ class Window(QtWidgets.QWidget):
         self.showFullScreen()
 
         pb_thermometer = QtWidgets.QToolButton(self)
-        pb_thermometer.setIcon(QtGui.QIcon("IconThermometer.png"))
+        pb_thermometer.setIcon(QtGui.QIcon("icons/IconThermometer.png"))
         pb_thermometer.setIconSize(iconsize)
         pb_thermometer.clicked.connect(self.button_temperature_window)
 
         pb_light = QtWidgets.QToolButton(self)
-        pb_light.setIcon(QtGui.QIcon("IconLight.png"))
+        pb_light.setIcon(QtGui.QIcon("icons/IconLight.png"))
         pb_light.setIconSize(iconsize)
         pb_light.clicked.connect(self.button_light_window)
 
         pb_water = QtWidgets.QToolButton(self)
-        pb_water.setIcon(QtGui.QIcon("IconWater.png"))
+        pb_water.setIcon(QtGui.QIcon("icons/IconWater.png"))
         pb_water.setIconSize(iconsize)
         pb_water.clicked.connect(self.button_water_window)
 
         pb_clock = QtWidgets.QToolButton(self)
-        pb_clock.setIcon(QtGui.QIcon("IconClock.png"))
+        pb_clock.setIcon(QtGui.QIcon("icons/IconClock.png"))
         pb_clock.setIconSize(iconsize)
         pb_clock.clicked.connect(self.button_clock_window)
 
         pb_settings = QtWidgets.QToolButton(self)
-        pb_settings.setIcon(QtGui.QIcon("IconSettings.png"))
+        pb_settings.setIcon(QtGui.QIcon("icons/IconSettings.png"))
         pb_settings.setIconSize(iconsize)
         pb_settings.clicked.connect(self.button_settings_window)
 
         pb_shutdown = QtWidgets.QToolButton(self)
-        pb_shutdown.setIcon(QtGui.QIcon("IconShutdown.png"))
+        pb_shutdown.setIcon(QtGui.QIcon("icons/IconShutdown.png"))
         pb_shutdown.setIconSize(iconsize)
         pb_shutdown.clicked.connect(self.shutdown)
 
@@ -122,12 +122,12 @@ class TemperatureWindow(QtWidgets.QDialog):
         # self.toggle_button.setFixedSize(100, 50)
 
         pb_home = QtWidgets.QToolButton(self)
-        pb_home.setIcon(QtGui.QIcon("IconHome.png"))
+        pb_home.setIcon(QtGui.QIcon("icons/IconHome.png"))
         pb_home.setIconSize(iconsize)
         pb_home.clicked.connect(self.go_main_window)
 
         pb_delete = QtWidgets.QToolButton(self)
-        pb_delete.setIcon(QtGui.QIcon("IconRecycle.png"))
+        pb_delete.setIcon(QtGui.QIcon("icons/IconRecycle.png"))
         pb_delete.setIconSize(iconsize)
         pb_delete.clicked.connect(self.delete_data)
 
@@ -281,7 +281,7 @@ class LightWindow(QtWidgets.QDialog):
         self.toggle_button.setFixedSize(100, 50)
 
         push_button = QtWidgets.QToolButton(self)
-        push_button.setIcon(QtGui.QIcon("IconHome.png"))
+        push_button.setIcon(QtGui.QIcon("icons/IconHome.png"))
         push_button.setIconSize(iconsize)
         push_button.clicked.connect(self.go_main_window)
 
@@ -329,7 +329,7 @@ class WaterWindow(QtWidgets.QDialog):
         self.tb_airstone.setFixedSize(100, 50)
 
         push_button = QtWidgets.QToolButton(self)
-        push_button.setIcon(QtGui.QIcon("IconHome.png"))
+        push_button.setIcon(QtGui.QIcon("icons/IconHome.png"))
         push_button.setIconSize(iconsize)
         push_button.clicked.connect(self.go_main_window)
 
@@ -386,7 +386,7 @@ class ClockWindow(QtWidgets.QDialog):
                     "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"]
 
         push_button = QtWidgets.QToolButton(self)
-        push_button.setIcon(QtGui.QIcon("IconHome.png"))
+        push_button.setIcon(QtGui.QIcon("icons/IconHome.png"))
         push_button.setIconSize(iconsize)
         push_button.clicked.connect(self.go_main_window)
 
@@ -597,7 +597,7 @@ class SettingsWindow(QtWidgets.QDialog):
         self.showFullScreen()
 
         push_button = QtWidgets.QToolButton(self)
-        push_button.setIcon(QtGui.QIcon("IconHome.png"))
+        push_button.setIcon(QtGui.QIcon("icons/IconHome.png"))
         push_button.setIconSize(iconsize)
         push_button.clicked.connect(self.go_main_window)
 

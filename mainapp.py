@@ -114,13 +114,6 @@ class TemperatureWindow(QtWidgets.QDialog):
         self.setWindowTitle('Temperature Window')
         self.showFullScreen()
 
-# REMOVE
-        # self.toggle_button = QtWidgets.QPushButton("Airstone", self)
-        # self.toggle_button.setCheckable(True)
-        # self.toggle_button.toggle()
-        # self.toggle_button.clicked.connect(self.btn_action_pump)
-        # self.toggle_button.setFixedSize(100, 50)
-
         pb_home = QtWidgets.QToolButton(self)
         pb_home.setIcon(QtGui.QIcon("icons/IconHome.png"))
         pb_home.setIconSize(iconsize)
@@ -134,7 +127,6 @@ class TemperatureWindow(QtWidgets.QDialog):
         plotwidget = PlotWindow()
 
         hbox = QtWidgets.QHBoxLayout()
-        # REMOVE hbox.addWidget(self.toggle_button)
         hbox.addWidget(pb_delete)
         hbox.addStretch()
         hbox.addWidget(pb_home)
@@ -149,15 +141,6 @@ class TemperatureWindow(QtWidgets.QDialog):
         self.cams = Window()
         self.cams.show()
         self.close()
-
-# REMOVE
-    # def btn_action_pump(self):
-    #     if self.toggle_button.isChecked():
-    #         RPi.GPIO.output(31, aan)
-    #         print("button pressed")
-    #     else:
-    #         RPi.GPIO.output(31, uit)
-    #         print("button released")
 
     def delete_data(self):
         pb_reply = QtWidgets.QMessageBox.question(self, 'Warning!',

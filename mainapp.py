@@ -539,9 +539,6 @@ class ClockWindow(QtWidgets.QDialog):
         # Fill data
         data = (hour, minute, timer)
 
-# TESTEN
-        # Print data
-        # print(data)
 
 # TODO create timers when initialising database
         # Create table
@@ -557,7 +554,6 @@ class ClockWindow(QtWidgets.QDialog):
 
         # Close connection
         con.close()
-
 
     def update_text(self, timer):
         # Initialise sqlite

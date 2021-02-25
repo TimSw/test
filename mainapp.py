@@ -535,7 +535,7 @@ class ClockWindow(QtWidgets.QDialog):
         data = (hour, minute, timer)
 
 
-# TODO create timers when initialising database
+        # TODO create timers when initialising database
         # Create table
         cur.execute('''CREATE TABLE IF NOT EXISTS time
                     (timer TEXT, hour INTEGER, minute INTEGER)''')

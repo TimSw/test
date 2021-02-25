@@ -1,9 +1,6 @@
 #!/usr/bin/python3
 import sqlite3
 
-# Define variables
-
-
 # Initialise sqlite
 con = sqlite3.connect('testdata.db')
 cur = con.cursor()

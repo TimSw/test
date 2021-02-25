@@ -12,6 +12,7 @@ cur.execute('''CREATE TABLE IF NOT EXISTS testtable
 # Select all data ordered
 for row in cur.execute("SELECT * FROM testtable ORDER BY data_1"):
     print(row)
+
 print("Data gelezen")
 
 # Close connection

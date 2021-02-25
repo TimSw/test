@@ -336,7 +336,7 @@ class WaterWindow(QtWidgets.QDialog):
         self.cams.show()
         self.close()
 
-# TODO make btn_action compatible with multiple buttons
+    # TODO make btn_action compatible with multiple buttons
     def btn_action_pump(self):
         if self.tb_pomp.isChecked():
             RPi.GPIO.output(33, aan)

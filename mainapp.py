@@ -336,6 +336,7 @@ class WaterWindow(QtWidgets.QDialog):
         self.cams.show()
         self.close()
 
+    # test
     # TODO make btn_action compatible with multiple buttons
     def btn_action_pump(self):
         if self.tb_pomp.isChecked():

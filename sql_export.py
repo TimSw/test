@@ -6,6 +6,7 @@ import sqlite3
 # Define variables
 nu = datetime.datetime.now()
 nummer = random.random()
+
 print(nu, nummer)
 
 # Initialise sqlite

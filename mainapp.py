@@ -8,6 +8,9 @@ import pyqtgraph
 import pg_time_axis
 from PyQt5 import QtWidgets, QtCore, QtGui
 
+# Define data.db directory
+data_db = '/home/pi/data.db'
+
 # Initialise iconsize
 iconsize = QtCore.QSize()
 iconsize.setWidth(40)
@@ -150,7 +153,7 @@ class TemperatureWindow(QtWidgets.QDialog):
                                                   QtWidgets.QMessageBox.No)
         if pb_reply == QtWidgets.QMessageBox.Yes:
             # Initialise sqlite
-            con = sqlite3.connect('data.db')
+            con = sqlite3.connect(data_db)
             cur = con.cursor()
 
             # Create table
@@ -175,7 +178,7 @@ class PlotWindow(pyqtgraph.PlotWidget):
         pyqtgraph.PlotWidget.__init__(self)
 
         # Initialise sqlite
-        con = sqlite3.connect('data.db')
+        con = sqlite3.connect(data_db)
         cur = con.cursor()
 
         # Create table
@@ -525,7 +528,7 @@ class ClockWindow(QtWidgets.QDialog):
 
     def update_settings(self, timer, hour, minute):
         # Initialise sqlite
-        con = sqlite3.connect('data.db')
+        con = sqlite3.connect(data_db)
         cur = con.cursor()
 
         # Fill data
@@ -549,7 +552,7 @@ class ClockWindow(QtWidgets.QDialog):
 
     def update_text(self, timer):
         # Initialise sqlite
-        con = sqlite3.connect('data.db')
+        con = sqlite3.connect(data_db)
         cur = con.cursor()
 
         # Create table

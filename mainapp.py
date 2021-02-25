@@ -373,6 +373,7 @@ class ClockWindow(QtWidgets.QDialog):
         push_button.setIconSize(iconsize)
         push_button.clicked.connect(self.go_main_window)
 
+        # Light labels
         lbl_light = QtWidgets.QLabel("Timer Licht", self)
         lbl_start_light = QtWidgets.QLabel("Start om", self)
         lbl_stop_light = QtWidgets.QLabel("Stopt om", self)
@@ -381,6 +382,7 @@ class ClockWindow(QtWidgets.QDialog):
         self.lbl_light_on_setting = QtWidgets.QLabel(self)
         # REMOVE self.lbl_light_on_setting.setText(self.update_text("light on"))
 
+        # Light combobox
         cbx_h_light_on = QtWidgets.QComboBox(self)
         cbx_h_light_on.addItems(hour_list)
         cbx_m_light_on = QtWidgets.QComboBox(self)
@@ -390,6 +392,7 @@ class ClockWindow(QtWidgets.QDialog):
         cbx_m_light_off = QtWidgets.QComboBox(self)
         cbx_m_light_off.addItems(min_list)
 
+        # Light pushbutton
         pb_set_light_on = QtWidgets.QPushButton("Set", self)
         pb_set_light_on.clicked.connect(
             lambda: self.update_settings("light on",
@@ -403,37 +406,42 @@ class ClockWindow(QtWidgets.QDialog):
                                          cbx_m_light_off.currentText()))
         pb_set_light_off.clicked.connect(self.update_widget)
 
+        # Pump labels
         lbl_pump = QtWidgets.QLabel("Timer Pomp", self)
-        lbl_start_pump = QtWidgets.QLabel("Start om", self)
-        lbl_stop_pump = QtWidgets.QLabel("Stopt om", self)
-        lbl_hour_pump = QtWidgets.QLabel("uur", self)
-        lbl_min_pump = QtWidgets.QLabel("minuten", self)
+        lbl_times = QtWidgets.QLabel("maal", self)
+        lbl_during = QtWidgets.QLabel("minuten", self)
+        lbl_repeat = QtWidgets.QLabel("om de", self)
+        lbl_repeat_u = QtWidgets.QLabel("uur", self)
+        lbl_repeat_m = QtWidgets.QLabel("minuten", self)
 
-        cbx_h_pump_on = QtWidgets.QComboBox(self)
-        cbx_h_pump_on.addItems(hour_list)
-        cbx_m_pump_on = QtWidgets.QComboBox(self)
-        cbx_m_pump_on.addItems(min_list)
-        cbx_h_pump_off = QtWidgets.QComboBox(self)
-        cbx_h_pump_off.addItems(hour_list)
-        cbx_m_pump_off = QtWidgets.QComboBox(self)
-        cbx_m_pump_off.addItems(min_list)
+        # Pump combobox
+        cbx_times = QtWidgets.QComboBox(self)
+        cbx_times.addItems(hour_list)
+        cbx_during = QtWidgets.QComboBox(self)
+        cbx_during.addItems(min_list)
+        cbx_repeat_u = QtWidgets.QComboBox(self)
+        cbx_repeat_u.addItems(min_list)
+        cbx_repeat_m = QtWidgets.QComboBox(self)
+        cbx_repeat_m.addItems(min_list)
 
-        pb_set_pump_on = QtWidgets.QPushButton("Set", self)
-        pb_set_pump_on.clicked.connect(
-            lambda: self.update_settings("pump on", cbx_h_pump_on.currentText(),
-                                         cbx_m_pump_on.currentText()))
-        pb_set_pump_off = QtWidgets.QPushButton("Set", self)
-        pb_set_pump_off.clicked.connect(
-            lambda: self.update_settings("pump off",
-                                         cbx_h_pump_off.currentText(),
-                                         cbx_m_pump_off.currentText()))
+        # Pump pushbutton
+        pb_pump_repeat = QtWidgets.QPushButton("Set", self)
+        pb_pump_repeat.clicked.connect(
+            lambda: self.update_settings("pump during", cbx_times.currentText(),
+                                         cbx_during.currentText()))
+        pb_pump_during = QtWidgets.QPushButton("Set", self)
+        pb_pump_during.clicked.connect(
+            lambda: self.update_settings("pump repeat", cbx_repeat_u.currentText(),
+                                         cbx_repeat_m.currentText()))
 
+        # Airstone labels
         lbl_air = QtWidgets.QLabel("Timer Airstone", self)
         lbl_start_air = QtWidgets.QLabel("Start om", self)
         lbl_stop_air = QtWidgets.QLabel("Stopt om", self)
         lbl_hour_air = QtWidgets.QLabel("uur", self)
         lbl_min_air = QtWidgets.QLabel("minuten", self)
 
+        # Airstone combobox
         cbx_h_air_on = QtWidgets.QComboBox(self)
         cbx_h_air_on.addItems(hour_list)
         cbx_m_air_on = QtWidgets.QComboBox(self)
@@ -443,6 +451,7 @@ class ClockWindow(QtWidgets.QDialog):
         cbx_m_air_off = QtWidgets.QComboBox(self)
         cbx_m_air_off.addItems(min_list)
 
+        # Airstone pushbutton
         pb_set_air_on = QtWidgets.QPushButton("Set", self)
         pb_set_air_on.clicked.connect(
             lambda: self.update_settings("air on", cbx_h_air_on.currentText(),
@@ -452,6 +461,7 @@ class ClockWindow(QtWidgets.QDialog):
             lambda: self.update_settings("air off", cbx_h_air_off.currentText(),
                                          cbx_m_air_off.currentText()))
 
+        # Timerwindow layout
         grid = QtWidgets.QGridLayout()
         grid.setSpacing(10)
 
@@ -471,18 +481,17 @@ class ClockWindow(QtWidgets.QDialog):
         grid.addWidget(pb_set_light_off, 2, 5)
 
         grid.addWidget(lbl_pump, 4, 0)
-        grid.addWidget(lbl_start_pump, 5, 0)
-        grid.addWidget(cbx_h_pump_on, 5, 1)
-        grid.addWidget(lbl_hour_pump, 5, 2)
-        grid.addWidget(cbx_m_pump_on, 5, 3)
-        grid.addWidget(lbl_min_pump, 5, 4)
-        grid.addWidget(pb_set_pump_on, 5, 5)
-        grid.addWidget(lbl_stop_pump, 6, 0)
-        grid.addWidget(cbx_h_pump_off, 6, 1)
-        grid.addWidget(lbl_hour_pump, 6, 2)
-        grid.addWidget(cbx_m_pump_off, 6, 3)
-        grid.addWidget(lbl_min_pump, 6, 4)
-        grid.addWidget(pb_set_pump_off, 6, 5)
+        grid.addWidget(cbx_times, 5, 1)
+        grid.addWidget(lbl_times, 5, 2)
+        grid.addWidget(cbx_during, 5, 3)
+        grid.addWidget(lbl_during, 5, 4)
+        grid.addWidget(pb_pump_during, 5, 5)
+        grid.addWidget(lbl_repeat, 6, 0)
+        grid.addWidget(cbx_repeat_u, 6, 1)
+        grid.addWidget(lbl_repeat_u, 6, 2)
+        grid.addWidget(cbx_repeat_m, 6, 3)
+        grid.addWidget(lbl_repeat_m, 6, 4)
+        grid.addWidget(pb_pump_repeat, 6, 5)
 
         grid.addWidget(lbl_air, 8, 0)
         grid.addWidget(lbl_start_air, 9, 0)

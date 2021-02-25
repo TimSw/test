@@ -2,18 +2,20 @@ import datetime
 import random
 import sqlite3
 
+# Define variables
 nu = datetime.datetime.now()
 temp = random.random()
 
+# Initialise sqlite
 con = sqlite3.connect('testdata.db')
 cur = con.cursor()
 
 # Create table
-cur.execute('''CREATE TABLE IF NOT EXISTS temperatuur
+cur.execute('''CREATE TABLE IF NOT EXISTS testtable
     (datetime text, temperatuur real)''')
 
 # Select all data ordered
-for row in cur.execute("SELECT * FROM temperatuur ORDER BY datetime"):
+for row in cur.execute("SELECT * FROM testtable ORDER BY datetime"):
     print(row)
 
 print("Data gelezen")

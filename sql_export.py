@@ -13,7 +13,7 @@ cur = con.cursor()
 
 # Create table
 cur.execute('''CREATE TABLE IF NOT EXISTS testtable
-    (data_1 REAL, data_2 real)''')
+    (data_1 REAL, data_2 REAL)''')
 
 # Insert a row of data
 cur.execute("INSERT INTO testtable VALUES (?, ?)", (nu, temp))

@@ -1,3 +1,3 @@
 #!/bin/bash
 cd /home/pi || exit
-/usr/bin/python3 GrowPiApp.py
+/usr/bin/python3 mainapp.py

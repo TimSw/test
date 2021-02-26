@@ -7,7 +7,7 @@ minute = 00
 timer = "testtimer"
 
 # Initialise sqlite
-con = sqlite3.connect('testdata.db')
+con = sqlite3.connect('../testdata.db')
 cur = con.cursor()
 
 # Fill data

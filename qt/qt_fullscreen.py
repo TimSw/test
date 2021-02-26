@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'QtPyQtGraph.ui'
+# Form implementation generated from reading ui file 'testFullscreen.ui'
 #
 # Created by: PyQt5 UI code generator 5.12
 #
@@ -58,20 +58,20 @@ class Ui_MainWindow(object):
         self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_3)
         self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_4.setObjectName("verticalLayout_4")
-        self.plotWindow = PlotWidget(self.verticalLayoutWidget_3)
-        self.plotWindow.setObjectName("plotWindow")
-        self.verticalLayout_4.addWidget(self.plotWindow)
+        self.widget = PlotWindow()
+        self.widget.setObjectName("widget")
+        self.verticalLayout_4.addWidget(self.widget)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("icons/IconGraph.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("../icons/IconGraph.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.tabWidget_2.addTab(self.tab_3, icon, "")
         self.tab_4 = QtWidgets.QWidget()
         self.tab_4.setObjectName("tab_4")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("icons/IconCog.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("../icons/IconCog.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.tabWidget_2.addTab(self.tab_4, icon1, "")
         self.verticalLayout_2.addWidget(self.tabWidget_2)
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("icons/IconThermometer.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap("../icons/IconThermometer.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.tabWidget.addTab(self.tab, icon2, "")
         self.tab_2 = QtWidgets.QWidget()
         self.tab_2.setObjectName("tab_2")
@@ -93,7 +93,7 @@ class Ui_MainWindow(object):
         self.tabWidget_3.addTab(self.tab_8, icon1, "")
         self.verticalLayout_3.addWidget(self.tabWidget_3)
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("icons/IconLight.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon3.addPixmap(QtGui.QPixmap("../icons/IconLight.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.tabWidget.addTab(self.tab_2, icon3, "")
         self.tab_9 = QtWidgets.QWidget()
         self.tab_9.setObjectName("tab_9")
@@ -121,7 +121,7 @@ class Ui_MainWindow(object):
         spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.gridLayout.addItem(spacerItem3, 2, 2, 1, 1)
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("icons/IconShutdown.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon4.addPixmap(QtGui.QPixmap("../icons/IconShutdown.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.tabWidget.addTab(self.tab_9, icon4, "")
         self.verticalLayout.addWidget(self.tabWidget)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -147,7 +147,7 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_9), _translate("MainWindow", "Exit"))
 
 
-from pyqtgraph import PlotWidget
+from testPlotWidget import PlotWindow
 
 
 if __name__ == "__main__":

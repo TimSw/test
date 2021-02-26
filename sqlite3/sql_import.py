@@ -2,7 +2,7 @@
 import sqlite3
 
 # Initialise sqlite
-con = sqlite3.connect('testdata.db')
+con = sqlite3.connect('../testdata.db')
 cur = con.cursor()
 
 # Create table

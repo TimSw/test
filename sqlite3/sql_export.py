@@ -10,7 +10,7 @@ nummer = random.random()
 print(nu, nummer)
 
 # Initialise sqlite
-con = sqlite3.connect('testdata.db')
+con = sqlite3.connect('../testdata.db')
 cur = con.cursor()
 
 # Create table

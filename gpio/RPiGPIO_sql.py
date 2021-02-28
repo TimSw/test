@@ -19,8 +19,14 @@ cur = con.cursor()
 nu = datetime.datetime.now()
 print(nu.hour)
 print(nu.minute)
-export_startuur = 21
-export_startmin = 20
+export_startuur = 0
+export_startmin = 0
+
+# Get user input
+export_startuur = input("Please enter start hour:\n")
+print(f'You entered {export_startuur} uur')
+export_startmin = input("Please enter start minute:\n")
+print(f'You entered {export_startmin} minuten')
 
 # Create table
 cur.execute('''CREATE TABLE IF NOT EXISTS testtable

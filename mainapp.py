@@ -9,7 +9,7 @@ import pg_time_axis
 from PyQt5 import QtWidgets, QtCore, QtGui
 
 # Define data.db directory
-data_db = '/home/pi/data.db'
+data_db = 'testdata.db'
 
 # Initialise iconsize
 iconsize = QtCore.QSize()

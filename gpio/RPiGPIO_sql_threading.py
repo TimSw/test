@@ -13,73 +13,90 @@ RPi.GPIO.setmode(RPi.GPIO.BOARD)
 RPi.GPIO.setup(outputList, RPi.GPIO.OUT, initial=uit)
 
 # Initialise data
-nu = datetime.datetime.now()
-print("Het is", nu.hour, "uur")
-print("en", nu.minute, "minuten")
-# export_startuur = 0
-# export_startmin = 0
 
 
 def get_input():
-    # Initialise sqlite
-    con = sqlite3.connect('../testdata.db')
-    cur = con.cursor()
+    while True:
+        try:
+            # Initialise sqlite
+            con = sqlite3.connect('../testdata.db')
+            cur = con.cursor()
 
-    export_startuur = input("Please enter start hour:\n")
-    print(f'You entered {export_startuur} uur')
-    export_startmin = input("Please enter start minute:\n")
-    print(f'You entered {export_startmin} minuten')
+            # Initialise current time
+            nu = datetime.datetime.now()
+            print("Het is", nu.hour, "uur")
+            print("en", nu.minute, "minuten")
+            export_startuur = input("Please enter start hour:\n")
+            print(f'You entered {export_startuur} hour')
+            export_startmin = input("Please enter start minute:\n")
+            print(f'You entered {export_startmin} minutes')
 
-    # Create table
-    cur.execute('''CREATE TABLE IF NOT EXISTS testtable
-                (data_1 INT, data_2 INT)''')
+            # Create table
+            cur.execute('''CREATE TABLE IF NOT EXISTS testtable
+                        (data_1 INT, data_2 INT)''')
 
-    # Export
-    # Update a row of data
-    cur.execute("UPDATE testtable SET data_1 = ?, data_2 = ?",
-                (export_startuur, export_startmin))
-    print("Data verzonden")
+            # Update a row of data
+            cur.execute("UPDATE testtable SET data_1 = ?, data_2 = ?",
+                        (export_startuur, export_startmin))
+            print("Data verzonden")
 
-    # Save (commit) the changes
-    con.commit()
+            # Save (commit) the changes
+            con.commit()
 
-    # Close sql connection
-    con.close()
+        except Exception as e:
+            print(e)
+            # Close sql connection
+            con.close()
 
 
 def process_imput():
-    # Initialise sqlite
-    con = sqlite3.connect('../testdata.db')
-    cur = con.cursor()
+    while True:
+        try:
+            # Initialise sqlite
+            con = sqlite3.connect('../testdata.db')
+            cur = con.cursor()
 
-    # Select data from table
-    cur.execute("SELECT * FROM testtable")
-    data = cur.fetchone()
-    print(data)
-    import_startuur = data[0]
-    import_starmin = data[1]
-    print(import_startuur)
-    print(import_starmin)
+            # Initialise current time
+            nu = datetime.datetime.now()
+            print("Het is", nu.hour, "uur")
+            print("en", nu.minute, "minuten")
+            # Select data from table
+            cur.execute("SELECT * FROM testtable")
+            data = cur.fetchone()
+            print(data)
+            import_startuur = data[0]
+            import_starmin = data[1]
+            print(import_startuur)
+            print(import_starmin)
 
-    # Process
-    if import_startuur == nu.hour and import_starmin > nu.minute:
-        RPi.GPIO.output(29, aan)
-        print("1 AAN")
-    else:
-        RPi.GPIO.output(29, uit)
-        print("1 UIT")
+            if import_startuur == nu.hour and import_starmin > nu.minute:
+                RPi.GPIO.output(29, aan)
+                print("1 AAN")
+                print("Sleep for 10 seconds")
+                time.sleep(10)
 
-    # Close sql connection
-    con.close()
+            else:
+                RPi.GPIO.output(29, uit)
+                print("1 UIT")
+                print("Sleep for 10 seconds")
+                time.sleep(10)
+
+        except Exception as e:
+            print(e)
+            # Close sql connection
+            con.close()
 
 
 if __name__ == "__main__":
+    # Threading
     print("Voor creëren thread 1")
     t1 = threading.Thread(target=get_input)
+    print("Voor creëren thread 2")
+    t2 = threading.Thread(target=process_imput)
     print("Voor starten thread 1")
     t1.start()
-    #get_input()
-    process_imput()
+    print("Voor starten thread 2")
+    t2.start()
 
     # Cleanup
     RPi.GPIO.cleanup()

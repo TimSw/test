@@ -6,19 +6,22 @@ con = sqlite3.connect('../testdata.db')
 cur = con.cursor()
 
 # Create table
-cur.execute('''CREATE TABLE IF NOT EXISTS testtable
-            (data_1 REAL, data_2 REAL)''')
+cur.execute('''CREATE TABLE IF NOT EXISTS timers
+            (timer TEXT, hour INTEGER, minute INTEGER)''')
 
 # Select data from table
 # cur.execute("SELECT data_1 FROM testtable")
 # data = cur.fetchone()[0]
-cur.execute("SELECT * FROM testtable")
+cur.execute("SELECT * FROM timers")
 data = cur.fetchone()
 print(data)
-data_1 = data[0]
-data_2 = data[1]
-print(data_1)
-print(data_2)
+timer = data[0]
+hour = data[1]
+minute = data[2]
+
+print(timer)
+print(hour)
+print(minute)
 
 # Select all data ordered
 # for row in cur.execute("SELECT * FROM testtable ORDER BY data_1"):

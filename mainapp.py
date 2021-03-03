@@ -2,6 +2,8 @@
 import sys
 import os
 import time
+import datetime
+import threading
 import RPi.GPIO
 import sqlite3
 import pyqtgraph
@@ -9,7 +11,7 @@ import pg_time_axis
 from PyQt5 import QtWidgets, QtCore, QtGui
 
 # Define data.db directory
-data_db = 'testdata.db'
+data_db = 'data.db'
 
 # Initialise iconsize
 iconsize = QtCore.QSize()
@@ -22,6 +24,54 @@ aan = RPi.GPIO.LOW
 outputList = (29, 31, 33, 35)
 RPi.GPIO.setmode(RPi.GPIO.BOARD)
 RPi.GPIO.setup(outputList, RPi.GPIO.OUT, initial=uit)
+
+
+def process_input():
+    while True:
+        try:
+            # Initialise timer
+            timer = "lighttimer"
+
+            # Initialise sqlite
+            con = sqlite3.connect(data_db)
+            cur = con.cursor()
+
+            # Create table
+            cur.execute('''CREATE TABLE IF NOT EXISTS timers
+                        (timer TEXT, hour INTEGER, minute INTEGER)''')
+
+            # Initialise current time
+            nu = datetime.datetime.now()
+            print("Het is", nu.hour, "uur")
+            print("en", nu.minute, "minuten")
+
+            # Select data from table
+            cur.execute("SELECT * FROM timers WHERE timer = ?", timer)
+            data = cur.fetchone()
+            print(data)
+            import_timer = data[0]
+            import_startuur = data[1]
+            import_starmin = data[2]
+            print(import_timer)
+            print(import_startuur)
+            print(import_starmin)
+
+            if import_startuur == nu.hour and import_starmin >= nu.minute:
+                RPi.GPIO.output(29, aan)
+                print("1 AAN")
+                print("Sleep for 10 seconds")
+                time.sleep(10)
+
+            else:
+                RPi.GPIO.output(29, uit)
+                print("1 UIT")
+                print("Sleep for 10 seconds")
+                time.sleep(10)
+
+        except Exception as e:
+            print(e)
+            # Close sql connection
+            con.close()
 
 
 class Window(QtWidgets.QWidget):
@@ -399,7 +449,7 @@ class ClockWindow(QtWidgets.QDialog):
         # Light pushbutton
         pb_set_light_on = QtWidgets.QPushButton("Set", self)
         pb_set_light_on.clicked.connect(
-            lambda: self.update_settings("light on",
+            lambda: self.update_settings("lighttimer",
                                          cbx_h_light_on.currentText(),
                                          cbx_m_light_on.currentText()))
         pb_set_light_on.clicked.connect(self.update_widget)
@@ -533,17 +583,15 @@ class ClockWindow(QtWidgets.QDialog):
         cur = con.cursor()
 
         # Fill data
-        data = (hour, minute, timer)
-
+        data = (hour, minute)
 
         # TODO create timers when initialising database
         # Create table
-        cur.execute('''CREATE TABLE IF NOT EXISTS time
+        cur.execute('''CREATE TABLE IF NOT EXISTS timers
                     (timer TEXT, hour INTEGER, minute INTEGER)''')
 
         # Update data
-        cur.execute("UPDATE time SET hour = ?, minute = ? WHERE timer = ?",
-                    data)
+        cur.execute("UPDATE lighttimer SET hour = ?, minute = ?", data)
 
         # Save (commit) the changes
         con.commit()
@@ -660,6 +708,14 @@ class ShutdownWindow(QtWidgets.QDialog):
 
 
 if __name__ == '__main__':
+    # Graphical User Interface
     app = QtWidgets.QApplication(sys.argv)
     ex = Window()
+
+    # Threading
+    print("Voor creëren thread 1")
+    t1 = threading.Thread(target=process_input)
+    print("Voor starten thread 1")
+    t1.start()
+
     sys.exit(app.exec_())

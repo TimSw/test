@@ -51,9 +51,6 @@ def process_input():
             import_timer = data[0]
             import_startuur = data[1]
             import_starmin = data[2]
-            print(import_timer)
-            print(import_startuur)
-            print(import_starmin)
 
             if import_startuur == nu.hour and import_starmin >= nu.minute:
                 RPi.GPIO.output(29, aan)

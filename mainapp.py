@@ -29,9 +29,6 @@ RPi.GPIO.setup(outputList, RPi.GPIO.OUT, initial=uit)
 def process_input():
     while True:
         try:
-            # Initialise timer
-            timer = "lighttimer"
-
             # Initialise sqlite
             con = sqlite3.connect(data_db)
             cur = con.cursor()
@@ -44,6 +41,8 @@ def process_input():
             nu = datetime.datetime.now()
             print("Het is", nu.hour, "uur")
             print("en", nu.minute, "minuten")
+            # Initialise timer
+            timer = ("lighttimer", )
 
             # Select data from table
             cur.execute("SELECT * FROM timers WHERE timer = ?", timer)
@@ -583,7 +582,7 @@ class ClockWindow(QtWidgets.QDialog):
         cur = con.cursor()
 
         # Fill data
-        data = (hour, minute)
+        data = (hour, minute, timer)
 
         # TODO create timers when initialising database
         # Create table
@@ -591,7 +590,8 @@ class ClockWindow(QtWidgets.QDialog):
                     (timer TEXT, hour INTEGER, minute INTEGER)''')
 
         # Update data
-        cur.execute("UPDATE lighttimer SET hour = ?, minute = ?", data)
+        cur.execute('''UPDATE timers SET hour = ?, minute = ? WHERE timer = ?''',
+                    data)
 
         # Save (commit) the changes
         con.commit()

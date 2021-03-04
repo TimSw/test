@@ -6,13 +6,12 @@ con = sqlite3.connect('../testdata.db')
 cur = con.cursor()
 
 # Create table
-cur.execute('''CREATE TABLE IF NOT EXISTS timers
-            (timer TEXT, hour INTEGER, minute INTEGER)''')
+cur.execute('''CREATE TABLE IF NOT EXISTS testtable 
+            (data_column_1 TEXT, data_column_2 INTEGER, data_column_3 INTEGER)''')
 
 # Select data from table
-# cur.execute("SELECT data_1 FROM testtable")
-# data = cur.fetchone()[0]
-cur.execute("SELECT * FROM timers")
+kolomnaam = ("testtimer_3", )
+cur.execute('''SELECT * FROM testtable WHERE data_column_1 = ?''', kolomnaam)
 data = cur.fetchone()
 print(data)
 timer = data[0]

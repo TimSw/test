@@ -168,15 +168,21 @@ class TemperatureWindow(QtWidgets.QDialog):
         pb_home.setIconSize(iconsize)
         pb_home.clicked.connect(self.go_main_window)
 
-        pb_delete = QtWidgets.QToolButton(self)
-        pb_delete.setIcon(QtGui.QIcon("icons/IconRecycle.png"))
-        pb_delete.setIconSize(iconsize)
-        pb_delete.clicked.connect(self.delete_data)
+        pb_delete_all = QtWidgets.QToolButton(self)
+        pb_delete_all.setIcon(QtGui.QIcon("icons/IconRecycle.png"))
+        pb_delete_all.setIconSize(iconsize)
+        pb_delete_all.clicked.connect(self.delete_all_data)
+
+        pb_delete_bad = QtWidgets.QToolButton(self)
+        pb_delete_bad.setIcon(QtGui.QIcon("icons/IconRecycle.png"))
+        pb_delete_bad.setIconSize(iconsize)
+        pb_delete_bad.clicked.connect(self.delete_bad_data)
 
         plotwidget = PlotWindow()
 
         hbox = QtWidgets.QHBoxLayout()
-        hbox.addWidget(pb_delete)
+        hbox.addWidget(pb_delete_all)
+        hbox.addWidget(pb_delete_bad)
         hbox.addStretch()
         hbox.addWidget(pb_home)
 
@@ -191,7 +197,7 @@ class TemperatureWindow(QtWidgets.QDialog):
         self.cams.show()
         self.close()
 
-    def delete_data(self):
+    def delete_all_data(self):
         pb_reply = QtWidgets.QMessageBox.question(self, 'Warning!',
                                                   "Delete all data?",
                                                   QtWidgets.QMessageBox.Yes |
@@ -209,6 +215,35 @@ class TemperatureWindow(QtWidgets.QDialog):
 
             # Delete all data
             cur.execute("DELETE FROM temperature")
+
+            # Save (commit) the changes
+            con.commit()
+
+            # Close connection
+            con.close()
+        else:
+            pass
+
+    def delete_bad_data(self):
+        pb_reply = QtWidgets.QMessageBox.question(self, 'Warning!',
+                                                  "Delete bad readings?",
+                                                  QtWidgets.QMessageBox.Yes |
+                                                  QtWidgets.QMessageBox.No,
+                                                  QtWidgets.QMessageBox.No)
+        if pb_reply == QtWidgets.QMessageBox.Yes:
+            # Initialise sqlite
+            con = sqlite3.connect(data_db)
+            cur = con.cursor()
+
+            # Create table
+            cur.execute('''CREATE TABLE IF NOT EXISTS temperature
+                        (timestamp real, temperature1 real, temperature2 real, 
+                        temperature3 real, temperature4 real, temperature5 real)''')
+
+            # Delete all data
+            cur.execute('''DELETE FROM temperature WHERE temperature1 = 0 OR 
+                        temperature2 = 0 OR temperature3 = 0 OR
+                        temperature4 = 0 OR temperature5 = 0''')
 
             # Save (commit) the changes
             con.commit()

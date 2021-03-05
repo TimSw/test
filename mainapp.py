@@ -711,7 +711,7 @@ if __name__ == '__main__':
 
     # Threading
     print("Voor creëren thread 1")
-    t1 = threading.Thread(target=process_input)
+    t1 = threading.Thread(target=process_input, daemon=True)
     print("Voor starten thread 1")
     t1.start()
 

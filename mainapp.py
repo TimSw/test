@@ -83,8 +83,11 @@ def process_input():
             stopuur = data_timer_off[1]
             stopmin = data_timer_off[2]
             stoptijd = datetime.time(stopuur, stopmin)
+            logger.debug(starttijd)
+            logger.debug(stoptijd)
+            logger.debug(nu)
 
-            if starttijd < nu > stoptijd:
+            if starttijd < nu < stoptijd:
                 RPi.GPIO.output(29, aan)
                 logger.info("1 AAN")
                 logger.info("Sleep for 10 seconds")

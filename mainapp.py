@@ -4,11 +4,31 @@ import os
 import time
 import datetime
 import threading
+import logging
 import RPi.GPIO
 import sqlite3
 import pyqtgraph
 import pg_time_axis
 from PyQt5 import QtWidgets, QtCore, QtGui
+
+# Initialise logger
+# create logger with 'mainapp'
+logger = logging.getLogger("mainapp")
+logger.setLevel(logging.DEBUG)
+# create file handler which logs even debug messages
+fh = logging.FileHandler("mainapp.log")
+fh.setLevel(logging.DEBUG)
+# create console handler with a higher log level
+ch = logging.StreamHandler()
+ch.setLevel(logging.DEBUG)
+# ch.setLevel(logging.ERROR)
+# create formatter and add it to the handlers
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+fh.setFormatter(formatter)
+ch.setFormatter(formatter)
+# add the handlers to the logger
+logger.addHandler(fh)
+logger.addHandler(ch)
 
 # Define data.db directory
 data_db = 'data.db'
@@ -35,37 +55,48 @@ def process_input():
 
             # Create table
             cur.execute('''CREATE TABLE IF NOT EXISTS timers
-                        (timer TEXT, hour INTEGER, minute INTEGER)''')
+                        (setting TEXT, data_1 INTEGER, data_2 INTEGER)''')
 
             # Initialise current time
             nu = datetime.datetime.now()
-            print("Het is", nu.hour, "uur")
-            print("en", nu.minute, "minuten")
+            logger.debug("Het is %s uur en %s minuten", nu.hour, nu.minute)
+
+            # Select start time from table
             # Initialise timer
-            timer = ("lighttimer", )
+            timer_on = ("light_on",)
+            # Select data
+            cur.execute("SELECT * FROM timers WHERE setting = ?", timer_on)
+            data_timer_on = cur.fetchone()
+            logger.debug(data_timer_on)
+            startuur = data_timer_on[1]
+            startmin = data_timer_on[2]
 
-            # Select data from table
-            cur.execute("SELECT * FROM timers WHERE timer = ?", timer)
-            data = cur.fetchone()
-            print(data)
-            import_timer = data[0]
-            import_startuur = data[1]
-            import_starmin = data[2]
+            # Select stop time from table
+            # Initialise timer
+            timer_off = ("light_off", )
+            # Select data
+            cur.execute("SELECT * FROM timers WHERE setting = ?", timer_off)
+            data_timer_off = cur.fetchone()
+            logger.debug(data_timer_off)
+            stopuur = data_timer_off[1]
+            stopmin = data_timer_off[2]
 
-            if import_startuur == nu.hour and import_starmin >= nu.minute:
+            if (nu.hour == startuur and nu.minute >= startmin) or \
+                    (startuur < nu.hour < stopuur) or \
+                    (nu.hour == stopuur and nu.minute < stopmin):
                 RPi.GPIO.output(29, aan)
-                print("1 AAN")
-                print("Sleep for 10 seconds")
+                logger.info("1 AAN")
+                logger.info("Sleep for 10 seconds")
                 time.sleep(10)
 
             else:
                 RPi.GPIO.output(29, uit)
-                print("1 UIT")
-                print("Sleep for 10 seconds")
+                logger.info("1 UIT")
+                logger.info("Sleep for 10 seconds")
                 time.sleep(10)
 
         except Exception as e:
-            print(e)
+            logger.exception(e)
             # Close sql connection
             con.close()
 
@@ -127,6 +158,8 @@ class Window(QtWidgets.QWidget):
 
         self.show()
 
+        logger.info("End %s", self)
+
     def button_temperature_window(self):
         self.cams = TemperatureWindow(self)
         self.cams.show()
@@ -178,11 +211,16 @@ class TemperatureWindow(QtWidgets.QDialog):
         pb_delete_bad.setIconSize(iconsize)
         pb_delete_bad.clicked.connect(self.delete_bad_data)
 
+        lbl_delete_all = QtWidgets.QLabel("All", self)
+        lbl_delete_bad = QtWidgets.QLabel("Bad", self)
+
         plotwidget = PlotWindow()
 
         hbox = QtWidgets.QHBoxLayout()
         hbox.addWidget(pb_delete_all)
+        hbox.addWidget(lbl_delete_all)
         hbox.addWidget(pb_delete_bad)
+        hbox.addWidget(lbl_delete_bad)
         hbox.addStretch()
         hbox.addWidget(pb_home)
 
@@ -191,6 +229,8 @@ class TemperatureWindow(QtWidgets.QDialog):
         vbox.addLayout(hbox)
 
         self.setLayout(vbox)
+
+        logger.info("End %s", self)
 
     def go_main_window(self):
         self.cams = Window()
@@ -334,6 +374,8 @@ class PlotWindow(pyqtgraph.PlotWidget):
         # Close connection
         con.close()
 
+        logger.info("End %s", self)
+
 
 class LightWindow(QtWidgets.QDialog):
     def __init__(self, value, parent=None):
@@ -363,6 +405,8 @@ class LightWindow(QtWidgets.QDialog):
 
         self.setLayout(vbox)
 
+        logger.info("End %s", self)
+
     def go_main_window(self):
         self.cams = Window()
         self.cams.show()
@@ -371,10 +415,10 @@ class LightWindow(QtWidgets.QDialog):
     def btn_action(self):
         if self.toggle_button.isChecked():
             RPi.GPIO.output(29, aan)
-            print("button pressed")
+            logger.info("button pressed")
         else:
             RPi.GPIO.output(29, uit)
-            print("button released")
+            logger.info("button released")
 
 
 class WaterWindow(QtWidgets.QDialog):
@@ -412,6 +456,8 @@ class WaterWindow(QtWidgets.QDialog):
 
         self.setLayout(vbox)
 
+        logger.info("End %s", self)
+
     def go_main_window(self):
         self.cams = Window()
         self.cams.show()
@@ -422,18 +468,18 @@ class WaterWindow(QtWidgets.QDialog):
     def btn_action_pump(self):
         if self.tb_pomp.isChecked():
             RPi.GPIO.output(33, aan)
-            print("button pressed")
+            logger.info("button pressed")
         else:
             RPi.GPIO.output(33, uit)
-            print("button released")
+            logger.info("button released")
 
     def btn_action_airstone(self):
         if self.tb_airstone.isChecked():
             RPi.GPIO.output(31, aan)
-            print("button pressed")
+            logger.info("button pressed")
         else:
             RPi.GPIO.output(31, uit)
-            print("button released")
+            logger.info("button released")
 
 
 class ClockWindow(QtWidgets.QDialog):
@@ -480,13 +526,14 @@ class ClockWindow(QtWidgets.QDialog):
         # Light pushbutton
         pb_set_light_on = QtWidgets.QPushButton("Set", self)
         pb_set_light_on.clicked.connect(
-            lambda: self.update_settings("lighttimer",
+            lambda: self.update_settings("light_on",
                                          cbx_h_light_on.currentText(),
                                          cbx_m_light_on.currentText()))
         pb_set_light_on.clicked.connect(self.update_widget)
+
         pb_set_light_off = QtWidgets.QPushButton("Set", self)
         pb_set_light_off.clicked.connect(
-            lambda: self.update_settings("light off",
+            lambda: self.update_settings("light_off",
                                          cbx_h_light_off.currentText(),
                                          cbx_m_light_off.currentText()))
         pb_set_light_off.clicked.connect(self.update_widget)
@@ -496,55 +543,46 @@ class ClockWindow(QtWidgets.QDialog):
         lbl_times = QtWidgets.QLabel("maal", self)
         lbl_during = QtWidgets.QLabel("minuten", self)
         lbl_repeat = QtWidgets.QLabel("om de", self)
-        lbl_repeat_u = QtWidgets.QLabel("uur", self)
-        lbl_repeat_m = QtWidgets.QLabel("minuten", self)
+        lbl_every_u = QtWidgets.QLabel("uur", self)
+        lbl_every_m = QtWidgets.QLabel("minuten", self)
 
         # Pump combobox
         cbx_times = QtWidgets.QComboBox(self)
         cbx_times.addItems(hour_list)
         cbx_during = QtWidgets.QComboBox(self)
         cbx_during.addItems(min_list)
-        cbx_repeat_u = QtWidgets.QComboBox(self)
-        cbx_repeat_u.addItems(min_list)
-        cbx_repeat_m = QtWidgets.QComboBox(self)
-        cbx_repeat_m.addItems(min_list)
+        cbx_every_u = QtWidgets.QComboBox(self)
+        cbx_every_u.addItems(min_list)
+        cbx_every_m = QtWidgets.QComboBox(self)
+        cbx_every_m.addItems(min_list)
 
         # Pump pushbutton
-        pb_pump_repeat = QtWidgets.QPushButton("Set", self)
-        pb_pump_repeat.clicked.connect(
-            lambda: self.update_settings("pump during", cbx_times.currentText(),
+        pb_pump_times_during = QtWidgets.QPushButton("Set", self)
+        pb_pump_times_during.clicked.connect(
+            lambda: self.update_settings("pump_during",
+                                         cbx_times.currentText(),
                                          cbx_during.currentText()))
-        pb_pump_during = QtWidgets.QPushButton("Set", self)
-        pb_pump_during.clicked.connect(
-            lambda: self.update_settings("pump repeat", cbx_repeat_u.currentText(),
-                                         cbx_repeat_m.currentText()))
+        pb_pump_every = QtWidgets.QPushButton("Set", self)
+        pb_pump_every.clicked.connect(
+            lambda: self.update_settings("pump_repeat",
+                                         cbx_every_u.currentText(),
+                                         cbx_every_m.currentText()))
 
         # Airstone labels
         lbl_air = QtWidgets.QLabel("Timer Airstone", self)
-        lbl_start_air = QtWidgets.QLabel("Start om", self)
-        lbl_stop_air = QtWidgets.QLabel("Stopt om", self)
-        lbl_hour_air = QtWidgets.QLabel("uur", self)
-        lbl_min_air = QtWidgets.QLabel("minuten", self)
+        lbl_air_start = QtWidgets.QLabel("Start", self)
+        lbl_air_min_voor = QtWidgets.QLabel("minuten voor de pomp", self)
 
         # Airstone combobox
-        cbx_h_air_on = QtWidgets.QComboBox(self)
-        cbx_h_air_on.addItems(hour_list)
-        cbx_m_air_on = QtWidgets.QComboBox(self)
-        cbx_m_air_on.addItems(min_list)
-        cbx_h_air_off = QtWidgets.QComboBox(self)
-        cbx_h_air_off.addItems(hour_list)
-        cbx_m_air_off = QtWidgets.QComboBox(self)
-        cbx_m_air_off.addItems(min_list)
+        cbx_air_on_min = QtWidgets.QComboBox(self)
+        cbx_air_on_min.addItems(min_list)
 
         # Airstone pushbutton
         pb_set_air_on = QtWidgets.QPushButton("Set", self)
         pb_set_air_on.clicked.connect(
-            lambda: self.update_settings("air on", cbx_h_air_on.currentText(),
-                                         cbx_m_air_on.currentText()))
-        pb_set_air_off = QtWidgets.QPushButton("Set", self)
-        pb_set_air_off.clicked.connect(
-            lambda: self.update_settings("air off", cbx_h_air_off.currentText(),
-                                         cbx_m_air_off.currentText()))
+            lambda: self.update_settings("air_on",
+                                         cbx_air_on_min.currentText(),
+                                         cbx_air_on_min.currentText()))
 
         # Timerwindow layout
         grid = QtWidgets.QGridLayout()
@@ -570,27 +608,19 @@ class ClockWindow(QtWidgets.QDialog):
         grid.addWidget(lbl_times, 5, 2)
         grid.addWidget(cbx_during, 5, 3)
         grid.addWidget(lbl_during, 5, 4)
-        grid.addWidget(pb_pump_during, 5, 5)
+        grid.addWidget(pb_pump_times_during, 5, 5)
         grid.addWidget(lbl_repeat, 6, 0)
-        grid.addWidget(cbx_repeat_u, 6, 1)
-        grid.addWidget(lbl_repeat_u, 6, 2)
-        grid.addWidget(cbx_repeat_m, 6, 3)
-        grid.addWidget(lbl_repeat_m, 6, 4)
-        grid.addWidget(pb_pump_repeat, 6, 5)
-
+        grid.addWidget(cbx_every_u, 6, 1)
+        grid.addWidget(lbl_every_u, 6, 2)
+        grid.addWidget(cbx_every_m, 6, 3)
+        grid.addWidget(lbl_every_m, 6, 4)
+        grid.addWidget(pb_pump_every, 6, 5)
+# TODO rename repeat and during
         grid.addWidget(lbl_air, 8, 0)
-        grid.addWidget(lbl_start_air, 9, 0)
-        grid.addWidget(cbx_h_air_on, 9, 1)
-        grid.addWidget(lbl_hour_air, 9, 2)
-        grid.addWidget(cbx_m_air_on, 9, 3)
-        grid.addWidget(lbl_min_air, 9, 4)
+        grid.addWidget(lbl_air_start, 9, 0)
+        grid.addWidget(cbx_air_on_min, 9, 1)
+        grid.addWidget(lbl_air_min_voor, 9, 2)
         grid.addWidget(pb_set_air_on, 9, 5)
-        grid.addWidget(lbl_stop_air, 10, 0)
-        grid.addWidget(cbx_h_air_off, 10, 1)
-        grid.addWidget(lbl_hour_air, 10, 2)
-        grid.addWidget(cbx_m_air_off, 10, 3)
-        grid.addWidget(lbl_min_air, 10, 4)
-        grid.addWidget(pb_set_air_off, 10, 5)
 
         hbox = QtWidgets.QHBoxLayout()
         hbox.addStretch(0)
@@ -603,27 +633,29 @@ class ClockWindow(QtWidgets.QDialog):
 
         self.setLayout(vbox)
 
+        logger.info("End %s", self)
+
     def go_main_window(self):
         self.cams = Window()
         self.cams.show()
         self.close()
 
-    def update_settings(self, timer, hour, minute):
+    def update_settings(self, setting, data_1, data_2):
         # Initialise sqlite
         con = sqlite3.connect(data_db)
         cur = con.cursor()
 
         # Fill data
-        data = (hour, minute, timer)
+        data = (data_1, data_2, setting)
 
         # TODO create timers when initialising database
         # Create table
         cur.execute('''CREATE TABLE IF NOT EXISTS timers
-                    (timer TEXT, hour INTEGER, minute INTEGER)''')
+                    (setting TEXT, data_1 INTEGER, data_2 INTEGER)''')
 
         # Update data
-        cur.execute('''UPDATE timers SET hour = ?, minute = ? WHERE timer = ?''',
-                    data)
+        cur.execute('''UPDATE timers SET data_1 = ?, data_2 = ? 
+                    WHERE setting = ?''', data)
 
         # Save (commit) the changes
         con.commit()
@@ -683,6 +715,8 @@ class SettingsWindow(QtWidgets.QDialog):
 
         self.setLayout(vbox)
 
+        logger.info("End %s", self)
+
     def go_main_window(self):
         self.cams = Window()
         self.cams.show()
@@ -719,7 +753,10 @@ class ShutdownWindow(QtWidgets.QDialog):
         hbox.addWidget(button_shutdown)
         hbox.addWidget(button_cancel)
         hbox.addStretch(1)
+
         self.setLayout(hbox)
+
+        logger.info("End %s", self)
 
     def exit(self):
         RPi.GPIO.cleanup()
@@ -745,9 +782,9 @@ if __name__ == '__main__':
     ex = Window()
 
     # Threading
-    print("Voor creëren thread 1")
+    logger.info("Voor creëren thread 1")
     t1 = threading.Thread(target=process_input, daemon=True)
-    print("Voor starten thread 1")
+    logger.info("Voor starten thread 1")
     t1.start()
 
     sys.exit(app.exec_())

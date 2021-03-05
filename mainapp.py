@@ -58,7 +58,8 @@ def process_input():
                         (setting TEXT, data_1 INTEGER, data_2 INTEGER)''')
 
             # Initialise current time
-            nu = datetime.datetime.now()
+            # nu = datetime.datetime.now()
+            nu = datetime.datetime.now().time()
             logger.debug("Het is %s uur en %s minuten", nu.hour, nu.minute)
 
             # Select start time from table
@@ -70,6 +71,7 @@ def process_input():
             logger.debug(data_timer_on)
             startuur = data_timer_on[1]
             startmin = data_timer_on[2]
+            starttijd = datetime.time(startuur, startmin)
 
             # Select stop time from table
             # Initialise timer
@@ -80,10 +82,9 @@ def process_input():
             logger.debug(data_timer_off)
             stopuur = data_timer_off[1]
             stopmin = data_timer_off[2]
+            stoptijd = datetime.time(stopuur, stopmin)
 
-            if (nu.hour == startuur and nu.minute >= startmin) or \
-                    (startuur < nu.hour < stopuur) or \
-                    (nu.hour == stopuur and nu.minute < stopmin):
+            if starttijd < nu > stoptijd:
                 RPi.GPIO.output(29, aan)
                 logger.info("1 AAN")
                 logger.info("Sleep for 10 seconds")

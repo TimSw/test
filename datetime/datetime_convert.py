@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import sqlite3
+import datetime
 
 # Initialise sqlite
 con = sqlite3.connect('../testdata.db')
@@ -22,7 +23,19 @@ print(timer)
 print(hour)
 print(minute)
 
+starttijd = datetime.time(hour, minute)
+print(starttijd)
+
+nu = datetime.datetime.now().time()
+print(nu)
+print("Het is %s uur en %s minuten", nu.hour, nu.minute)
+
 print("Data gelezen")
+
+if nu > starttijd:
+    print("ja")
+else:
+    print("nee")
 
 # Close connection
 con.close()

@@ -667,20 +667,20 @@ class ClockWindow(QtWidgets.QDialog):
         # Close connection
         con.close()
 
-    def update_text(self, timer):
+    def update_text(self, setting):
         # Initialise sqlite
         con = sqlite3.connect(data_db)
         cur = con.cursor()
 
         # Create table
-        cur.execute('''CREATE TABLE IF NOT EXISTS time
-                            (timer TEXT, hour INTEGER, minute INTEGER)''')
+        cur.execute('''CREATE TABLE IF NOT EXISTS timers
+                    (setting TEXT, data_1 INTEGER, data_2 INTEGER)''')
 
         # Read data
-        cur.execute("SELECT hour, minute FROM time WHERE timer = ?", (timer,))
+        cur.execute("SELECT data_1, data_2 FROM timers WHERE setting = ?", (setting,))
         data = cur.fetchone()
-        hour = data[0]
-        minute = data[1]
+        hour = data[1]
+        minute = data[2]
 
         # Save (commit) the changes
         con.commit()

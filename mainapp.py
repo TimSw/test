@@ -46,7 +46,7 @@ RPi.GPIO.setmode(RPi.GPIO.BOARD)
 RPi.GPIO.setup(outputList, RPi.GPIO.OUT, initial=uit)
 
 
-def process_input():
+def process_timers():
     while True:
         try:
             # Initialise sqlite
@@ -57,14 +57,9 @@ def process_input():
             cur.execute('''CREATE TABLE IF NOT EXISTS timers
                         (setting TEXT, data_1 INTEGER, data_2 INTEGER)''')
 
-            # Initialise current time
-            # nu = datetime.datetime.now()
-            nu = datetime.datetime.now().time()
-            logger.debug("Het is %s uur en %s minuten", nu.hour, nu.minute)
-
             # Select start time from table
             # Initialise timer
-            timer_on = ("light_on",)
+            timer_on = ("light_on", )
             # Select data
             cur.execute("SELECT * FROM timers WHERE setting = ?", timer_on)
             data_timer_on = cur.fetchone()
@@ -83,26 +78,85 @@ def process_input():
             stopuur = data_timer_off[1]
             stopmin = data_timer_off[2]
             stoptijd = datetime.time(stopuur, stopmin)
+
+            # Select pump settings from table
+            # Initialise timer
+            pump_setting = ("pump_during", )
+            # Select data
+            cur.execute("SELECT * FROM timers WHERE setting = ?", pump_setting)
+            data_pump_setting = cur.fetchone()
+            logger.debug(data_pump_setting)
+            pump_repeat = data_pump_setting[1]
+            pump_during = data_pump_setting[2]
+            pump_time = datetime.time(00, pump_during)
+
+            # Select airpump settings from table
+            # Initialise timer
+            air_setting = ("air_on", )
+            # Select data
+            cur.execute("SELECT * FROM timers WHERE setting = ?", air_setting)
+            data_air_setting = cur.fetchone()
+            logger.debug(data_air_setting)
+            air_on = data_pump_setting[1]
+            airpump_on = datetime.time(00, air_on)
+
+            # Initialise current time
+            nu = datetime.datetime.now().time()
+
+            logger.debug("Het is %s uur en %s minuten", nu.hour, nu.minute)
             logger.debug(starttijd)
             logger.debug(stoptijd)
             logger.debug(nu)
 
-            if starttijd < nu < stoptijd:
-                RPi.GPIO.output(29, aan)
-                logger.info("1 AAN")
-                logger.info("Sleep for 10 seconds")
-                time.sleep(10)
+            date = datetime.date(1, 1, 1)
+            datetime1 = datetime.datetime.combine(date, starttijd)
+            datetime2 = datetime.datetime.combine(date, stoptijd)
 
-            else:
-                RPi.GPIO.output(29, uit)
-                logger.info("1 UIT")
-                logger.info("Sleep for 10 seconds")
-                time.sleep(10)
+            licht_aan = datetime2 - datetime1
+
+            logger.debug("Licht is aan gedurende %s", licht_aan)
+
+            pompcicli = licht_aan // pump_repeat
+            logger.debug("Pomp gaat aan om de %s", pompcicli)
+
+            time.sleep(10)
+
+            return starttijd, stoptijd, pump_time, pompcicli, airpump_on
 
         except Exception as e:
             logger.exception(e)
             # Close sql connection
             con.close()
+
+
+def process_outputs(starttijd, stoptijd, pump_time, pompcicli, airpump_on):
+    while True:
+        # Initialise current time
+        nu = datetime.datetime.now().time()
+        # Initialise wait time airpump
+        wait_for_airmpump = datetime.time(00, 01)
+        start_airpump = starttijd + wait_for_airmpump
+        stop_airpump = start_airpump + airpump_on
+
+        if start_airpump < nu < stop_airpump:
+            RPi.GPIO.output(31, aan)
+            logger.info("3 AAN")
+
+        else:
+            RPi.GPIO.output(31, uit)
+            logger.info("3 UIT")
+
+        if starttijd < nu < stoptijd:
+            RPi.GPIO.output(29, aan)
+            logger.info("1 AAN")
+            logger.info("Sleep for 10 seconds")
+            time.sleep(10)
+
+        else:
+            RPi.GPIO.output(29, uit)
+            logger.info("1 UIT")
+            logger.info("Sleep for 10 seconds")
+            time.sleep(10)
 
 
 class Window(QtWidgets.QWidget):
@@ -787,7 +841,7 @@ if __name__ == '__main__':
 
     # Threading
     logger.info("Voor creëren thread 1")
-    t1 = threading.Thread(target=process_input, daemon=True)
+    t1 = threading.Thread(target=process_timers, daemon=True)
     logger.info("Voor starten thread 1")
     t1.start()
 

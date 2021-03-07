@@ -47,6 +47,21 @@ RPi.GPIO.setmode(RPi.GPIO.BOARD)
 RPi.GPIO.setup(outputList, RPi.GPIO.OUT, initial=uit)
 
 
+class Light:
+    def __init__(self):
+        self.o_light_on = 0
+
+    def light(self):
+        if self.o_light_on == 1:
+            RPi.GPIO.output(29, aan)
+            logger.info("OUTPUT LIGHT ON")
+            time.sleep(10)
+        else:
+            RPi.GPIO.output(29, uit)
+            logger.info("OUTPUT LIGHT ON")
+            time.sleep(10)
+
+
 def process_timers():
     while True:
         try:
@@ -119,9 +134,11 @@ def process_timers():
             # Light
             if start_light < now < stop_light:
                 o_timer_light_on = 1
+                logger.debug("o_timer_light_on = %s", o_timer_light_on)
                 logger.info("TIMER LIGHT ON")
             else:
                 o_timer_light_on = 0
+                logger.debug("o_timer_light_on = %s", o_timer_light_on)
                 logger.info("TIMER LIGHT OFF")
 
             time.sleep(10)
@@ -133,15 +150,6 @@ def process_timers():
             logger.exception(e)
             # Close sql connection
             con.close()
-
-
-def light(o_timer_light_on):
-    if o_timer_light_on == 1:
-        RPi.GPIO.output(29, aan)
-        logger.info("OUTPUT LIGHT ON")
-    else:
-        RPi.GPIO.output(29, uit)
-        logger.info("OUTPUT LIGHT ON")
 
 
 def process_outputs(start_light, stop_light, pump_time, pump_repeat,
@@ -859,11 +867,28 @@ class SettingsWindow(QtWidgets.QDialog):
         push_button.setIconSize(iconsize)
         push_button.clicked.connect(self.go_main_window)
 
+        # Light labels
+        lbl_light = QtWidgets.QLabel("Licht")
+
+        tb_set_light = QtWidgets.QPushButton("AAN / UIT", self)
+        tb_set_light.setCheckable(True)
+        tb_set_light.toggle()
+        # tb_set_light.clicked.connect(self.btn_action_pump)
+        tb_set_light.setFixedSize(100, 50)
+
+        # Timerwindow layout
+        grid = QtWidgets.QGridLayout()
+        grid.setSpacing(10)
+
+        grid.addWidget(lbl_light, 0, 0)
+        grid.addWidget(tb_set_light, 0, 1)
+
         hbox = QtWidgets.QHBoxLayout()
         hbox.addStretch(0)
         hbox.addWidget(push_button)
 
         vbox = QtWidgets.QVBoxLayout()
+        vbox.addLayout(grid)
         vbox.addStretch(0)
         vbox.addLayout(hbox)
 
@@ -938,11 +963,7 @@ if __name__ == '__main__':
     # Threading
     logger.info("Voor creëren thread process_timers")
     t1 = threading.Thread(target=process_timers, daemon=True)
-    #logger.info("Voor creëren thread light")
-    #t2 = threading.Thread(target=light, args=(start_light, stop_light), daemon=True)
-    logger.info("Voor starten thread process_timers")
+    logger.info("Voor creëren thread light")
     t1.start()
-    #logger.info("Voor starten thread light")
-    #t2.start()
 
     sys.exit(app.exec_())

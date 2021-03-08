@@ -47,21 +47,6 @@ RPi.GPIO.setmode(RPi.GPIO.BOARD)
 RPi.GPIO.setup(outputList, RPi.GPIO.OUT, initial=uit)
 
 
-class Light:
-    def __init__(self):
-        self.o_light_on = 0
-
-    def light(self):
-        if self.o_light_on == 1:
-            RPi.GPIO.output(29, aan)
-            logger.info("OUTPUT LIGHT ON")
-            time.sleep(10)
-        else:
-            RPi.GPIO.output(29, uit)
-            logger.info("OUTPUT LIGHT ON")
-            time.sleep(10)
-
-
 def process_timers():
     while True:
         try:
@@ -133,12 +118,14 @@ def process_timers():
 
             # Light
             if start_light < now < stop_light:
-                o_timer_light_on = 1
-                logger.debug("o_timer_light_on = %s", o_timer_light_on)
+                Light.lightvariabele_1 = 1
+                logger.debug("Light.lightvariabele_1 = %s",
+                             Light.lightvariabele_1)
                 logger.info("TIMER LIGHT ON")
             else:
-                o_timer_light_on = 0
-                logger.debug("o_timer_light_on = %s", o_timer_light_on)
+                Light.lightvariabele_1 = 0
+                logger.debug("Light.lightvariabele_1 = %s",
+                             Light.lightvariabele_1)
                 logger.info("TIMER LIGHT OFF")
 
             time.sleep(10)
@@ -273,6 +260,32 @@ def process_outputs(start_light, stop_light, pump_time, pump_repeat,
 
         logger.info("Sleep for 10 seconds")
         time.sleep(10)"""
+
+
+class Light:
+    def __init__(self):
+        pass
+
+    lightvariabele_1 = 1
+    logger.info("testvariabele_1 in Light class = ", lightvariabele_1)
+
+    def light(self):
+        while True:
+            if self.lightvariabele_1 == 1:
+                logger.info("self.testvariabele_1", self.lightvariabele_1)
+                RPi.GPIO.output(29, aan)
+                logger.info("OUTPUT LIGHT ON")
+                time.sleep(10)
+            else:
+                logger.info("self.testvariabele_1", self.lightvariabele_1)
+                RPi.GPIO.output(29, uit)
+                logger.info("OUTPUT LIGHT OFF")
+                time.sleep(10)
+
+    def run(self):
+        # t1 = threading.Thread(target=self.light)
+        t1 = threading.Thread(target=self.light, daemon=True)
+        t1.start()
 
 
 class Window(QtWidgets.QWidget):
@@ -959,6 +972,10 @@ if __name__ == '__main__':
     # Graphical User Interface
     app = QtWidgets.QApplication(sys.argv)
     ex = Window()
+
+    # Light class
+    l1 = Light()
+    l1.run()
 
     # Threading
     logger.info("Voor creëren thread process_timers")

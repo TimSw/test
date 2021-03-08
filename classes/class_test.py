@@ -16,11 +16,11 @@ cur.execute('''CREATE TABLE IF NOT EXISTS testtable
 kolomnaam = ("testtimer_3", )
 cur.execute('''SELECT * FROM testtable WHERE data_column_1 = ?''', kolomnaam)
 data = cur.fetchone()
-print(data)
 timer = data[0]
 hour = data[1]
 minute = data[2]
 
+print("data =", data)
 print("timer = ", timer)
 print("hour = ", hour)
 print("minute = ", minute)
@@ -37,10 +37,12 @@ class Light:
         self.light_2 = 0
 
     testvariabele_1 = 1
+    print("testvariabele_1", testvariabele_1)
 
     def light(self):
         while True:
-            if self.light_1 == 1:
+            if self.testvariabele_1 > 1:
+                print("self.testvariabele_1", self.testvariabele_1)
                 self.light_2 = 1
                 print("self.light_2 = ", self.light_2)
                 RPi.GPIO.output(29, False)
@@ -57,6 +59,10 @@ class Light:
         t1 = threading.Thread(target=self.light)
         # t1 = threading.Thread(target=self.light, daemon=True)
         t1.start()
+
+
+Light.testvariabele_1 = hour
+print("Light.testvariabele_1", Light.testvariabele_1)
 
 
 if __name__ == "__main__":

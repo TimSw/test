@@ -130,9 +130,6 @@ def process_timers():
 
             time.sleep(10)
 
-            # return start_light, stop_light, pump_time, pump_repeat, \
-            #     time_btwn_pumping, time_air_on
-
         except Exception as e:
             logger.exception(e)
             # Close sql connection
@@ -676,10 +673,8 @@ class ClockWindow(QtWidgets.QDialog):
         self.showFullScreen()
 
         # Create comboBox values
-        hour_list = ["00", "01", "02", "03", "04", "05", "06", "07", "08",
-                     "09",
-                     "10", "11", "12", "13", "14", "15", "16", "17", "18",
-                     "19",
+        hour_list = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09",
+                     "10", "11", "12", "13", "14", "15", "16", "17", "18", "19",
                      "20", "21", "22", "23"]
         min_list = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09",
                     "10", "11", "12", "13", "14", "15", "16", "17", "18", "19",

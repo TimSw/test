@@ -263,7 +263,7 @@ class Light:
     def __init__(self):
         pass
 
-    lightvariabele_1 = 1
+    lightvariabele_1 = 0
     logger.info("testvariabele_1 in Light class = ", lightvariabele_1)
 
     def light(self):

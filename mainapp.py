@@ -18,17 +18,23 @@ logger.setLevel(logging.DEBUG)
 # create file handler which logs even debug messages
 fh = logging.FileHandler("mainapp.log")
 fh.setLevel(logging.DEBUG)
+# create file handler which logs even debug messages
+# rfh = logging.handlers.RotatingFileHandler("mainapp_rfh.log", 'a', 2560000, 1, 'utf8')
+# rfh.setLevel(logging.DEBUG)
 # create console handler with a higher log level
 ch = logging.StreamHandler()
 ch.setLevel(logging.DEBUG)
 # ch.setLevel(logging.ERROR)
 # create formatter and add it to the handlers
 formatter = logging.Formatter(
-    "%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+   "%(asctime)s - %(name)s - %(levelname)s - %(lineno)d: %(message)s")
+#    "%(asctime)s - %(filename)s - %(name)s - %(levelname)s - %(message)s")
 fh.setFormatter(formatter)
+# rfh.setFormatter(formatter)
 ch.setFormatter(formatter)
 # add the handlers to the logger
 logger.addHandler(fh)
+# logger.addHandler(rfh)
 logger.addHandler(ch)
 
 # Define data.db directory
@@ -264,17 +270,17 @@ class Light:
         pass
 
     lightvariabele_1 = 0
-    logger.info("testvariabele_1 in Light class = ", lightvariabele_1)
+    logger.info("testvariabele_1 in Light class = %s", lightvariabele_1)
 
     def light(self):
         while True:
             if self.lightvariabele_1 == 1:
-                logger.info("self.testvariabele_1", self.lightvariabele_1)
+                logger.info("self.testvariabele_1 = %s", self.lightvariabele_1)
                 RPi.GPIO.output(29, aan)
                 logger.info("OUTPUT LIGHT ON")
                 time.sleep(10)
             else:
-                logger.info("self.testvariabele_1", self.lightvariabele_1)
+                logger.info("self.testvariabele_1 = %s", self.lightvariabele_1)
                 RPi.GPIO.output(29, uit)
                 logger.info("OUTPUT LIGHT OFF")
                 time.sleep(10)

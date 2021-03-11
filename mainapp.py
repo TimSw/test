@@ -5,6 +5,7 @@ import time
 import datetime
 import threading
 import logging
+import logging.handlers
 import RPi.GPIO
 import sqlite3
 import pyqtgraph
@@ -16,11 +17,11 @@ from PyQt5 import QtWidgets, QtCore, QtGui
 logger = logging.getLogger("mainapp")
 logger.setLevel(logging.DEBUG)
 # create file handler which logs even debug messages
-fh = logging.FileHandler("mainapp.log")
-fh.setLevel(logging.DEBUG)
+# fh = logging.FileHandler("mainapp.log")
+# fh.setLevel(logging.DEBUG)
 # create file handler which logs even debug messages
-# rfh = logging.handlers.RotatingFileHandler("mainapp_rfh.log", 'a', 2560000, 1, 'utf8')
-# rfh.setLevel(logging.DEBUG)
+rfh = logging.handlers.RotatingFileHandler("mainapp.log", "a", 2560000, 3)
+rfh.setLevel(logging.DEBUG)
 # create console handler with a higher log level
 ch = logging.StreamHandler()
 ch.setLevel(logging.DEBUG)
@@ -29,12 +30,12 @@ ch.setLevel(logging.DEBUG)
 formatter = logging.Formatter(
    "%(asctime)s - %(name)s - %(levelname)s - %(lineno)d: %(message)s")
 #    "%(asctime)s - %(filename)s - %(name)s - %(levelname)s - %(message)s")
-fh.setFormatter(formatter)
-# rfh.setFormatter(formatter)
+# fh.setFormatter(formatter)
+rfh.setFormatter(formatter)
 ch.setFormatter(formatter)
 # add the handlers to the logger
-logger.addHandler(fh)
-# logger.addHandler(rfh)
+# logger.addHandler(fh)
+logger.addHandler(rfh)
 logger.addHandler(ch)
 
 # Define data.db directory

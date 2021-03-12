@@ -806,7 +806,9 @@ class ClockWindow(QtWidgets.QDialog):
         self.lbl_lijn_5_5 = QtWidgets.QLabel(" ", self)
         self.lbl_lijn_5_6 = QtWidgets.QLabel(" ", self)
 
-        pb_update = QtWidgets.QPushButton("Update text", self)
+        pb_update = QtWidgets.QToolButton(self)
+        pb_update.setIcon(QtGui.QIcon("icons/IconUpdate.png"))
+        pb_update.setIconSize(iconsize)
         pb_update.clicked.connect(lambda: self.update_text())
 
         # Timerwindow layout
@@ -873,9 +875,10 @@ class ClockWindow(QtWidgets.QDialog):
         grid.addWidget(self.lbl_lijn_5_3, 14, 2)
         grid.addWidget(self.lbl_lijn_5_4, 14, 3)
         grid.addWidget(self.lbl_lijn_5_5, 14, 4)
-        grid.addWidget(pb_update, 14, 5)
+        grid.addWidget(self.lbl_lijn_5_6, 14, 5)
 
         hbox = QtWidgets.QHBoxLayout()
+        hbox.addWidget(pb_update)
         hbox.addStretch(0)
         hbox.addWidget(push_button)
 

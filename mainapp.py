@@ -689,6 +689,12 @@ class ClockWindow(QtWidgets.QDialog):
                     "30", "31", "32", "33", "34", "35", "36", "37", "38", "39",
                     "40", "41", "42", "43", "44", "45", "46", "47", "48", "49",
                     "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"]
+        min_list_no_zero = ["01", "02", "03", "04", "05", "06", "07", "08", "09",
+                    "10", "11", "12", "13", "14", "15", "16", "17", "18", "19",
+                    "20", "21", "22", "23", "24", "25", "26", "27", "28", "29",
+                    "30", "31", "32", "33", "34", "35", "36", "37", "38", "39",
+                    "40", "41", "42", "43", "44", "45", "46", "47", "48", "49",
+                    "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"]
 
         push_button = QtWidgets.QToolButton(self)
         push_button.setIcon(QtGui.QIcon("icons/IconHome.png"))
@@ -701,8 +707,7 @@ class ClockWindow(QtWidgets.QDialog):
         lbl_stop_light = QtWidgets.QLabel("Stopt om", self)
         lbl_hour_light = QtWidgets.QLabel("uur", self)
         lbl_min_light = QtWidgets.QLabel("minuten", self)
-        self.lbl_light_on_setting = QtWidgets.QLabel(self)
-        # REMOVE self.lbl_light_on_setting.setText(self.update_text("light on"))
+        lbl_light_on_setting = QtWidgets.QLabel(self)
 
         # Light combobox
         cbx_h_light_on = QtWidgets.QComboBox(self)
@@ -720,14 +725,14 @@ class ClockWindow(QtWidgets.QDialog):
             lambda: self.update_settings("light_on",
                                          cbx_h_light_on.currentText(),
                                          cbx_m_light_on.currentText()))
-        pb_set_light_on.clicked.connect(self.update_widget)
+        pb_set_light_on.clicked.connect(lambda: self.update_text())
 
         pb_set_light_off = QtWidgets.QPushButton("Set", self)
         pb_set_light_off.clicked.connect(
             lambda: self.update_settings("light_off",
                                          cbx_h_light_off.currentText(),
                                          cbx_m_light_off.currentText()))
-        pb_set_light_off.clicked.connect(self.update_widget)
+        pb_set_light_off.clicked.connect(lambda: self.update_text())
 
         # Pump labels
         lbl_pump = QtWidgets.QLabel("Timer Pomp", self)
@@ -736,9 +741,9 @@ class ClockWindow(QtWidgets.QDialog):
 
         # Pump combobox
         cbx_times = QtWidgets.QComboBox(self)
-        cbx_times.addItems(hour_list)
+        cbx_times.addItems(min_list_no_zero)
         cbx_during = QtWidgets.QComboBox(self)
-        cbx_during.addItems(min_list)
+        cbx_during.addItems(min_list_no_zero)
         cbx_every_u = QtWidgets.QComboBox(self)
         cbx_every_u.addItems(min_list)
         cbx_every_m = QtWidgets.QComboBox(self)
@@ -750,6 +755,7 @@ class ClockWindow(QtWidgets.QDialog):
             lambda: self.update_settings("pump_during",
                                          cbx_times.currentText(),
                                          cbx_during.currentText()))
+        pb_pump_times_during.clicked.connect(lambda: self.update_text())
 
         # Airstone labels
         lbl_air = QtWidgets.QLabel("Timer Airstone", self)
@@ -758,7 +764,7 @@ class ClockWindow(QtWidgets.QDialog):
 
         # Airstone combobox
         cbx_air_on_min = QtWidgets.QComboBox(self)
-        cbx_air_on_min.addItems(min_list)
+        cbx_air_on_min.addItems(min_list_no_zero)
 
         # Airstone pushbutton
         pb_set_air_on = QtWidgets.QPushButton("Set", self)
@@ -766,6 +772,42 @@ class ClockWindow(QtWidgets.QDialog):
             lambda: self.update_settings("air_on",
                                          cbx_air_on_min.currentText(),
                                          cbx_air_on_min.currentText()))
+        pb_set_air_on.clicked.connect(lambda: self.update_text())
+
+        # Labels timersettings
+        self.lbl_lijn_1_1 = QtWidgets.QLabel("Het is", self)
+        self.lbl_lijn_1_2 = QtWidgets.QLabel("xx", self)
+        self.lbl_lijn_1_3 = QtWidgets.QLabel("uur en", self)
+        self.lbl_lijn_1_4 = QtWidgets.QLabel("xx", self)
+        self.lbl_lijn_1_5 = QtWidgets.QLabel("minuten", self)
+        self.lbl_lijn_1_6 = QtWidgets.QLabel(" ", self)
+        self.lbl_lijn_2_1 = QtWidgets.QLabel("Lamp gaat aan om", self)
+        self.lbl_lijn_2_2 = QtWidgets.QLabel("xx", self)
+        self.lbl_lijn_2_3 = QtWidgets.QLabel("uur en gaat uit om", self)
+        self.lbl_lijn_2_4 = QtWidgets.QLabel("xx", self)
+        self.lbl_lijn_2_5 = QtWidgets.QLabel("uur", self)
+        self.lbl_lijn_2_6 = QtWidgets.QLabel(" ", self)
+        self.lbl_lijn_3_1 = QtWidgets.QLabel("Lamp is aan gedurende", self)
+        self.lbl_lijn_3_2 = QtWidgets.QLabel("xx", self)
+        self.lbl_lijn_3_3 = QtWidgets.QLabel(" ", self)
+        self.lbl_lijn_3_4 = QtWidgets.QLabel(" ", self)
+        self.lbl_lijn_3_5 = QtWidgets.QLabel(" ", self)
+        self.lbl_lijn_3_6 = QtWidgets.QLabel(" ", self)
+        self.lbl_lijn_4_1 = QtWidgets.QLabel("Pomp werkt gedurende", self)
+        self.lbl_lijn_4_2 = QtWidgets.QLabel("xx", self)
+        self.lbl_lijn_4_3 = QtWidgets.QLabel("minuten en gaat", self)
+        self.lbl_lijn_4_4 = QtWidgets.QLabel("xx", self)
+        self.lbl_lijn_4_5 = QtWidgets.QLabel("keer aan om de ", self)
+        self.lbl_lijn_4_6 = QtWidgets.QLabel("xx", self)
+        self.lbl_lijn_5_1 = QtWidgets.QLabel("Airstone gaat", self)
+        self.lbl_lijn_5_2 = QtWidgets.QLabel("xx", self)
+        self.lbl_lijn_5_3 = QtWidgets.QLabel("minuten voor de pomp aan", self)
+        self.lbl_lijn_5_4 = QtWidgets.QLabel(" ", self)
+        self.lbl_lijn_5_5 = QtWidgets.QLabel(" ", self)
+        self.lbl_lijn_5_6 = QtWidgets.QLabel(" ", self)
+
+        pb_update = QtWidgets.QPushButton("Update text", self)
+        pb_update.clicked.connect(lambda: self.update_text())
 
         # Timerwindow layout
         grid = QtWidgets.QGridLayout()
@@ -778,7 +820,7 @@ class ClockWindow(QtWidgets.QDialog):
         grid.addWidget(cbx_m_light_on, 1, 3)
         grid.addWidget(lbl_min_light, 1, 4)
         grid.addWidget(pb_set_light_on, 1, 5)
-        grid.addWidget(self.lbl_light_on_setting, 1, 6)
+        grid.addWidget(lbl_light_on_setting, 1, 6)
         grid.addWidget(lbl_stop_light, 2, 0)
         grid.addWidget(cbx_h_light_off, 2, 1)
         grid.addWidget(lbl_hour_light, 2, 2)
@@ -797,6 +839,41 @@ class ClockWindow(QtWidgets.QDialog):
         grid.addWidget(cbx_air_on_min, 9, 1)
         grid.addWidget(lbl_air_min_voor, 9, 2)
         grid.addWidget(pb_set_air_on, 9, 5)
+
+        grid.addWidget(self.lbl_lijn_1_1, 10, 0)
+        grid.addWidget(self.lbl_lijn_1_2, 10, 1)
+        grid.addWidget(self.lbl_lijn_1_3, 10, 2)
+        grid.addWidget(self.lbl_lijn_1_4, 10, 3)
+        grid.addWidget(self.lbl_lijn_1_5, 10, 4)
+        grid.addWidget(self.lbl_lijn_1_6, 10, 5)
+
+        grid.addWidget(self.lbl_lijn_2_1, 11, 0)
+        grid.addWidget(self.lbl_lijn_2_2, 11, 1)
+        grid.addWidget(self.lbl_lijn_2_3, 11, 2)
+        grid.addWidget(self.lbl_lijn_2_4, 11, 3)
+        grid.addWidget(self.lbl_lijn_2_5, 11, 4)
+        grid.addWidget(self.lbl_lijn_2_6, 11, 5)
+
+        grid.addWidget(self.lbl_lijn_3_1, 12, 0)
+        grid.addWidget(self.lbl_lijn_3_2, 12, 1)
+        grid.addWidget(self.lbl_lijn_3_3, 12, 2)
+        grid.addWidget(self.lbl_lijn_3_4, 12, 3)
+        grid.addWidget(self.lbl_lijn_3_5, 12, 4)
+        grid.addWidget(self.lbl_lijn_3_6, 12, 5)
+
+        grid.addWidget(self.lbl_lijn_4_1, 13, 0)
+        grid.addWidget(self.lbl_lijn_4_2, 13, 1)
+        grid.addWidget(self.lbl_lijn_4_3, 13, 2)
+        grid.addWidget(self.lbl_lijn_4_4, 13, 3)
+        grid.addWidget(self.lbl_lijn_4_5, 13, 4)
+        grid.addWidget(self.lbl_lijn_4_6, 13, 5)
+
+        grid.addWidget(self.lbl_lijn_5_1, 14, 0)
+        grid.addWidget(self.lbl_lijn_5_2, 14, 1)
+        grid.addWidget(self.lbl_lijn_5_3, 14, 2)
+        grid.addWidget(self.lbl_lijn_5_4, 14, 3)
+        grid.addWidget(self.lbl_lijn_5_5, 14, 4)
+        grid.addWidget(pb_update, 14, 5)
 
         hbox = QtWidgets.QHBoxLayout()
         hbox.addStretch(0)
@@ -839,36 +916,92 @@ class ClockWindow(QtWidgets.QDialog):
         # Close connection
         con.close()
 
-    def update_text(self, setting):
+    def update_text(self):
         # Initialise sqlite
         con = sqlite3.connect(data_db)
         cur = con.cursor()
 
         # Create table
         cur.execute('''CREATE TABLE IF NOT EXISTS timers
-                    (setting TEXT, data_1 INTEGER, data_2 INTEGER)''')
+                                (setting TEXT, data_1 INTEGER, data_2 INTEGER)''')
 
-        # Read data
-        cur.execute("SELECT data_1, data_2 FROM timers WHERE setting = ?",
-                    (setting, ))
-        data = cur.fetchone()
-        hour = data[1]
-        minute = data[2]
+        # Select start time from table
+        # Initialise timer
+        timer_on = ("light_on",)
+        # Select data
+        cur.execute("SELECT * FROM timers WHERE setting = ?", timer_on)
+        data_timer_on = cur.fetchone()
+        starthour = data_timer_on[1]
+        startmin = data_timer_on[2]
+        start_light = datetime.time(starthour, startmin)
 
-        # Save (commit) the changes
-        con.commit()
+        # Select stop time from table
+        # Initialise timer
+        timer_off = ("light_off",)
+        # Select data
+        cur.execute("SELECT * FROM timers WHERE setting = ?", timer_off)
+        data_timer_off = cur.fetchone()
+        stophour = data_timer_off[1]
+        stopmin = data_timer_off[2]
+        stop_light = datetime.time(stophour, stopmin)
 
-        # Close connection
-        con.close()
+        # Select pump settings from table
+        # Initialise timer
+        pump_setting = ("pump_during",)
+        # Select data
+        cur.execute("SELECT * FROM timers WHERE setting = ?", pump_setting)
+        data_pump_setting = cur.fetchone()
+        pump_repeat = data_pump_setting[1]
+        pump_during = data_pump_setting[2]
+        pump_time = datetime.time(00, pump_during)
 
-        # Update label_text
-        label_text = ("Current setting = " + str(hour) + "h : " + str(
-            minute) + "m")
-        return str(label_text)
+        # Select airstone settings from table
+        # Initialise timer
+        air_setting = ("air_on",)
+        # Select data
+        cur.execute("SELECT * FROM timers WHERE setting = ?", air_setting)
+        data_air_setting = cur.fetchone()
+        air_on = data_pump_setting[1]
+        time_air_on = datetime.time(00, air_on)
 
-    def update_widget(self):
-        self.lbl_light_on_setting.repaint()
-        # self.update()
+        # Initialise current time
+        now = datetime.datetime.now().time()
+
+        date = datetime.date(1, 1, 1)
+        datetime_start = datetime.datetime.combine(date, start_light)
+        datetime_stop = datetime.datetime.combine(date, stop_light)
+
+        time_light_on = datetime_stop - datetime_start
+
+        time_btwn_pumping = time_light_on // pump_repeat
+
+        logger.debug("Het is %s uur en %s minuten", now.hour, now.minute)
+        logger.debug("Lamp gaat aan om %s", start_light)
+        logger.debug("Lamp gaat uit om %s", stop_light)
+        logger.debug("Licht is aan gedurende %s", time_light_on)
+        logger.debug("Pomp werkt gedurende %s en gaat %s keer aan om de %s",
+                     pump_time, pump_repeat, time_btwn_pumping)
+        logger.debug("Airstone gaat %s voor de pomp aan", time_air_on)
+
+        # Update texts
+        self.lbl_lijn_1_2.setText(str(now.hour))
+        self.lbl_lijn_1_2.adjustSize()
+        self.lbl_lijn_1_4.setText(str(now.minute))
+        self.lbl_lijn_1_4.adjustSize()
+        self.lbl_lijn_2_2.setText(str(start_light))
+        self.lbl_lijn_2_2.adjustSize()
+        self.lbl_lijn_2_4.setText(str(stop_light))
+        self.lbl_lijn_2_4.adjustSize()
+        self.lbl_lijn_3_2.setText(str(time_light_on))
+        self.lbl_lijn_3_2.adjustSize()
+        self.lbl_lijn_4_2.setText(str(pump_time))
+        self.lbl_lijn_4_2.adjustSize()
+        self.lbl_lijn_4_4.setText(str(pump_repeat))
+        self.lbl_lijn_4_4.adjustSize()
+        self.lbl_lijn_4_6.setText(str(time_btwn_pumping))
+        self.lbl_lijn_4_6.adjustSize()
+        self.lbl_lijn_5_2.setText(str(time_air_on))
+        self.lbl_lijn_5_2.adjustSize()
 
 
 class SettingsWindow(QtWidgets.QDialog):

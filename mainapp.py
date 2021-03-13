@@ -61,10 +61,6 @@ def process_timers():
             con = sqlite3.connect(data_db)
             cur = con.cursor()
 
-            # Create table
-            cur.execute('''CREATE TABLE IF NOT EXISTS timers
-                        (setting TEXT, data_1 INTEGER, data_2 INTEGER)''')
-
             # Select start time from table
             # Initialise timer
             timer_on = ("light_on",)
@@ -125,15 +121,40 @@ def process_timers():
 
             # Light
             if start_light < now < stop_light:
-                Light.lightvariabele_1 = 1
-                logger.debug("Light.lightvariabele_1 = %s",
-                             Light.lightvariabele_1)
+                Lightoutput.light_output = 1
+                logger.debug("Lightoutput.light_output = %s",
+                             Lightoutput.light_output)
                 logger.info("TIMER LIGHT ON")
             else:
-                Light.lightvariabele_1 = 0
-                logger.debug("Light.lightvariabele_1 = %s",
-                             Light.lightvariabele_1)
+                Lightoutput.light_output = 0
+                logger.debug("Lightoutput.light_output = %s",
+                             Lightoutput.light_output)
                 logger.info("TIMER LIGHT OFF")
+
+            time.sleep(10)
+
+        except Exception as e:
+            logger.exception(e)
+            # Close sql connection
+            con.close()
+
+
+def process_settings():
+    while True:
+        try:
+            # Initialise sqlite
+            con = sqlite3.connect(data_db)
+            cur = con.cursor()
+
+            # Select light setting from table
+            # Initialise timer
+            light = ("light",)
+            # Select data
+            cur.execute("SELECT * FROM settings WHERE setting = ?", light)
+            data_light = cur.fetchone()
+            logger.debug("data_light = %s", data_light)
+            light_on_off = data_light[1]
+            logger.debug("Setting light_on_off = %s", light_on_off)
 
             time.sleep(10)
 
@@ -266,30 +287,58 @@ def process_outputs(start_light, stop_light, pump_time, pump_repeat,
         time.sleep(10)"""
 
 
-class Light:
+class Lightoutput:
     def __init__(self):
         pass
 
-    lightvariabele_1 = 0
-    logger.info("testvariabele_1 in Light class = %s", lightvariabele_1)
+    light_output = 0
+    logger.info("light_output in Lightoutput class = %s", light_output)
 
-    def light(self):
+    def set_light_output(self):
         while True:
-            if self.lightvariabele_1 == 1:
-                logger.info("self.testvariabele_1 = %s", self.lightvariabele_1)
+            if self.light_output == 1 and Lightsetting.light_setting == 1:
+                logger.info("self.light_output = %s", self.light_output)
                 RPi.GPIO.output(29, aan)
                 logger.info("OUTPUT LIGHT ON")
                 time.sleep(10)
             else:
-                logger.info("self.testvariabele_1 = %s", self.lightvariabele_1)
+                logger.info("self.light_output = %s", self.light_output)
                 RPi.GPIO.output(29, uit)
                 logger.info("OUTPUT LIGHT OFF")
                 time.sleep(10)
 
     def run(self):
         # t1 = threading.Thread(target=self.light)
-        t1 = threading.Thread(target=self.light, daemon=True)
+        t1 = threading.Thread(target=self.set_light_output, daemon=True)
         t1.start()
+
+
+class Lightsetting:
+    def __init__(self):
+        pass
+
+    try:
+        # Initialise sqlite
+        con = sqlite3.connect(data_db)
+        cur = con.cursor()
+
+        # Select light setting from table
+        # Initialise timer
+        light = ("light",)
+        # Select data
+        cur.execute("SELECT * FROM settings WHERE setting = ?", light)
+        data_light = cur.fetchone()
+        logger.debug("data_light = %s", data_light)
+        light_on_off = data_light[1]
+        logger.debug("Setting light_on_off = %s", light_on_off)
+
+    except Exception as e:
+        logger.exception(e)
+        # Close sql connection
+        con.close()
+
+    light_setting = light_on_off
+    logger.info("light_setting in Lightsetting class = %s", light_setting)
 
 
 class Window(QtWidgets.QWidget):
@@ -492,11 +541,6 @@ class PlotWindow(pyqtgraph.PlotWidget):
         # Initialise sqlite
         con = sqlite3.connect(data_db)
         cur = con.cursor()
-
-        # Create table
-        cur.execute('''CREATE TABLE IF NOT EXISTS temperature
-                    (timestamp real, temperature1 real, temperature2 real, 
-                    temperature3 real, temperature4 real, temperature5 real)''')
 
         # Initialise data arrays
         x_timestamp = []
@@ -904,11 +948,6 @@ class ClockWindow(QtWidgets.QDialog):
         # Fill data
         data = (data_1, data_2, setting)
 
-        # TODO create timers when initialising database
-        # Create table
-        cur.execute('''CREATE TABLE IF NOT EXISTS timers
-                    (setting TEXT, data_1 INTEGER, data_2 INTEGER)''')
-
         # Update data
         cur.execute('''UPDATE timers SET data_1 = ?, data_2 = ? 
                     WHERE setting = ?''', data)
@@ -923,10 +962,6 @@ class ClockWindow(QtWidgets.QDialog):
         # Initialise sqlite
         con = sqlite3.connect(data_db)
         cur = con.cursor()
-
-        # Create table
-        cur.execute('''CREATE TABLE IF NOT EXISTS timers
-                                (setting TEXT, data_1 INTEGER, data_2 INTEGER)''')
 
         # Select start time from table
         # Initialise timer
@@ -1021,7 +1056,10 @@ class SettingsWindow(QtWidgets.QDialog):
         # Light labels
         self.lbl_light = QtWidgets.QLabel("Licht")
         self.lbl_light_on_off = QtWidgets.QLabel()
-        self.lbl_light_on_off.setText("AAN")
+        if Lightsetting.light_setting == 1:
+            self.lbl_light_on_off.setText("AAN")
+        else:
+            self.lbl_light_on_off.setText("UIT")
 
         pb_set_light = QtWidgets.QPushButton("AAN / UIT", self)
         pb_set_light.setCheckable(True)
@@ -1056,8 +1094,59 @@ class SettingsWindow(QtWidgets.QDialog):
         self.close()
 
     def light_on_off(self):
-        self.lbl_light_on_off.setText("UIT")
-        self.lbl_light_on_off.adjustSize()
+        if Lightsetting.light_setting == 1:
+            Lightsetting.light_setting = 0
+            self.lbl_light_on_off.setText("UIT")
+            self.lbl_light_on_off.adjustSize()
+
+            # Initialise sqlite
+            con = sqlite3.connect(data_db)
+            cur = con.cursor()
+
+            # Fill data
+            setting = "light"
+            data = (Lightsetting.light_setting, setting)
+
+            # Create table
+            cur.execute('''CREATE TABLE IF NOT EXISTS settings
+                        (setting TEXT, data_1 INTEGER)''')
+
+            # Update data
+            cur.execute('''UPDATE settings SET data_1 = ? WHERE setting = ?''',
+                        data)
+
+            # Save (commit) the changes
+            con.commit()
+
+            # Close connection
+            con.close()
+
+        else:
+            Lightsetting.light_setting = 1
+            self.lbl_light_on_off.setText("AAN")
+            self.lbl_light_on_off.adjustSize()
+
+            # Initialise sqlite
+            con = sqlite3.connect(data_db)
+            cur = con.cursor()
+
+            # Fill data
+            setting = "light"
+            data = (Lightsetting.light_setting, setting)
+
+            # Create table
+            cur.execute('''CREATE TABLE IF NOT EXISTS settings
+                        (setting TEXT, data_1 INTEGER)''')
+
+            # Update data
+            cur.execute('''UPDATE settings SET data_1 = ? WHERE setting = ?''',
+                        data)
+
+            # Save (commit) the changes
+            con.commit()
+
+            # Close connection
+            con.close()
 
 
 class ShutdownWindow(QtWidgets.QDialog):
@@ -1118,14 +1207,19 @@ if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     ex = Window()
 
-    # Light class
-    l1 = Light()
+    # Lightoutput class
+    l1 = Lightoutput()
     l1.run()
 
     # Threading
     logger.info("Voor creëren thread process_timers")
     t1 = threading.Thread(target=process_timers, daemon=True)
-    logger.info("Voor creëren thread light")
+    logger.info("Voor creëren thread process_timers")
+    t2 = threading.Thread(target=process_settings, daemon=True)
+
+    logger.info("Voor creëren thread process_timers")
     t1.start()
+    logger.info("Voor creëren thread process_settings")
+    t2.start()
 
     sys.exit(app.exec_())

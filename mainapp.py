@@ -580,15 +580,15 @@ class LightWindow(QtWidgets.QDialog):
         self.toggle_button.clicked.connect(self.btn_action)
         self.toggle_button.setFixedSize(100, 50)
 
-        push_button = QtWidgets.QToolButton(self)
-        push_button.setIcon(QtGui.QIcon("icons/IconHome.png"))
-        push_button.setIconSize(iconsize)
-        push_button.clicked.connect(self.go_main_window)
+        pb_home = QtWidgets.QToolButton(self)
+        pb_home.setIcon(QtGui.QIcon("icons/IconHome.png"))
+        pb_home.setIconSize(iconsize)
+        pb_home.clicked.connect(self.go_main_window)
 
         hbox = QtWidgets.QHBoxLayout()
         hbox.addWidget(self.toggle_button)
         hbox.addStretch(0)
-        hbox.addWidget(push_button)
+        hbox.addWidget(pb_home)
 
         vbox = QtWidgets.QVBoxLayout()
         vbox.addStretch(0)
@@ -630,16 +630,16 @@ class WaterWindow(QtWidgets.QDialog):
         self.tb_airstone.clicked.connect(self.btn_action_airstone)
         self.tb_airstone.setFixedSize(100, 50)
 
-        push_button = QtWidgets.QToolButton(self)
-        push_button.setIcon(QtGui.QIcon("icons/IconHome.png"))
-        push_button.setIconSize(iconsize)
-        push_button.clicked.connect(self.go_main_window)
+        pb_home = QtWidgets.QToolButton(self)
+        pb_home.setIcon(QtGui.QIcon("icons/IconHome.png"))
+        pb_home.setIconSize(iconsize)
+        pb_home.clicked.connect(self.go_main_window)
 
         hbox = QtWidgets.QHBoxLayout()
         hbox.addWidget(self.tb_pomp)
         hbox.addWidget(self.tb_airstone)
         hbox.addStretch(0)
-        hbox.addWidget(push_button)
+        hbox.addWidget(pb_home)
 
         vbox = QtWidgets.QVBoxLayout()
         vbox.addStretch(0)
@@ -696,10 +696,10 @@ class ClockWindow(QtWidgets.QDialog):
                     "40", "41", "42", "43", "44", "45", "46", "47", "48", "49",
                     "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"]
 
-        push_button = QtWidgets.QToolButton(self)
-        push_button.setIcon(QtGui.QIcon("icons/IconHome.png"))
-        push_button.setIconSize(iconsize)
-        push_button.clicked.connect(self.go_main_window)
+        pb_home = QtWidgets.QToolButton(self)
+        pb_home.setIcon(QtGui.QIcon("icons/IconHome.png"))
+        pb_home.setIconSize(iconsize)
+        pb_home.clicked.connect(self.go_main_window)
 
         # Light labels
         lbl_light = QtWidgets.QLabel("Timer Licht", self)
@@ -880,7 +880,7 @@ class ClockWindow(QtWidgets.QDialog):
         hbox = QtWidgets.QHBoxLayout()
         hbox.addWidget(pb_update)
         hbox.addStretch(0)
-        hbox.addWidget(push_button)
+        hbox.addWidget(pb_home)
 
         vbox = QtWidgets.QVBoxLayout()
         vbox.addLayout(grid)
@@ -1013,30 +1013,33 @@ class SettingsWindow(QtWidgets.QDialog):
         self.setWindowTitle('Settings Window')
         self.showFullScreen()
 
-        push_button = QtWidgets.QToolButton(self)
-        push_button.setIcon(QtGui.QIcon("icons/IconHome.png"))
-        push_button.setIconSize(iconsize)
-        push_button.clicked.connect(self.go_main_window)
+        pb_home = QtWidgets.QToolButton(self)
+        pb_home.setIcon(QtGui.QIcon("icons/IconHome.png"))
+        pb_home.setIconSize(iconsize)
+        pb_home.clicked.connect(self.go_main_window)
 
         # Light labels
-        lbl_light = QtWidgets.QLabel("Licht")
+        self.lbl_light = QtWidgets.QLabel("Licht")
+        self.lbl_light_on_off = QtWidgets.QLabel()
+        self.lbl_light_on_off.setText("AAN")
 
-        tb_set_light = QtWidgets.QPushButton("AAN / UIT", self)
-        tb_set_light.setCheckable(True)
-        tb_set_light.toggle()
-        # tb_set_light.clicked.connect(self.btn_action_pump)
-        tb_set_light.setFixedSize(100, 50)
+        pb_set_light = QtWidgets.QPushButton("AAN / UIT", self)
+        pb_set_light.setCheckable(True)
+        pb_set_light.toggle()
+        pb_set_light.setFixedSize(100, 50)
+        pb_set_light.clicked.connect(self.light_on_off)
 
         # Timerwindow layout
         grid = QtWidgets.QGridLayout()
         grid.setSpacing(10)
 
-        grid.addWidget(lbl_light, 0, 0)
-        grid.addWidget(tb_set_light, 0, 1)
+        grid.addWidget(self.lbl_light, 0, 0)
+        grid.addWidget(self.lbl_light_on_off, 0, 1)
+        grid.addWidget(pb_set_light, 0, 2)
 
         hbox = QtWidgets.QHBoxLayout()
         hbox.addStretch(0)
-        hbox.addWidget(push_button)
+        hbox.addWidget(pb_home)
 
         vbox = QtWidgets.QVBoxLayout()
         vbox.addLayout(grid)
@@ -1052,6 +1055,10 @@ class SettingsWindow(QtWidgets.QDialog):
         self.cams.show()
         self.close()
 
+    def light_on_off(self):
+        self.lbl_light_on_off.setText("UIT")
+        self.lbl_light_on_off.adjustSize()
+
 
 class ShutdownWindow(QtWidgets.QDialog):
     def __init__(self, value, parent=None):
@@ -1060,28 +1067,28 @@ class ShutdownWindow(QtWidgets.QDialog):
         self.minimumSizeHint()
         self.showFullScreen()
 
-        button_exit = QtWidgets.QPushButton("Exit", self)
-        button_exit.minimumSizeHint()
-        button_exit.setAutoDefault(False)
-        button_exit.clicked.connect(self.exit)
-        button_reboot = QtWidgets.QPushButton("Reboot", self)
-        button_reboot.minimumSizeHint()
-        button_reboot.setAutoDefault(False)
-        button_reboot.clicked.connect(self.reboot)
-        button_shutdown = QtWidgets.QPushButton("Shutdown", self)
-        button_shutdown.minimumSizeHint()
-        button_shutdown.setAutoDefault(False)
-        button_shutdown.clicked.connect(self.shutdown)
-        button_cancel = QtWidgets.QPushButton("Cancel", self)
-        button_cancel.minimumSizeHint()
-        button_cancel.clicked.connect(self.go_main_window)
+        pb_exit = QtWidgets.QPushButton("Exit", self)
+        pb_exit.minimumSizeHint()
+        pb_exit.setAutoDefault(False)
+        pb_exit.clicked.connect(self.exit)
+        pb_reboot = QtWidgets.QPushButton("Reboot", self)
+        pb_reboot.minimumSizeHint()
+        pb_reboot.setAutoDefault(False)
+        pb_reboot.clicked.connect(self.reboot)
+        pb_shutdown = QtWidgets.QPushButton("Shutdown", self)
+        pb_shutdown.minimumSizeHint()
+        pb_shutdown.setAutoDefault(False)
+        pb_shutdown.clicked.connect(self.shutdown)
+        pb_cancel = QtWidgets.QPushButton("Cancel", self)
+        pb_cancel.minimumSizeHint()
+        pb_cancel.clicked.connect(self.go_main_window)
 
         hbox = QtWidgets.QHBoxLayout()
         hbox.addStretch(1)
-        hbox.addWidget(button_exit)
-        hbox.addWidget(button_reboot)
-        hbox.addWidget(button_shutdown)
-        hbox.addWidget(button_cancel)
+        hbox.addWidget(pb_exit)
+        hbox.addWidget(pb_reboot)
+        hbox.addWidget(pb_shutdown)
+        hbox.addWidget(pb_cancel)
         hbox.addStretch(1)
 
         self.setLayout(hbox)

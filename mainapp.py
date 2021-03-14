@@ -17,24 +17,18 @@ from PyQt5 import QtWidgets, QtCore, QtGui
 logger = logging.getLogger("mainapp")
 logger.setLevel(logging.DEBUG)
 # create file handler which logs even debug messages
-# fh = logging.FileHandler("mainapp.log")
-# fh.setLevel(logging.DEBUG)
-# create file handler which logs even debug messages
 rfh = logging.handlers.RotatingFileHandler("mainapp.log", "a", 2560000, 3)
 rfh.setLevel(logging.DEBUG)
 # create console handler with a higher log level
 ch = logging.StreamHandler()
-ch.setLevel(logging.DEBUG)
-# ch.setLevel(logging.ERROR)
+ch.setLevel(logging.INFO)
 # create formatter and add it to the handlers
 formatter = logging.Formatter(
    "%(asctime)s - %(name)s - %(levelname)s - %(lineno)d: %(message)s")
 #  "%(asctime)s - %(filename)s - %(name)s - %(levelname)s - %(message)s")
-# fh.setFormatter(formatter)
 rfh.setFormatter(formatter)
 ch.setFormatter(formatter)
 # add the handlers to the logger
-# logger.addHandler(fh)
 logger.addHandler(rfh)
 logger.addHandler(ch)
 
@@ -292,24 +286,75 @@ class Lightoutput:
         pass
 
     light_output = 0
-    logger.info("light_output in Lightoutput class = %s", light_output)
+    logger.debug("light_output in Lightoutput class = %s", light_output)
 
     def set_light_output(self):
         while True:
             if self.light_output == 1 and Lightsetting.light_setting == 1:
-                logger.info("self.light_output = %s", self.light_output)
+                logger.debug("self.light_output = %s", self.light_output)
                 RPi.GPIO.output(29, aan)
                 logger.info("OUTPUT LIGHT ON")
                 time.sleep(10)
             else:
-                logger.info("self.light_output = %s", self.light_output)
+                logger.debug("self.light_output = %s", self.light_output)
                 RPi.GPIO.output(29, uit)
                 logger.info("OUTPUT LIGHT OFF")
                 time.sleep(10)
 
     def run(self):
-        # t1 = threading.Thread(target=self.light)
         t1 = threading.Thread(target=self.set_light_output, daemon=True)
+        t1.start()
+
+
+class Pumpoutput:
+    def __init__(self):
+        pass
+
+    pump_output = 0
+    logger.debug("pump_output in Pumpoutput class = %s", pump_output)
+
+    def set_pump_output(self):
+        while True:
+            if self.pump_output == 1 and Pumpsetting.pump_setting == 1:
+                logger.debug("self.pump_output = %s", self.pump_output)
+                RPi.GPIO.output(33, aan)
+                logger.info("OUTPUT PUMP ON")
+                time.sleep(10)
+            else:
+                logger.debug("self.pump_output = %s", self.pump_output)
+                RPi.GPIO.output(33, uit)
+                logger.info("OUTPUT PUMP OFF")
+                time.sleep(10)
+
+    def run(self):
+        t1 = threading.Thread(target=self.set_pump_output, daemon=True)
+        t1.start()
+
+
+class Airstoneoutput:
+    def __init__(self):
+        pass
+
+    airstone_output = 0
+    logger.debug("airstone_output in Airstoneoutput class = %s",
+                airstone_output)
+
+    def set_airstone_output(self):
+        while True:
+            if self.airstone_output == 1 and \
+                    Airstonesetting.airstone_setting == 1:
+                logger.debug("self.airstone_output = %s", self.airstone_output)
+                RPi.GPIO.output(31, aan)
+                logger.info("OUTPUT AIRSTONE ON")
+                time.sleep(10)
+            else:
+                logger.debug("self.airstone_output = %s", self.airstone_output)
+                RPi.GPIO.output(31, uit)
+                logger.info("OUTPUT AIRSTONE OFF")
+                time.sleep(10)
+
+    def run(self):
+        t1 = threading.Thread(target=self.set_airstone_output, daemon=True)
         t1.start()
 
 
@@ -323,7 +368,7 @@ class Lightsetting:
         cur = con.cursor()
 
         # Select light setting from table
-        # Initialise timer
+        # Initialise setting
         light = ("light",)
         # Select data
         cur.execute("SELECT * FROM settings WHERE setting = ?", light)
@@ -341,7 +386,7 @@ class Lightsetting:
     logger.info("light_setting in Lightsetting class = %s", light_setting)
 
 
-class Watersetting:
+class Pumpsetting:
     def __init__(self):
         pass
 
@@ -350,23 +395,23 @@ class Watersetting:
         con = sqlite3.connect(data_db)
         cur = con.cursor()
 
-        # Select light setting from table
-        # Initialise timer
-        water = ("water",)
+        # Select pump setting from table
+        # Initialise setting
+        pump = ("pump",)
         # Select data
-        cur.execute("SELECT * FROM settings WHERE setting = ?", water)
-        data_water = cur.fetchone()
-        logger.debug("data_water = %s", data_water)
-        water_on_off = data_water[1]
-        logger.debug("Setting water_on_off = %s", water_on_off)
+        cur.execute("SELECT * FROM settings WHERE setting = ?", pump)
+        data_pump = cur.fetchone()
+        logger.debug("data_pump = %s", data_pump)
+        pump_on_off = data_pump[1]
+        logger.debug("Setting pump_on_off = %s", pump_on_off)
 
     except Exception as e:
         logger.exception(e)
         # Close sql connection
         con.close()
 
-    water_setting = water_on_off
-    logger.info("water_setting in Watersetting class = %s", water_setting)
+    pump_setting = pump_on_off
+    logger.info("pump_setting in Pumpsetting class = %s", pump_setting)
 
 
 class Airstonesetting:
@@ -379,7 +424,7 @@ class Airstonesetting:
         cur = con.cursor()
 
         # Select light setting from table
-        # Initialise timer
+        # Initialise setting
         airstone = ("airstone",)
         # Select data
         cur.execute("SELECT * FROM settings WHERE setting = ?", airstone)
@@ -675,11 +720,11 @@ class LightWindow(QtWidgets.QDialog):
         self.setWindowTitle('Light Window')
         self.showFullScreen()
 
-        self.toggle_button = QtWidgets.QPushButton("Lamp", self)
-        self.toggle_button.setCheckable(True)
-        self.toggle_button.toggle()
-        self.toggle_button.clicked.connect(self.btn_action)
-        self.toggle_button.setFixedSize(100, 50)
+        self.tb_light = QtWidgets.QPushButton("Lamp", self)
+        self.tb_light.setCheckable(True)
+        self.tb_light.toggle()
+        self.tb_light.clicked.connect(self.btn_action)
+        self.tb_light.setFixedSize(100, 50)
 
         pb_home = QtWidgets.QToolButton(self)
         pb_home.setIcon(QtGui.QIcon("icons/IconHome.png"))
@@ -687,7 +732,7 @@ class LightWindow(QtWidgets.QDialog):
         pb_home.clicked.connect(self.go_main_window)
 
         hbox = QtWidgets.QHBoxLayout()
-        hbox.addWidget(self.toggle_button)
+        hbox.addWidget(self.tb_light)
         hbox.addStretch(0)
         hbox.addWidget(pb_home)
 
@@ -705,12 +750,16 @@ class LightWindow(QtWidgets.QDialog):
         self.close()
 
     def btn_action(self):
-        if self.toggle_button.isChecked():
-            RPi.GPIO.output(29, aan)
-            logger.info("button pressed")
+        if self.tb_light.isChecked():
+            Lightoutput.light_output = 1
+            logger.debug("Lightoutput.light_output = %s",
+                         Lightoutput.light_output)
+            logger.info("BUTTON LIGHTWINDOW ON")
         else:
-            RPi.GPIO.output(29, uit)
-            logger.info("button released")
+            Lightoutput.light_output = 0
+            logger.debug("Lightoutput.light_output = %s",
+                         Lightoutput.light_output)
+            logger.info("BUTTON LIGHTWINDOW OFF")
 
 
 class WaterWindow(QtWidgets.QDialog):
@@ -755,23 +804,30 @@ class WaterWindow(QtWidgets.QDialog):
         self.cams.show()
         self.close()
 
-    # test
     # TODO make btn_action compatible with multiple buttons
     def btn_action_pump(self):
         if self.tb_pomp.isChecked():
-            RPi.GPIO.output(33, aan)
-            logger.info("button pressed")
+            Pumpoutput.pump_output = 1
+            logger.debug("Pumpoutput.pump_output = %s",
+                         Pumpoutput.pump_output)
+            logger.info("BUTTON PUMP WATERWINDOW ON")
         else:
-            RPi.GPIO.output(33, uit)
-            logger.info("button released")
+            Pumpoutput.pump_output = 0
+            logger.debug("Pumpoutput.pump_output = %s",
+                         Pumpoutput.pump_output)
+            logger.info("BUTTON PUMP WATERWINDOW OFF")
 
     def btn_action_airstone(self):
         if self.tb_airstone.isChecked():
-            RPi.GPIO.output(31, aan)
-            logger.info("button pressed")
+            Airstoneoutput.airstone_output = 1
+            logger.debug("Airstoneoutput.airstone_output = %s",
+                         Airstoneoutput.airstone_output)
+            logger.info("BUTTON AIRSTONE WATERWINDOW ON")
         else:
-            RPi.GPIO.output(31, uit)
-            logger.info("button released")
+            Airstoneoutput.airstone_output = 0
+            logger.debug("Airstoneoutput.airstone_output = %s",
+                         Airstoneoutput.airstone_output)
+            logger.info("BUTTON AIRSTONE WATERWINDOW OFF")
 
 
 class ClockWindow(QtWidgets.QDialog):
@@ -1127,7 +1183,7 @@ class SettingsWindow(QtWidgets.QDialog):
         # Water labels
         self.lbl_water = QtWidgets.QLabel("Water")
         self.lbl_water_on_off = QtWidgets.QLabel()
-        if Watersetting.water_setting == 1:
+        if Pumpsetting.pump_setting == 1:
             self.lbl_water_on_off.setText("AAN")
         else:
             self.lbl_water_on_off.setText("UIT")
@@ -1244,8 +1300,8 @@ class SettingsWindow(QtWidgets.QDialog):
             con.close()
 
     def water_on_off(self):
-        if Watersetting.water_setting == 1:
-            Watersetting.water_setting = 0
+        if Pumpsetting.pump_setting == 1:
+            Pumpsetting.pump_setting = 0
             self.lbl_water_on_off.setText("UIT")
             self.lbl_water_on_off.adjustSize()
 
@@ -1254,8 +1310,8 @@ class SettingsWindow(QtWidgets.QDialog):
             cur = con.cursor()
 
             # Fill data
-            setting = "water"
-            data = (Watersetting.water_setting, setting)
+            setting = "pump"
+            data = (Pumpsetting.pump_setting, setting)
 
             # Create table
             cur.execute('''CREATE TABLE IF NOT EXISTS settings
@@ -1272,7 +1328,7 @@ class SettingsWindow(QtWidgets.QDialog):
             con.close()
 
         else:
-            Watersetting.water_setting = 1
+            Pumpsetting.pump_setting = 1
             self.lbl_water_on_off.setText("AAN")
             self.lbl_water_on_off.adjustSize()
 
@@ -1281,7 +1337,7 @@ class SettingsWindow(QtWidgets.QDialog):
             cur = con.cursor()
 
             # Fill data
-            setting = "water"
+            setting = "pump"
             data = (Lightsetting.light_setting, setting)
 
             # Create table
@@ -1415,13 +1471,18 @@ if __name__ == '__main__':
     # Lightoutput class
     l1 = Lightoutput()
     l1.run()
+    # Pumpoutput class
+    p1 = Pumpoutput()
+    p1.run()
+    # Airstoneoutput class
+    a1 = Airstoneoutput()
+    a1.run()
 
     # Threading
     logger.info("Voor creëren thread process_timers")
     t1 = threading.Thread(target=process_timers, daemon=True)
     logger.info("Voor creëren thread process_timers")
     t2 = threading.Thread(target=process_settings, daemon=True)
-
     logger.info("Voor creëren thread process_timers")
     t1.start()
     logger.info("Voor creëren thread process_settings")

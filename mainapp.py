@@ -341,6 +341,63 @@ class Lightsetting:
     logger.info("light_setting in Lightsetting class = %s", light_setting)
 
 
+class Watersetting:
+    def __init__(self):
+        pass
+
+    try:
+        # Initialise sqlite
+        con = sqlite3.connect(data_db)
+        cur = con.cursor()
+
+        # Select light setting from table
+        # Initialise timer
+        water = ("water",)
+        # Select data
+        cur.execute("SELECT * FROM settings WHERE setting = ?", water)
+        data_water = cur.fetchone()
+        logger.debug("data_water = %s", data_water)
+        water_on_off = data_water[1]
+        logger.debug("Setting water_on_off = %s", water_on_off)
+
+    except Exception as e:
+        logger.exception(e)
+        # Close sql connection
+        con.close()
+
+    water_setting = water_on_off
+    logger.info("water_setting in Watersetting class = %s", water_setting)
+
+
+class Airstonesetting:
+    def __init__(self):
+        pass
+
+    try:
+        # Initialise sqlite
+        con = sqlite3.connect(data_db)
+        cur = con.cursor()
+
+        # Select light setting from table
+        # Initialise timer
+        airstone = ("airstone",)
+        # Select data
+        cur.execute("SELECT * FROM settings WHERE setting = ?", airstone)
+        data_airstone = cur.fetchone()
+        logger.debug("data_airstone = %s", data_airstone)
+        airstone_on_off = data_airstone[1]
+        logger.debug("Setting airstone_on_off = %s", airstone_on_off)
+
+    except Exception as e:
+        logger.exception(e)
+        # Close sql connection
+        con.close()
+
+    airstone_setting = airstone_on_off
+    logger.info("airstone_setting in Airstonesetting class = %s",
+                airstone_setting)
+
+
 class Window(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
@@ -1060,29 +1117,67 @@ class SettingsWindow(QtWidgets.QDialog):
             self.lbl_light_on_off.setText("AAN")
         else:
             self.lbl_light_on_off.setText("UIT")
-
+        # Light buttons
         pb_set_light = QtWidgets.QPushButton("AAN / UIT", self)
         pb_set_light.setCheckable(True)
         pb_set_light.toggle()
         pb_set_light.setFixedSize(100, 50)
         pb_set_light.clicked.connect(self.light_on_off)
 
-        # Timerwindow layout
+        # Water labels
+        self.lbl_water = QtWidgets.QLabel("Water")
+        self.lbl_water_on_off = QtWidgets.QLabel()
+        if Watersetting.water_setting == 1:
+            self.lbl_water_on_off.setText("AAN")
+        else:
+            self.lbl_water_on_off.setText("UIT")
+        # Water buttons
+        pb_set_water = QtWidgets.QPushButton("AAN / UIT", self)
+        pb_set_water.setCheckable(True)
+        pb_set_water.toggle()
+        pb_set_water.setFixedSize(100, 50)
+        pb_set_water.clicked.connect(self.water_on_off)
+
+        # Airstone labels
+        self.lbl_airstone = QtWidgets.QLabel("Airstone")
+        self.lbl_airstone_on_off = QtWidgets.QLabel()
+        if Airstonesetting.airstone_setting == 1:
+            self.lbl_airstone_on_off.setText("AAN")
+        else:
+            self.lbl_airstone_on_off.setText("UIT")
+        # Airstone buttons
+        pb_set_airstone = QtWidgets.QPushButton("AAN / UIT", self)
+        pb_set_airstone.setCheckable(True)
+        pb_set_airstone.toggle()
+        pb_set_airstone.setFixedSize(100, 50)
+        pb_set_airstone.clicked.connect(self.airstone_on_off)
+
+        # Settingswindow layout
         grid = QtWidgets.QGridLayout()
         grid.setSpacing(10)
 
         grid.addWidget(self.lbl_light, 0, 0)
         grid.addWidget(self.lbl_light_on_off, 0, 1)
         grid.addWidget(pb_set_light, 0, 2)
+        grid.addWidget(self.lbl_water, 1, 0)
+        grid.addWidget(self.lbl_water_on_off, 1, 1)
+        grid.addWidget(pb_set_water, 1, 2)
+        grid.addWidget(self.lbl_airstone, 2, 0)
+        grid.addWidget(self.lbl_airstone_on_off, 2, 1)
+        grid.addWidget(pb_set_airstone, 2, 2)
 
-        hbox = QtWidgets.QHBoxLayout()
-        hbox.addStretch(0)
-        hbox.addWidget(pb_home)
+        hbox_1 = QtWidgets.QHBoxLayout()
+        hbox_1.addStretch(0)
+        hbox_1.addWidget(pb_home)
+
+        hbox_2 = QtWidgets.QHBoxLayout()
+        hbox_2.addLayout(grid)
+        hbox_2.addStretch(0)
 
         vbox = QtWidgets.QVBoxLayout()
-        vbox.addLayout(grid)
+        vbox.addLayout(hbox_2)
         vbox.addStretch(0)
-        vbox.addLayout(hbox)
+        vbox.addLayout(hbox_1)
 
         self.setLayout(vbox)
 
@@ -1133,6 +1228,116 @@ class SettingsWindow(QtWidgets.QDialog):
             # Fill data
             setting = "light"
             data = (Lightsetting.light_setting, setting)
+
+            # Create table
+            cur.execute('''CREATE TABLE IF NOT EXISTS settings
+                        (setting TEXT, data_1 INTEGER)''')
+
+            # Update data
+            cur.execute('''UPDATE settings SET data_1 = ? WHERE setting = ?''',
+                        data)
+
+            # Save (commit) the changes
+            con.commit()
+
+            # Close connection
+            con.close()
+
+    def water_on_off(self):
+        if Watersetting.water_setting == 1:
+            Watersetting.water_setting = 0
+            self.lbl_water_on_off.setText("UIT")
+            self.lbl_water_on_off.adjustSize()
+
+            # Initialise sqlite
+            con = sqlite3.connect(data_db)
+            cur = con.cursor()
+
+            # Fill data
+            setting = "water"
+            data = (Watersetting.water_setting, setting)
+
+            # Create table
+            cur.execute('''CREATE TABLE IF NOT EXISTS settings
+                        (setting TEXT, data_1 INTEGER)''')
+
+            # Update data
+            cur.execute('''UPDATE settings SET data_1 = ? WHERE setting = ?''',
+                        data)
+
+            # Save (commit) the changes
+            con.commit()
+
+            # Close connection
+            con.close()
+
+        else:
+            Watersetting.water_setting = 1
+            self.lbl_water_on_off.setText("AAN")
+            self.lbl_water_on_off.adjustSize()
+
+            # Initialise sqlite
+            con = sqlite3.connect(data_db)
+            cur = con.cursor()
+
+            # Fill data
+            setting = "water"
+            data = (Lightsetting.light_setting, setting)
+
+            # Create table
+            cur.execute('''CREATE TABLE IF NOT EXISTS settings
+                        (setting TEXT, data_1 INTEGER)''')
+
+            # Update data
+            cur.execute('''UPDATE settings SET data_1 = ? WHERE setting = ?''',
+                        data)
+
+            # Save (commit) the changes
+            con.commit()
+
+            # Close connection
+            con.close()
+
+    def airstone_on_off(self):
+        if Airstonesetting.airstone_setting == 1:
+            Airstonesetting.airstone_setting = 0
+            self.lbl_airstone_on_off.setText("UIT")
+            self.lbl_airstone_on_off.adjustSize()
+
+            # Initialise sqlite
+            con = sqlite3.connect(data_db)
+            cur = con.cursor()
+
+            # Fill data
+            setting = "airstone"
+            data = (Lightsetting.light_setting, setting)
+
+            # Create table
+            cur.execute('''CREATE TABLE IF NOT EXISTS settings
+                        (setting TEXT, data_1 INTEGER)''')
+
+            # Update data
+            cur.execute('''UPDATE settings SET data_1 = ? WHERE setting = ?''',
+                        data)
+
+            # Save (commit) the changes
+            con.commit()
+
+            # Close connection
+            con.close()
+
+        else:
+            Airstonesetting.airstone_setting = 1
+            self.lbl_airstone_on_off.setText("AAN")
+            self.lbl_airstone_on_off.adjustSize()
+
+            # Initialise sqlite
+            con = sqlite3.connect(data_db)
+            cur = con.cursor()
+
+            # Fill data
+            setting = "light"
+            data = (Airstonesetting.airstone_setting, setting)
 
             # Create table
             cur.execute('''CREATE TABLE IF NOT EXISTS settings

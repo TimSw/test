@@ -1167,12 +1167,12 @@ class SettingsWindow(QtWidgets.QDialog):
         pb_home.clicked.connect(self.go_main_window)
 
         # Light labels
-        self.lbl_light = QtWidgets.QLabel("Licht")
+        self.lbl_light = QtWidgets.QLabel("Licht is")
         self.lbl_light_on_off = QtWidgets.QLabel()
         if Lightsetting.light_setting == 1:
-            self.lbl_light_on_off.setText("AAN")
+            self.lbl_light_on_off.setText("ingeschakeld")
         else:
-            self.lbl_light_on_off.setText("UIT")
+            self.lbl_light_on_off.setText("uitgeschakeld")
         # Light buttons
         pb_set_light = QtWidgets.QPushButton("AAN / UIT", self)
         pb_set_light.setCheckable(True)
@@ -1181,12 +1181,12 @@ class SettingsWindow(QtWidgets.QDialog):
         pb_set_light.clicked.connect(self.light_on_off)
 
         # Water labels
-        self.lbl_water = QtWidgets.QLabel("Water")
+        self.lbl_water = QtWidgets.QLabel("Pomp is")
         self.lbl_water_on_off = QtWidgets.QLabel()
         if Pumpsetting.pump_setting == 1:
-            self.lbl_water_on_off.setText("AAN")
+            self.lbl_water_on_off.setText("ingeschakeld")
         else:
-            self.lbl_water_on_off.setText("UIT")
+            self.lbl_water_on_off.setText("uitgeschakeld")
         # Water buttons
         pb_set_water = QtWidgets.QPushButton("AAN / UIT", self)
         pb_set_water.setCheckable(True)
@@ -1195,12 +1195,12 @@ class SettingsWindow(QtWidgets.QDialog):
         pb_set_water.clicked.connect(self.water_on_off)
 
         # Airstone labels
-        self.lbl_airstone = QtWidgets.QLabel("Airstone")
+        self.lbl_airstone = QtWidgets.QLabel("Airstone is")
         self.lbl_airstone_on_off = QtWidgets.QLabel()
         if Airstonesetting.airstone_setting == 1:
-            self.lbl_airstone_on_off.setText("AAN")
+            self.lbl_airstone_on_off.setText("ingeschakeld")
         else:
-            self.lbl_airstone_on_off.setText("UIT")
+            self.lbl_airstone_on_off.setText("uitgeschakeld")
         # Airstone buttons
         pb_set_airstone = QtWidgets.QPushButton("AAN / UIT", self)
         pb_set_airstone.setCheckable(True)
@@ -1247,7 +1247,7 @@ class SettingsWindow(QtWidgets.QDialog):
     def light_on_off(self):
         if Lightsetting.light_setting == 1:
             Lightsetting.light_setting = 0
-            self.lbl_light_on_off.setText("UIT")
+            self.lbl_light_on_off.setText("uitgeschakeld")
             self.lbl_light_on_off.adjustSize()
 
             # Initialise sqlite
@@ -1274,7 +1274,7 @@ class SettingsWindow(QtWidgets.QDialog):
 
         else:
             Lightsetting.light_setting = 1
-            self.lbl_light_on_off.setText("AAN")
+            self.lbl_light_on_off.setText("ingeschakeld")
             self.lbl_light_on_off.adjustSize()
 
             # Initialise sqlite
@@ -1302,7 +1302,7 @@ class SettingsWindow(QtWidgets.QDialog):
     def water_on_off(self):
         if Pumpsetting.pump_setting == 1:
             Pumpsetting.pump_setting = 0
-            self.lbl_water_on_off.setText("UIT")
+            self.lbl_water_on_off.setText("uitgeschakeld")
             self.lbl_water_on_off.adjustSize()
 
             # Initialise sqlite
@@ -1329,7 +1329,7 @@ class SettingsWindow(QtWidgets.QDialog):
 
         else:
             Pumpsetting.pump_setting = 1
-            self.lbl_water_on_off.setText("AAN")
+            self.lbl_water_on_off.setText("ingeschakeld")
             self.lbl_water_on_off.adjustSize()
 
             # Initialise sqlite
@@ -1357,7 +1357,7 @@ class SettingsWindow(QtWidgets.QDialog):
     def airstone_on_off(self):
         if Airstonesetting.airstone_setting == 1:
             Airstonesetting.airstone_setting = 0
-            self.lbl_airstone_on_off.setText("UIT")
+            self.lbl_airstone_on_off.setText("uitgeschakeld")
             self.lbl_airstone_on_off.adjustSize()
 
             # Initialise sqlite
@@ -1384,7 +1384,7 @@ class SettingsWindow(QtWidgets.QDialog):
 
         else:
             Airstonesetting.airstone_setting = 1
-            self.lbl_airstone_on_off.setText("AAN")
+            self.lbl_airstone_on_off.setText("ingeschakeld")
             self.lbl_airstone_on_off.adjustSize()
 
             # Initialise sqlite

@@ -21,7 +21,7 @@ rfh = logging.handlers.RotatingFileHandler("mainapp.log", "a", 2560000, 3)
 rfh.setLevel(logging.DEBUG)
 # create console handler with a higher log level
 ch = logging.StreamHandler()
-ch.setLevel(logging.INFO)
+ch.setLevel(logging.DEBUG)
 # create formatter and add it to the handlers
 formatter = logging.Formatter(
    "%(asctime)s - %(name)s - %(levelname)s - %(lineno)d: %(message)s")
@@ -149,6 +149,26 @@ def process_settings():
             logger.debug("data_light = %s", data_light)
             light_on_off = data_light[1]
             logger.debug("Setting light_on_off = %s", light_on_off)
+
+            # Select pump setting from table
+            # Initialise timer
+            pump = ("pump",)
+            # Select data
+            cur.execute("SELECT * FROM settings WHERE setting = ?", pump)
+            data_pump = cur.fetchone()
+            logger.debug("data_pump = %s", data_pump)
+            pump_on_off = data_pump[1]
+            logger.debug("Setting pump_on_off = %s", pump_on_off)
+
+            # Select airstone setting from table
+            # Initialise timer
+            airstone = ("airstone",)
+            # Select data
+            cur.execute("SELECT * FROM settings WHERE setting = ?", airstone)
+            data_airstone = cur.fetchone()
+            logger.debug("data_airstone = %s", data_airstone)
+            airstone_on_off = data_airstone[1]
+            logger.debug("Setting airstone_on_off = %s", airstone_on_off)
 
             time.sleep(10)
 
@@ -1257,6 +1277,7 @@ class SettingsWindow(QtWidgets.QDialog):
             # Fill data
             setting = "light"
             data = (Lightsetting.light_setting, setting)
+            logger.debug("light_on_off.data = %s", data)
 
             # Create table
             cur.execute('''CREATE TABLE IF NOT EXISTS settings
@@ -1284,6 +1305,7 @@ class SettingsWindow(QtWidgets.QDialog):
             # Fill data
             setting = "light"
             data = (Lightsetting.light_setting, setting)
+            logger.debug("light_on_off.data = %s", data)
 
             # Create table
             cur.execute('''CREATE TABLE IF NOT EXISTS settings
@@ -1312,6 +1334,7 @@ class SettingsWindow(QtWidgets.QDialog):
             # Fill data
             setting = "pump"
             data = (Pumpsetting.pump_setting, setting)
+            logger.debug("water_on_off.data = %s", data)
 
             # Create table
             cur.execute('''CREATE TABLE IF NOT EXISTS settings
@@ -1338,7 +1361,8 @@ class SettingsWindow(QtWidgets.QDialog):
 
             # Fill data
             setting = "pump"
-            data = (Lightsetting.light_setting, setting)
+            data = (Pumpsetting.pump_setting, setting)
+            logger.debug("water_on_off.data = %s", data)
 
             # Create table
             cur.execute('''CREATE TABLE IF NOT EXISTS settings
@@ -1366,7 +1390,8 @@ class SettingsWindow(QtWidgets.QDialog):
 
             # Fill data
             setting = "airstone"
-            data = (Lightsetting.light_setting, setting)
+            data = (Airstonesetting.airstone_setting, setting)
+            logger.debug("airstone_on_off.data = %s", data)
 
             # Create table
             cur.execute('''CREATE TABLE IF NOT EXISTS settings
@@ -1392,8 +1417,9 @@ class SettingsWindow(QtWidgets.QDialog):
             cur = con.cursor()
 
             # Fill data
-            setting = "light"
+            setting = "airstone"
             data = (Airstonesetting.airstone_setting, setting)
+            logger.debug("airstone_on_off.data = %s", data)
 
             # Create table
             cur.execute('''CREATE TABLE IF NOT EXISTS settings

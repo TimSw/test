@@ -133,51 +133,6 @@ def process_timers():
             con.close()
 
 
-def process_settings():
-    while True:
-        try:
-            # Initialise sqlite
-            con = sqlite3.connect(data_db)
-            cur = con.cursor()
-
-            # Select light setting from table
-            # Initialise timer
-            light = ("light",)
-            # Select data
-            cur.execute("SELECT * FROM settings WHERE setting = ?", light)
-            data_light = cur.fetchone()
-            logger.debug("data_light = %s", data_light)
-            light_on_off = data_light[1]
-            logger.debug("Setting light_on_off = %s", light_on_off)
-
-            # Select pump setting from table
-            # Initialise timer
-            pump = ("pump",)
-            # Select data
-            cur.execute("SELECT * FROM settings WHERE setting = ?", pump)
-            data_pump = cur.fetchone()
-            logger.debug("data_pump = %s", data_pump)
-            pump_on_off = data_pump[1]
-            logger.debug("Setting pump_on_off = %s", pump_on_off)
-
-            # Select airstone setting from table
-            # Initialise timer
-            airstone = ("airstone",)
-            # Select data
-            cur.execute("SELECT * FROM settings WHERE setting = ?", airstone)
-            data_airstone = cur.fetchone()
-            logger.debug("data_airstone = %s", data_airstone)
-            airstone_on_off = data_airstone[1]
-            logger.debug("Setting airstone_on_off = %s", airstone_on_off)
-
-            time.sleep(10)
-
-        except Exception as e:
-            logger.exception(e)
-            # Close sql connection
-            con.close()
-
-
 def process_outputs(start_light, stop_light, pump_time, pump_repeat,
                     time_btwn_pumping, time_air_on):
     """
@@ -1508,10 +1463,6 @@ if __name__ == '__main__':
     logger.info("Voor creëren thread process_timers")
     t1 = threading.Thread(target=process_timers, daemon=True)
     logger.info("Voor creëren thread process_timers")
-    t2 = threading.Thread(target=process_settings, daemon=True)
-    logger.info("Voor creëren thread process_timers")
     t1.start()
-    logger.info("Voor creëren thread process_settings")
-    t2.start()
 
     sys.exit(app.exec_())

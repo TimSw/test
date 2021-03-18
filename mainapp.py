@@ -49,6 +49,7 @@ RPi.GPIO.setup(outputList, RPi.GPIO.OUT, initial=uit)
 
 
 def process_timers():
+    """
     while True:
         try:
             # Initialise sqlite
@@ -131,6 +132,7 @@ def process_timers():
             logger.exception(e)
             # Close sql connection
             con.close()
+    """
 
 
 def process_outputs(start_light, stop_light, pump_time, pump_repeat,
@@ -256,6 +258,161 @@ def process_outputs(start_light, stop_light, pump_time, pump_repeat,
         time.sleep(10)"""
 
 
+class LightTimer:
+    def __init__(self):
+        pass
+
+    start_light = 0
+    stop_light = 0
+    time_light_on = 0
+
+    def process_light_timer(self):
+        while True:
+            try:
+                # Initialise sqlite
+                con = sqlite3.connect(data_db)
+                cur = con.cursor()
+
+                # Select start time from table
+                timer_on = ("light_on",)
+                # Select data
+                cur.execute("SELECT * FROM timers WHERE setting = ?", timer_on)
+                data_timer_on = cur.fetchone()
+                start_hour = data_timer_on[1]
+                start_min = data_timer_on[2]
+                self.start_light = datetime.time(start_hour, start_min)
+
+                # Select stop time from table
+                timer_off = ("light_off",)
+                cur.execute("SELECT * FROM timers WHERE setting = ?",
+                            timer_off)
+                data_timer_off = cur.fetchone()
+                stop_hour = data_timer_off[1]
+                stop_min = data_timer_off[2]
+                self.stop_light = datetime.time(stop_hour, stop_min)
+
+                # Initialise current time
+                now = datetime.datetime.now().time()
+
+                date = datetime.date(1, 1, 1)
+                datetime_start = datetime.datetime.combine(date,
+                                                           self.start_light)
+                datetime_stop = datetime.datetime.combine(date,
+                                                          self.stop_light)
+
+                self.time_light_on = datetime_stop - datetime_start
+
+                logger.debug("Het is %s uur en %s minuten", now.hour, now.minute)
+                logger.debug("Lamp gaat aan om %s", self.start_light)
+                logger.debug("Lamp gaat uit om %s", self.stop_light)
+                logger.debug("Licht is aan gedurende %s", self.time_light_on)
+
+                # Light
+                if self.start_light < now < self.stop_light:
+                    LightOutput.light_output = 1
+                    logger.debug("LightOutput.light_output = %s",
+                                 LightOutput.light_output)
+                    logger.info("TIMER LIGHT ON")
+                else:
+                    LightOutput.light_output = 0
+                    logger.debug("LightOutput.light_output = %s",
+                                 LightOutput.light_output)
+                    logger.info("TIMER LIGHT OFF")
+
+                time.sleep(10)
+
+            except Exception as e:
+                logger.exception(e)
+                # Close sql connection
+                con.close()
+
+    def run(self):
+        thread_1 = threading.Thread(target=self.process_light_timer,
+                                    daemon=True)
+        thread_1.start()
+
+
+class PumpTimer:
+    def __init__(self):
+        pass
+        pass
+
+    pump_repeat = 0
+    pump_during = 0
+    pump_time = 0
+
+    def process_pump_timer(self):
+        while True:
+            try:
+                # Initialise sqlite
+                con = sqlite3.connect(data_db)
+                cur = con.cursor()
+
+                # Select pump settings from table
+                pump_setting = ("pump_during",)
+                cur.execute("SELECT * FROM timers WHERE setting = ?",
+                            pump_setting)
+                data_pump_setting = cur.fetchone()
+                self.pump_repeat = data_pump_setting[1]
+                self.pump_during = data_pump_setting[2]
+                self.pump_time = datetime.time(00, self.pump_during)
+
+                time_btwn_pumping = LightTimer.time_light_on // self.pump_repeat
+
+                logger.debug("Pomp werkt gedurende %s en gaat %s keer aan om de %s",
+                             self.pump_time, self.pump_repeat,
+                             time_btwn_pumping)
+
+                time.sleep(10)
+
+            except Exception as e:
+                logger.exception(e)
+                # Close sql connection
+                con.close()
+
+    def run(self):
+        thread_1 = threading.Thread(target=self.process_pump_timer,
+                                    daemon=True)
+        thread_1.start()
+
+
+class AirstoneTimer:
+    def __init__(self):
+        pass
+
+    time_air_on = 0
+
+    def process_airstone_timer(self):
+        while True:
+            try:
+                # Initialise sqlite
+                con = sqlite3.connect(data_db)
+                cur = con.cursor()
+
+                # Select airstone settings from table
+                air_setting = ("air_on",)
+                cur.execute("SELECT * FROM timers WHERE setting = ?",
+                            air_setting)
+                data_air_setting = cur.fetchone()
+                air_on = data_air_setting[1]
+                self.time_air_on = datetime.time(00, air_on)
+
+                logger.debug("Airstone gaat %s voor de pomp aan",
+                             self.time_air_on)
+
+                time.sleep(10)
+
+            except Exception as e:
+                logger.exception(e)
+                # Close sql connection
+                con.close()
+
+    def run(self):
+        thread_1 = threading.Thread(target=self.process_airstone_timer,
+                                    daemon=True)
+        thread_1.start()
+
+
 class LightOutput:
     def __init__(self):
         pass
@@ -277,8 +434,8 @@ class LightOutput:
                 time.sleep(10)
 
     def run(self):
-        t1 = threading.Thread(target=self.set_light_output, daemon=True)
-        t1.start()
+        thread_1 = threading.Thread(target=self.set_light_output, daemon=True)
+        thread_1.start()
 
 
 class PumpOutput:
@@ -1451,15 +1608,25 @@ if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     ex = Window()
 
+    # LightTimer class
+    lt = LightTimer()
+    lt.run()
+    # LightTimer class
+    pt = PumpTimer()
+    pt.run()
+    # AirstoneTimer class
+    at = AirstoneTimer()
+    at.run()
+
     # LightOutput class
-    l1 = LightOutput()
-    l1.run()
+    lo = LightOutput()
+    lo.run()
     # PumpOutput class
-    p1 = PumpOutput()
-    p1.run()
+    po = PumpOutput()
+    po.run()
     # AirstoneOutput class
-    a1 = AirstoneOutput()
-    a1.run()
+    ao = AirstoneOutput()
+    ao.run()
 
     # Threading
     logger.info("Voor creëren thread process_timers")

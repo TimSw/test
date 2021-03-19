@@ -21,7 +21,7 @@ rfh = logging.handlers.RotatingFileHandler("mainapp.log", "a", 2560000, 3)
 rfh.setLevel(logging.DEBUG)
 # create console handler with a higher log level
 ch = logging.StreamHandler()
-ch.setLevel(logging.DEBUG)
+ch.setLevel(logging.INFO)
 # create formatter and add it to the handlers
 formatter = logging.Formatter(
    "%(asctime)s - %(name)s - %(levelname)s - %(lineno)d: %(message)s")
@@ -46,93 +46,6 @@ aan = RPi.GPIO.LOW
 outputList = (29, 31, 33, 35)
 RPi.GPIO.setmode(RPi.GPIO.BOARD)
 RPi.GPIO.setup(outputList, RPi.GPIO.OUT, initial=uit)
-
-
-def process_timers():
-    """
-    while True:
-        try:
-            # Initialise sqlite
-            con = sqlite3.connect(data_db)
-            cur = con.cursor()
-
-            # Select start time from table
-            # Initialise timer
-            timer_on = ("light_on",)
-            # Select data
-            cur.execute("SELECT * FROM timers WHERE setting = ?", timer_on)
-            data_timer_on = cur.fetchone()
-            start_hour = data_timer_on[1]
-            start_min = data_timer_on[2]
-            start_light = datetime.time(start_hour, start_min)
-
-            # Select stop time from table
-            # Initialise timer
-            timer_off = ("light_off",)
-            # Select data
-            cur.execute("SELECT * FROM timers WHERE setting = ?", timer_off)
-            data_timer_off = cur.fetchone()
-            stop_hour = data_timer_off[1]
-            stop_min = data_timer_off[2]
-            stop_light = datetime.time(stop_hour, stop_min)
-
-            # Select pump settings from table
-            # Initialise timer
-            pump_setting = ("pump_during",)
-            # Select data
-            cur.execute("SELECT * FROM timers WHERE setting = ?", pump_setting)
-            data_pump_setting = cur.fetchone()
-            pump_repeat = data_pump_setting[1]
-            pump_during = data_pump_setting[2]
-            pump_time = datetime.time(00, pump_during)
-
-            # Select airstone settings from table
-            # Initialise timer
-            air_setting = ("air_on",)
-            # Select data
-            cur.execute("SELECT * FROM timers WHERE setting = ?", air_setting)
-            data_air_setting = cur.fetchone()
-            air_on = data_air_setting[1]
-            time_air_on = datetime.time(00, air_on)
-
-            # Initialise current time
-            now = datetime.datetime.now().time()
-
-            date = datetime.date(1, 1, 1)
-            datetime_start = datetime.datetime.combine(date, start_light)
-            datetime_stop = datetime.datetime.combine(date, stop_light)
-
-            time_light_on = datetime_stop - datetime_start
-
-            time_btwn_pumping = time_light_on // pump_repeat
-
-            logger.debug("Het is %s uur en %s minuten", now.hour, now.minute)
-            logger.debug("Lamp gaat aan om %s", start_light)
-            logger.debug("Lamp gaat uit om %s", stop_light)
-            logger.debug("Licht is aan gedurende %s", time_light_on)
-            logger.debug("Pomp werkt gedurende %s en gaat %s keer aan om de %s",
-                         pump_time, pump_repeat, time_btwn_pumping)
-            logger.debug("Airstone gaat %s voor de pomp aan", time_air_on)
-
-            # Light
-            if start_light < now < stop_light:
-                LightOutput.light_output = 1
-                logger.debug("LightOutput.light_output = %s",
-                             LightOutput.light_output)
-                logger.info("TIMER LIGHT ON")
-            else:
-                LightOutput.light_output = 0
-                logger.debug("LightOutput.light_output = %s",
-                             LightOutput.light_output)
-                logger.info("TIMER LIGHT OFF")
-
-            time.sleep(10)
-
-        except Exception as e:
-            logger.exception(e)
-            # Close sql connection
-            con.close()
-    """
 
 
 def process_outputs(start_light, stop_light, pump_time, pump_repeat,
@@ -275,7 +188,6 @@ class LightTimer:
 
                 # Select start time from table
                 timer_on = ("light_on",)
-                # Select data
                 cur.execute("SELECT * FROM timers WHERE setting = ?", timer_on)
                 data_timer_on = cur.fetchone()
                 start_hour = data_timer_on[1]
@@ -293,16 +205,15 @@ class LightTimer:
 
                 # Initialise current time
                 now = datetime.datetime.now().time()
-
                 date = datetime.date(1, 1, 1)
                 datetime_start = datetime.datetime.combine(date,
                                                            self.start_light)
                 datetime_stop = datetime.datetime.combine(date,
                                                           self.stop_light)
-
                 self.time_light_on = datetime_stop - datetime_start
 
-                logger.debug("Het is %s uur en %s minuten", now.hour, now.minute)
+                logger.debug("Het is %s uur en %s minuten", now.hour,
+                             now.minute)
                 logger.debug("Lamp gaat aan om %s", self.start_light)
                 logger.debug("Lamp gaat uit om %s", self.stop_light)
                 logger.debug("Licht is aan gedurende %s", self.time_light_on)
@@ -1629,9 +1540,9 @@ if __name__ == '__main__':
     ao.run()
 
     # Threading
-    logger.info("Voor creëren thread process_timers")
-    t1 = threading.Thread(target=process_timers, daemon=True)
-    logger.info("Voor creëren thread process_timers")
-    t1.start()
+    # logger.info("Voor creëren thread process_timers")
+    # thread_1 = threading.Thread(target=process_timers, daemon=True)
+    # logger.info("Voor creëren thread process_timers")
+    # thread_1.start()
 
     sys.exit(app.exec_())

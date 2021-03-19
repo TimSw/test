@@ -6282,3 +6282,544 @@ TypeError: 'NoneType' object is not subscriptable
 2021-03-18 09:29:55,035 - mainapp - INFO - 121: TIMER LIGHT ON
 2021-03-18 09:29:57,447 - mainapp - INFO - 523: End <__main__.Window object at 0x7f8544d16430>
 2021-03-18 09:29:59,011 - mainapp - INFO - 1472: End <__main__.ShutdownWindow object at 0x7f8544d16940>
+2021-03-19 08:36:55,129 - mainapp - DEBUG - 421: light_output in LightOutput class = 0
+2021-03-19 08:36:55,129 - mainapp - DEBUG - 446: pump_output in PumpOutput class = 0
+2021-03-19 08:36:55,130 - mainapp - DEBUG - 471: airstone_output in AirstoneOutput class = 0
+2021-03-19 08:36:55,132 - mainapp - DEBUG - 508: data_light = ('light', 1)
+2021-03-19 08:36:55,132 - mainapp - DEBUG - 510: Setting light_on_off = 1
+2021-03-19 08:36:55,132 - mainapp - INFO - 518: light_setting in LightSetting class = 1
+2021-03-19 08:36:55,132 - mainapp - DEBUG - 536: data_pump = ('pump', 1)
+2021-03-19 08:36:55,132 - mainapp - DEBUG - 538: Setting pump_on_off = 1
+2021-03-19 08:36:55,132 - mainapp - INFO - 546: pump_setting in PumpSetting class = 1
+2021-03-19 08:36:55,133 - mainapp - DEBUG - 564: data_airstone = ('airstone', 1)
+2021-03-19 08:36:55,133 - mainapp - DEBUG - 566: Setting airstone_on_off = 1
+2021-03-19 08:36:55,133 - mainapp - INFO - 574: airstone_setting in AirstoneSetting class = 1
+2021-03-19 08:36:55,422 - mainapp - INFO - 635: End <__main__.Window object at 0x7fab86be3940>
+2021-03-19 08:36:55,423 - mainapp - DEBUG - 431: self.light_output = 0
+2021-03-19 08:36:55,423 - mainapp - INFO - 433: OUTPUT LIGHT OFF
+2021-03-19 08:36:55,423 - mainapp - DEBUG - 456: self.pump_output = 0
+2021-03-19 08:36:55,424 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:36:55,424 - mainapp - INFO - 1632: Voor creëren thread process_timers
+2021-03-19 08:36:55,424 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:36:55,424 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:36:55,424 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:36:55,424 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:36:55,425 - mainapp - DEBUG - 305: Het is 8 uur en 36 minuten
+2021-03-19 08:36:55,425 - mainapp - INFO - 1634: Voor creëren thread process_timers
+2021-03-19 08:36:55,426 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:36:55,426 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:36:55,426 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:36:55,427 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:36:55,427 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:37:05,428 - mainapp - DEBUG - 456: self.pump_output = 0
+2021-03-19 08:37:05,428 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:37:05,428 - mainapp - DEBUG - 426: self.light_output = 1
+2021-03-19 08:37:05,429 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:37:05,429 - mainapp - INFO - 428: OUTPUT LIGHT ON
+2021-03-19 08:37:05,429 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:37:05,429 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:37:05,429 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:37:05,432 - mainapp - DEBUG - 305: Het is 8 uur en 37 minuten
+2021-03-19 08:37:05,432 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:37:05,432 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:37:05,432 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:37:05,432 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:37:05,432 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:37:15,433 - mainapp - DEBUG - 456: self.pump_output = 0
+2021-03-19 08:37:15,434 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:37:15,435 - mainapp - DEBUG - 426: self.light_output = 1
+2021-03-19 08:37:15,435 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:37:15,435 - mainapp - INFO - 428: OUTPUT LIGHT ON
+2021-03-19 08:37:15,435 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:37:15,435 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:37:15,436 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:37:15,438 - mainapp - DEBUG - 305: Het is 8 uur en 37 minuten
+2021-03-19 08:37:15,438 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:37:15,438 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:37:15,438 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:37:15,438 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:37:15,438 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:37:25,439 - mainapp - DEBUG - 426: self.light_output = 1
+2021-03-19 08:37:25,439 - mainapp - DEBUG - 456: self.pump_output = 0
+2021-03-19 08:37:25,439 - mainapp - INFO - 428: OUTPUT LIGHT ON
+2021-03-19 08:37:25,439 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:37:25,439 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:37:25,440 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:37:25,441 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:37:25,441 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:37:25,441 - mainapp - DEBUG - 305: Het is 8 uur en 37 minuten
+2021-03-19 08:37:25,441 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:37:25,441 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:37:25,441 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:37:25,441 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:37:25,441 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:37:35,443 - mainapp - DEBUG - 456: self.pump_output = 0
+2021-03-19 08:37:35,443 - mainapp - DEBUG - 426: self.light_output = 1
+2021-03-19 08:37:35,444 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:37:35,444 - mainapp - INFO - 428: OUTPUT LIGHT ON
+2021-03-19 08:37:35,445 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:37:35,445 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:37:35,446 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:37:35,446 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:37:35,447 - mainapp - DEBUG - 305: Het is 8 uur en 37 minuten
+2021-03-19 08:37:35,447 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:37:35,447 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:37:35,447 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:37:35,447 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:37:35,448 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:37:45,449 - mainapp - DEBUG - 456: self.pump_output = 0
+2021-03-19 08:37:45,449 - mainapp - DEBUG - 426: self.light_output = 1
+2021-03-19 08:37:45,450 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:37:45,450 - mainapp - INFO - 428: OUTPUT LIGHT ON
+2021-03-19 08:37:45,450 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:37:45,450 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:37:45,451 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:37:45,452 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:37:45,453 - mainapp - DEBUG - 305: Het is 8 uur en 37 minuten
+2021-03-19 08:37:45,453 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:37:45,453 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:37:45,453 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:37:45,454 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:37:45,454 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:37:55,455 - mainapp - DEBUG - 456: self.pump_output = 0
+2021-03-19 08:37:55,455 - mainapp - DEBUG - 426: self.light_output = 1
+2021-03-19 08:37:55,455 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:37:55,455 - mainapp - INFO - 428: OUTPUT LIGHT ON
+2021-03-19 08:37:55,455 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:37:55,456 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:37:55,457 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:37:55,458 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:37:55,459 - mainapp - DEBUG - 305: Het is 8 uur en 37 minuten
+2021-03-19 08:37:55,460 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:37:55,460 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:37:55,460 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:37:55,460 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:37:55,460 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:38:15,456 - mainapp - DEBUG - 456: self.pump_output = 0
+2021-03-19 08:38:15,456 - mainapp - DEBUG - 426: self.light_output = 1
+2021-03-19 08:38:15,456 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:38:15,456 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:38:15,456 - mainapp - INFO - 428: OUTPUT LIGHT ON
+2021-03-19 08:38:15,456 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:38:15,457 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:38:15,458 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:38:15,461 - mainapp - DEBUG - 305: Het is 8 uur en 38 minuten
+2021-03-19 08:38:15,461 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:38:15,461 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:38:15,461 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:38:15,461 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:38:15,461 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:38:25,457 - mainapp - DEBUG - 456: self.pump_output = 0
+2021-03-19 08:38:25,457 - mainapp - DEBUG - 426: self.light_output = 1
+2021-03-19 08:38:25,457 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:38:25,457 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:38:25,457 - mainapp - INFO - 428: OUTPUT LIGHT ON
+2021-03-19 08:38:25,458 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:38:25,458 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:38:25,459 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:38:25,462 - mainapp - DEBUG - 305: Het is 8 uur en 38 minuten
+2021-03-19 08:38:25,462 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:38:25,462 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:38:25,462 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:38:25,462 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:38:25,463 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:38:45,458 - mainapp - DEBUG - 456: self.pump_output = 0
+2021-03-19 08:38:45,458 - mainapp - DEBUG - 426: self.light_output = 1
+2021-03-19 08:38:45,458 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:38:45,459 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:38:45,459 - mainapp - INFO - 428: OUTPUT LIGHT ON
+2021-03-19 08:38:45,459 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:38:45,459 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:38:45,460 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:38:45,463 - mainapp - DEBUG - 305: Het is 8 uur en 38 minuten
+2021-03-19 08:38:45,463 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:38:45,464 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:38:45,464 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:38:45,464 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:38:45,464 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:38:55,459 - mainapp - DEBUG - 456: self.pump_output = 0
+2021-03-19 08:38:55,459 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:38:55,460 - mainapp - DEBUG - 426: self.light_output = 1
+2021-03-19 08:38:55,460 - mainapp - INFO - 428: OUTPUT LIGHT ON
+2021-03-19 08:38:55,460 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:38:55,460 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:38:55,461 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:38:55,461 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:38:55,464 - mainapp - DEBUG - 305: Het is 8 uur en 38 minuten
+2021-03-19 08:38:55,465 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:38:55,465 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:38:55,465 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:38:55,465 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:38:55,465 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:39:15,460 - mainapp - DEBUG - 456: self.pump_output = 0
+2021-03-19 08:39:15,461 - mainapp - DEBUG - 426: self.light_output = 1
+2021-03-19 08:39:15,461 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:39:15,461 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:39:15,462 - mainapp - INFO - 428: OUTPUT LIGHT ON
+2021-03-19 08:39:15,462 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:39:15,463 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:39:15,464 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:39:15,466 - mainapp - DEBUG - 305: Het is 8 uur en 39 minuten
+2021-03-19 08:39:15,466 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:39:15,466 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:39:15,466 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:39:15,467 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:39:15,467 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:39:25,463 - mainapp - DEBUG - 456: self.pump_output = 0
+2021-03-19 08:39:25,463 - mainapp - DEBUG - 426: self.light_output = 1
+2021-03-19 08:39:25,463 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:39:25,464 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:39:25,464 - mainapp - INFO - 428: OUTPUT LIGHT ON
+2021-03-19 08:39:25,464 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:39:25,465 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:39:25,465 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:39:25,467 - mainapp - DEBUG - 305: Het is 8 uur en 39 minuten
+2021-03-19 08:39:25,467 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:39:25,467 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:39:25,468 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:39:25,468 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:39:25,468 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:39:35,464 - mainapp - DEBUG - 456: self.pump_output = 0
+2021-03-19 08:39:35,464 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:39:35,464 - mainapp - DEBUG - 426: self.light_output = 1
+2021-03-19 08:39:35,465 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:39:35,465 - mainapp - INFO - 428: OUTPUT LIGHT ON
+2021-03-19 08:39:35,465 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:39:35,466 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:39:35,466 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:39:35,468 - mainapp - DEBUG - 305: Het is 8 uur en 39 minuten
+2021-03-19 08:39:35,469 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:39:35,469 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:39:35,469 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:39:35,469 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:39:35,469 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:39:48,684 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:39:48,686 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:39:48,685 - mainapp - DEBUG - 456: self.pump_output = 0
+2021-03-19 08:39:48,688 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:39:48,688 - mainapp - DEBUG - 426: self.light_output = 1
+2021-03-19 08:39:48,689 - mainapp - INFO - 428: OUTPUT LIGHT ON
+2021-03-19 08:39:48,686 - mainapp - DEBUG - 305: Het is 8 uur en 39 minuten
+2021-03-19 08:39:48,687 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:39:48,690 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:39:48,691 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:39:48,691 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:39:48,691 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:39:48,691 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:39:48,692 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:39:50,322 - mainapp - INFO - 1374: End <__main__.SettingsWindow object at 0x7fab86bee280>
+2021-03-19 08:39:54,265 - mainapp - DEBUG - 1394: light_on_off.data = (0, 'light')
+2021-03-19 08:39:58,690 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:39:58,690 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:39:58,692 - mainapp - DEBUG - 456: self.pump_output = 0
+2021-03-19 08:39:58,693 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:39:58,694 - mainapp - DEBUG - 431: self.light_output = 1
+2021-03-19 08:39:58,694 - mainapp - INFO - 433: OUTPUT LIGHT OFF
+2021-03-19 08:39:58,694 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:39:58,695 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:39:58,696 - mainapp - DEBUG - 305: Het is 8 uur en 39 minuten
+2021-03-19 08:39:58,696 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:39:58,696 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:39:58,696 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:39:58,696 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:39:58,696 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:40:08,694 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:40:08,694 - mainapp - DEBUG - 456: self.pump_output = 0
+2021-03-19 08:40:08,694 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:40:08,694 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:40:08,699 - mainapp - DEBUG - 431: self.light_output = 1
+2021-03-19 08:40:08,699 - mainapp - INFO - 433: OUTPUT LIGHT OFF
+2021-03-19 08:40:08,700 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:40:08,701 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:40:08,702 - mainapp - DEBUG - 305: Het is 8 uur en 40 minuten
+2021-03-19 08:40:08,702 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:40:08,702 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:40:08,702 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:40:08,702 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:40:08,702 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:40:18,699 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:40:18,699 - mainapp - DEBUG - 456: self.pump_output = 0
+2021-03-19 08:40:18,700 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:40:18,700 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:40:18,703 - mainapp - DEBUG - 431: self.light_output = 1
+2021-03-19 08:40:18,703 - mainapp - INFO - 433: OUTPUT LIGHT OFF
+2021-03-19 08:40:18,703 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:40:18,707 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:40:18,708 - mainapp - DEBUG - 305: Het is 8 uur en 40 minuten
+2021-03-19 08:40:18,708 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:40:18,708 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:40:18,708 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:40:18,709 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:40:18,709 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:40:28,705 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:40:28,705 - mainapp - DEBUG - 456: self.pump_output = 0
+2021-03-19 08:40:28,706 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:40:28,706 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:40:28,708 - mainapp - DEBUG - 431: self.light_output = 1
+2021-03-19 08:40:28,708 - mainapp - INFO - 433: OUTPUT LIGHT OFF
+2021-03-19 08:40:28,708 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:40:28,710 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:40:28,714 - mainapp - DEBUG - 305: Het is 8 uur en 40 minuten
+2021-03-19 08:40:28,714 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:40:28,714 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:40:28,714 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:40:28,714 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:40:28,714 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:40:38,711 - mainapp - DEBUG - 456: self.pump_output = 0
+2021-03-19 08:40:38,711 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:40:38,711 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:40:38,711 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:40:38,712 - mainapp - DEBUG - 431: self.light_output = 1
+2021-03-19 08:40:38,712 - mainapp - INFO - 433: OUTPUT LIGHT OFF
+2021-03-19 08:40:38,714 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:40:38,715 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:40:38,720 - mainapp - DEBUG - 305: Het is 8 uur en 40 minuten
+2021-03-19 08:40:38,720 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:40:38,720 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:40:38,720 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:40:38,720 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:40:38,720 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:40:48,716 - mainapp - DEBUG - 456: self.pump_output = 0
+2021-03-19 08:40:48,717 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:40:48,717 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:40:48,717 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:40:48,717 - mainapp - DEBUG - 431: self.light_output = 1
+2021-03-19 08:40:48,718 - mainapp - INFO - 433: OUTPUT LIGHT OFF
+2021-03-19 08:40:48,719 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:40:48,720 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:40:48,725 - mainapp - DEBUG - 305: Het is 8 uur en 40 minuten
+2021-03-19 08:40:48,725 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:40:48,725 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:40:48,725 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:40:48,725 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:40:48,725 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:40:58,722 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:40:58,722 - mainapp - DEBUG - 456: self.pump_output = 0
+2021-03-19 08:40:58,722 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:40:58,722 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:40:58,723 - mainapp - DEBUG - 431: self.light_output = 1
+2021-03-19 08:40:58,723 - mainapp - INFO - 433: OUTPUT LIGHT OFF
+2021-03-19 08:40:58,724 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:40:58,726 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:40:58,731 - mainapp - DEBUG - 305: Het is 8 uur en 40 minuten
+2021-03-19 08:40:58,731 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:40:58,731 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:40:58,731 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:40:58,731 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:40:58,731 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:41:18,723 - mainapp - DEBUG - 456: self.pump_output = 0
+2021-03-19 08:41:18,723 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:41:18,723 - mainapp - DEBUG - 431: self.light_output = 1
+2021-03-19 08:41:18,723 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:41:18,724 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:41:18,724 - mainapp - INFO - 433: OUTPUT LIGHT OFF
+2021-03-19 08:41:18,725 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:41:18,726 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:41:18,732 - mainapp - DEBUG - 305: Het is 8 uur en 41 minuten
+2021-03-19 08:41:18,733 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:41:18,733 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:41:18,733 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:41:18,733 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:41:18,733 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:41:28,724 - mainapp - DEBUG - 456: self.pump_output = 0
+2021-03-19 08:41:28,724 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:41:28,724 - mainapp - DEBUG - 431: self.light_output = 1
+2021-03-19 08:41:28,725 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:41:28,725 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:41:28,725 - mainapp - INFO - 433: OUTPUT LIGHT OFF
+2021-03-19 08:41:28,726 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:41:28,727 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:41:28,734 - mainapp - DEBUG - 305: Het is 8 uur en 41 minuten
+2021-03-19 08:41:28,734 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:41:28,734 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:41:28,734 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:41:28,734 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:41:28,734 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:41:48,726 - mainapp - DEBUG - 456: self.pump_output = 0
+2021-03-19 08:41:48,727 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:41:48,727 - mainapp - DEBUG - 431: self.light_output = 1
+2021-03-19 08:41:48,727 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:41:48,727 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:41:48,728 - mainapp - INFO - 433: OUTPUT LIGHT OFF
+2021-03-19 08:41:48,728 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:41:48,729 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:41:48,735 - mainapp - DEBUG - 305: Het is 8 uur en 41 minuten
+2021-03-19 08:41:48,735 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:41:48,735 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:41:48,735 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:41:48,735 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:41:48,735 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:41:55,345 - mainapp - INFO - 635: End <__main__.Window object at 0x7fab86beeaf0>
+2021-03-19 08:41:58,212 - mainapp - INFO - 932: End <__main__.WaterWindow object at 0x7fab86bfc040>
+2021-03-19 08:41:58,729 - mainapp - DEBUG - 456: self.pump_output = 0
+2021-03-19 08:41:58,729 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:41:58,729 - mainapp - DEBUG - 431: self.light_output = 1
+2021-03-19 08:41:58,729 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:41:58,729 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:41:58,729 - mainapp - INFO - 433: OUTPUT LIGHT OFF
+2021-03-19 08:41:58,733 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:41:58,733 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:41:58,737 - mainapp - DEBUG - 305: Het is 8 uur en 41 minuten
+2021-03-19 08:41:58,737 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:41:58,737 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:41:58,737 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:41:58,737 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:41:58,737 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:42:00,641 - mainapp - DEBUG - 948: PumpOutput.pump_output = 0
+2021-03-19 08:42:00,641 - mainapp - INFO - 950: BUTTON PUMP WATERWINDOW OFF
+2021-03-19 08:42:08,734 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:42:08,734 - mainapp - DEBUG - 456: self.pump_output = 0
+2021-03-19 08:42:08,735 - mainapp - DEBUG - 431: self.light_output = 1
+2021-03-19 08:42:08,735 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:42:08,735 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:42:08,735 - mainapp - INFO - 433: OUTPUT LIGHT OFF
+2021-03-19 08:42:08,739 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:42:08,739 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:42:08,743 - mainapp - DEBUG - 305: Het is 8 uur en 42 minuten
+2021-03-19 08:42:08,743 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:42:08,743 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:42:08,743 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:42:08,744 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:42:08,744 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:42:16,651 - mainapp - DEBUG - 943: PumpOutput.pump_output = 1
+2021-03-19 08:42:16,651 - mainapp - INFO - 945: BUTTON PUMP WATERWINDOW ON
+2021-03-19 08:42:18,740 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:42:18,740 - mainapp - DEBUG - 451: self.pump_output = 1
+2021-03-19 08:42:18,740 - mainapp - DEBUG - 431: self.light_output = 1
+2021-03-19 08:42:18,740 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:42:18,740 - mainapp - INFO - 453: OUTPUT PUMP ON
+2021-03-19 08:42:18,741 - mainapp - INFO - 433: OUTPUT LIGHT OFF
+2021-03-19 08:42:18,741 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:42:18,742 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:42:18,749 - mainapp - DEBUG - 305: Het is 8 uur en 42 minuten
+2021-03-19 08:42:18,750 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:42:18,750 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:42:18,750 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:42:18,750 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:42:18,750 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:42:28,746 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:42:28,747 - mainapp - DEBUG - 431: self.light_output = 1
+2021-03-19 08:42:28,747 - mainapp - DEBUG - 451: self.pump_output = 1
+2021-03-19 08:42:28,747 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:42:28,747 - mainapp - INFO - 433: OUTPUT LIGHT OFF
+2021-03-19 08:42:28,747 - mainapp - INFO - 453: OUTPUT PUMP ON
+2021-03-19 08:42:28,748 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:42:28,749 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:42:28,755 - mainapp - DEBUG - 305: Het is 8 uur en 42 minuten
+2021-03-19 08:42:28,755 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:42:28,756 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:42:28,756 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:42:28,756 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:42:28,756 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:42:30,682 - mainapp - INFO - 635: End <__main__.Window object at 0x7fab86bfc3a0>
+2021-03-19 08:42:32,498 - mainapp - INFO - 1374: End <__main__.SettingsWindow object at 0x7fab86bfc8b0>
+2021-03-19 08:42:35,035 - mainapp - DEBUG - 1451: water_on_off.data = (0, 'pump')
+2021-03-19 08:42:38,752 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:42:38,753 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:42:38,753 - mainapp - DEBUG - 431: self.light_output = 1
+2021-03-19 08:42:38,754 - mainapp - DEBUG - 456: self.pump_output = 1
+2021-03-19 08:42:38,754 - mainapp - INFO - 433: OUTPUT LIGHT OFF
+2021-03-19 08:42:38,754 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:42:38,754 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:42:38,755 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:42:38,762 - mainapp - DEBUG - 305: Het is 8 uur en 42 minuten
+2021-03-19 08:42:38,762 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:42:38,762 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:42:38,762 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:42:38,763 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:42:38,763 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:42:47,366 - mainapp - INFO - 635: End <__main__.Window object at 0x7fab86bfe160>
+2021-03-19 08:42:48,758 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:42:48,759 - mainapp - DEBUG - 431: self.light_output = 1
+2021-03-19 08:42:48,759 - mainapp - DEBUG - 456: self.pump_output = 1
+2021-03-19 08:42:48,760 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:42:48,760 - mainapp - INFO - 433: OUTPUT LIGHT OFF
+2021-03-19 08:42:48,761 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:42:48,761 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:42:48,761 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:42:48,769 - mainapp - DEBUG - 305: Het is 8 uur en 42 minuten
+2021-03-19 08:42:48,769 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:42:48,769 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:42:48,770 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:42:48,770 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:42:48,770 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:42:50,377 - mainapp - INFO - 932: End <__main__.WaterWindow object at 0x7fab86bfe670>
+2021-03-19 08:42:52,280 - mainapp - DEBUG - 960: AirstoneOutput.airstone_output = 0
+2021-03-19 08:42:52,280 - mainapp - INFO - 962: BUTTON AIRSTONE WATERWINDOW OFF
+2021-03-19 08:42:58,766 - mainapp - DEBUG - 483: self.airstone_output = 0
+2021-03-19 08:42:58,766 - mainapp - DEBUG - 431: self.light_output = 1
+2021-03-19 08:42:58,767 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:42:58,767 - mainapp - DEBUG - 456: self.pump_output = 1
+2021-03-19 08:42:58,767 - mainapp - INFO - 433: OUTPUT LIGHT OFF
+2021-03-19 08:42:58,767 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:42:58,768 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:42:58,768 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:42:58,775 - mainapp - DEBUG - 305: Het is 8 uur en 42 minuten
+2021-03-19 08:42:58,775 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:42:58,775 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:42:58,775 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:42:58,775 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:42:58,776 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:43:01,911 - mainapp - DEBUG - 955: AirstoneOutput.airstone_output = 1
+2021-03-19 08:43:01,911 - mainapp - INFO - 957: BUTTON AIRSTONE WATERWINDOW ON
+2021-03-19 08:43:08,772 - mainapp - DEBUG - 478: self.airstone_output = 1
+2021-03-19 08:43:08,772 - mainapp - DEBUG - 456: self.pump_output = 1
+2021-03-19 08:43:08,773 - mainapp - DEBUG - 431: self.light_output = 1
+2021-03-19 08:43:08,773 - mainapp - INFO - 480: OUTPUT AIRSTONE ON
+2021-03-19 08:43:08,773 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:43:08,773 - mainapp - INFO - 433: OUTPUT LIGHT OFF
+2021-03-19 08:43:08,773 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:43:08,774 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:43:08,778 - mainapp - DEBUG - 305: Het is 8 uur en 43 minuten
+2021-03-19 08:43:08,779 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:43:08,779 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:43:08,779 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:43:08,779 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:43:08,779 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:43:18,778 - mainapp - DEBUG - 478: self.airstone_output = 1
+2021-03-19 08:43:18,778 - mainapp - INFO - 480: OUTPUT AIRSTONE ON
+2021-03-19 08:43:18,779 - mainapp - DEBUG - 456: self.pump_output = 1
+2021-03-19 08:43:18,779 - mainapp - DEBUG - 431: self.light_output = 1
+2021-03-19 08:43:18,779 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:43:18,779 - mainapp - INFO - 433: OUTPUT LIGHT OFF
+2021-03-19 08:43:18,780 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:43:18,780 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:43:18,781 - mainapp - DEBUG - 305: Het is 8 uur en 43 minuten
+2021-03-19 08:43:18,781 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:43:18,781 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:43:18,781 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:43:18,781 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:43:18,781 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:43:27,685 - mainapp - INFO - 635: End <__main__.Window object at 0x7fab86bfe9d0>
+2021-03-19 08:43:28,783 - mainapp - DEBUG - 478: self.airstone_output = 1
+2021-03-19 08:43:28,784 - mainapp - INFO - 480: OUTPUT AIRSTONE ON
+2021-03-19 08:43:28,784 - mainapp - DEBUG - 431: self.light_output = 1
+2021-03-19 08:43:28,784 - mainapp - DEBUG - 456: self.pump_output = 1
+2021-03-19 08:43:28,784 - mainapp - INFO - 433: OUTPUT LIGHT OFF
+2021-03-19 08:43:28,784 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:43:28,786 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:43:28,786 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:43:28,786 - mainapp - DEBUG - 305: Het is 8 uur en 43 minuten
+2021-03-19 08:43:28,787 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:43:28,787 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:43:28,787 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:43:28,787 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:43:28,787 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:43:30,154 - mainapp - INFO - 1374: End <__main__.SettingsWindow object at 0x7fab86bfeee0>
+2021-03-19 08:43:32,040 - mainapp - DEBUG - 1508: airstone_on_off.data = (0, 'airstone')
+2021-03-19 08:43:38,789 - mainapp - DEBUG - 483: self.airstone_output = 1
+2021-03-19 08:43:38,789 - mainapp - INFO - 485: OUTPUT AIRSTONE OFF
+2021-03-19 08:43:38,789 - mainapp - DEBUG - 431: self.light_output = 1
+2021-03-19 08:43:38,789 - mainapp - INFO - 433: OUTPUT LIGHT OFF
+2021-03-19 08:43:38,790 - mainapp - DEBUG - 456: self.pump_output = 1
+2021-03-19 08:43:38,790 - mainapp - INFO - 458: OUTPUT PUMP OFF
+2021-03-19 08:43:38,791 - mainapp - DEBUG - 362: Pomp werkt gedurende 00:10:00 en gaat 3 keer aan om de 0
+2021-03-19 08:43:38,792 - mainapp - DEBUG - 400: Airstone gaat 00:10:00 voor de pomp aan
+2021-03-19 08:43:38,792 - mainapp - DEBUG - 305: Het is 8 uur en 43 minuten
+2021-03-19 08:43:38,793 - mainapp - DEBUG - 306: Lamp gaat aan om 08:00:00
+2021-03-19 08:43:38,793 - mainapp - DEBUG - 307: Lamp gaat uit om 20:00:00
+2021-03-19 08:43:38,793 - mainapp - DEBUG - 308: Licht is aan gedurende 12:00:00
+2021-03-19 08:43:38,793 - mainapp - DEBUG - 313: LightOutput.light_output = 1
+2021-03-19 08:43:38,793 - mainapp - INFO - 315: TIMER LIGHT ON
+2021-03-19 08:43:43,477 - mainapp - INFO - 635: End <__main__.Window object at 0x7fab86c00790>
+2021-03-19 08:43:44,348 - mainapp - INFO - 1586: End <__main__.ShutdownWindow object at 0x7fab86c00ca0>

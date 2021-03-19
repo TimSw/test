@@ -4,7 +4,7 @@ import os
 import time
 import datetime
 import threading
-import logging
+# import logging
 import logging.handlers
 import RPi.GPIO
 import sqlite3
@@ -24,7 +24,7 @@ ch = logging.StreamHandler()
 ch.setLevel(logging.INFO)
 # create formatter and add it to the handlers
 formatter = logging.Formatter(
-   "%(asctime)s - %(name)s - %(levelname)s - %(lineno)d: %(message)s")
+    "%(asctime)s - %(name)s - %(levelname)s - %(lineno)d: %(message)s")
 #  "%(asctime)s - %(filename)s - %(name)s - %(levelname)s - %(message)s")
 rfh.setFormatter(formatter)
 ch.setFormatter(formatter)
@@ -59,7 +59,7 @@ def process_outputs(start_light, stop_light, pump_time, pump_repeat,
         wait_for_air = datetime.time(0, 1)
         start_air = start_light + wait_for_air
         start_pump = start_air + time_air_on
-        stop_pump = start_pump + pump_time
+        stop_pump = start_pump + time_pump_on
 
         # Populate START_PUMP STOP_PUMP depending on pump_repeat
         # TODO make function to automate numbering
@@ -181,11 +181,11 @@ class LightTimer:
 
     def process_light_timer(self):
         while True:
-            try:
-                # Initialise sqlite
-                con = sqlite3.connect(data_db)
-                cur = con.cursor()
+            # Initialise sqlite
+            con = sqlite3.connect(data_db)
+            cur = con.cursor()
 
+            try:
                 # Select start time from table
                 timer_on = ("light_on",)
                 cur.execute("SELECT * FROM timers WHERE setting = ?", timer_on)
@@ -246,33 +246,34 @@ class LightTimer:
 class PumpTimer:
     def __init__(self):
         pass
-        pass
 
     pump_repeat = 0
-    pump_during = 0
-    pump_time = 0
+    time_pump_on = 0
+    time_btwn_pumping = 0
 
     def process_pump_timer(self):
         while True:
-            try:
-                # Initialise sqlite
-                con = sqlite3.connect(data_db)
-                cur = con.cursor()
+            # Initialise sqlite
+            con = sqlite3.connect(data_db)
+            cur = con.cursor()
 
+            try:
                 # Select pump settings from table
                 pump_setting = ("pump_during",)
                 cur.execute("SELECT * FROM timers WHERE setting = ?",
                             pump_setting)
                 data_pump_setting = cur.fetchone()
                 self.pump_repeat = data_pump_setting[1]
-                self.pump_during = data_pump_setting[2]
-                self.pump_time = datetime.time(00, self.pump_during)
+                pump_during = data_pump_setting[2]
+                self.time_pump_on = datetime.time(00, pump_during)
 
-                time_btwn_pumping = LightTimer.time_light_on // self.pump_repeat
+                self.time_btwn_pumping = \
+                    LightTimer.time_light_on // self.pump_repeat
 
-                logger.debug("Pomp werkt gedurende %s en gaat %s keer aan om de %s",
-                             self.pump_time, self.pump_repeat,
-                             time_btwn_pumping)
+                logger.debug("Pomp werkt gedurende %s en gaat %s keer aan om "
+                             "de %s",
+                             self.time_pump_on, self.pump_repeat,
+                             self.time_btwn_pumping)
 
                 time.sleep(10)
 
@@ -295,11 +296,11 @@ class AirstoneTimer:
 
     def process_airstone_timer(self):
         while True:
-            try:
-                # Initialise sqlite
-                con = sqlite3.connect(data_db)
-                cur = con.cursor()
+            # Initialise sqlite
+            con = sqlite3.connect(data_db)
+            cur = con.cursor()
 
+            try:
                 # Select airstone settings from table
                 air_setting = ("air_on",)
                 cur.execute("SELECT * FROM timers WHERE setting = ?",
@@ -405,15 +406,13 @@ class LightSetting:
     def __init__(self):
         pass
 
-    try:
-        # Initialise sqlite
-        con = sqlite3.connect(data_db)
-        cur = con.cursor()
+    # Initialise sqlite
+    con = sqlite3.connect(data_db)
+    cur = con.cursor()
 
+    try:
         # Select light setting from table
-        # Initialise setting
         light = ("light",)
-        # Select data
         cur.execute("SELECT * FROM settings WHERE setting = ?", light)
         data_light = cur.fetchone()
         logger.debug("data_light = %s", data_light)
@@ -433,15 +432,13 @@ class PumpSetting:
     def __init__(self):
         pass
 
-    try:
-        # Initialise sqlite
-        con = sqlite3.connect(data_db)
-        cur = con.cursor()
+    # Initialise sqlite
+    con = sqlite3.connect(data_db)
+    cur = con.cursor()
 
+    try:
         # Select pump setting from table
-        # Initialise setting
         pump = ("pump",)
-        # Select data
         cur.execute("SELECT * FROM settings WHERE setting = ?", pump)
         data_pump = cur.fetchone()
         logger.debug("data_pump = %s", data_pump)
@@ -461,15 +458,13 @@ class AirstoneSetting:
     def __init__(self):
         pass
 
-    try:
-        # Initialise sqlite
-        con = sqlite3.connect(data_db)
-        cur = con.cursor()
+    # Initialise sqlite
+    con = sqlite3.connect(data_db)
+    cur = con.cursor()
 
-        # Select light setting from table
-        # Initialise setting
+    try:
+        # Select airstone setting from table
         airstone = ("airstone",)
-        # Select data
         cur.execute("SELECT * FROM settings WHERE setting = ?", airstone)
         data_airstone = cur.fetchone()
         logger.debug("data_airstone = %s", data_airstone)

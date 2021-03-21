@@ -21,7 +21,7 @@ rfh = logging.handlers.RotatingFileHandler("mainapp.log", "a", 2560000, 3)
 rfh.setLevel(logging.DEBUG)
 # create console handler with a higher log level
 ch = logging.StreamHandler()
-ch.setLevel(logging.INFO)
+ch.setLevel(logging.DEBUG)
 # create formatter and add it to the handlers
 formatter = logging.Formatter(
     "%(asctime)s - %(name)s - %(levelname)s - %(lineno)d: %(message)s")
@@ -175,6 +175,10 @@ class LightTimer:
     def __init__(self):
         pass
 
+    start_hour = 0
+    start_min = 0
+    stop_hour = 0
+    stop_min = 0
     start_light = 0
     stop_light = 0
     time_light_on = 0
@@ -190,18 +194,19 @@ class LightTimer:
                 timer_on = ("light_on",)
                 cur.execute("SELECT * FROM timers WHERE setting = ?", timer_on)
                 data_timer_on = cur.fetchone()
-                start_hour = data_timer_on[1]
-                start_min = data_timer_on[2]
-                self.start_light = datetime.time(start_hour, start_min)
+                self.start_hour = data_timer_on[1]
+                self.start_min = data_timer_on[2]
+                self.start_light = datetime.time(self.start_hour,
+                                                 self.start_min)
 
                 # Select stop time from table
                 timer_off = ("light_off",)
                 cur.execute("SELECT * FROM timers WHERE setting = ?",
                             timer_off)
                 data_timer_off = cur.fetchone()
-                stop_hour = data_timer_off[1]
-                stop_min = data_timer_off[2]
-                self.stop_light = datetime.time(stop_hour, stop_min)
+                self.stop_hour = data_timer_off[1]
+                self.stop_min = data_timer_off[2]
+                self.stop_light = datetime.time(self.stop_hour, self.stop_min)
 
                 # Initialise current time
                 now = datetime.datetime.now().time()
@@ -247,9 +252,12 @@ class PumpTimer:
     def __init__(self):
         pass
 
-    pump_repeat = 0
+    pump_repeat = 1
+    pump_during = 0
     time_pump_on = 0
     time_btwn_pumping = 0
+    print("pump_repeat in PumpTimer = ",
+          pump_repeat)
 
     def process_pump_timer(self):
         while True:
@@ -264,8 +272,8 @@ class PumpTimer:
                             pump_setting)
                 data_pump_setting = cur.fetchone()
                 self.pump_repeat = data_pump_setting[1]
-                pump_during = data_pump_setting[2]
-                self.time_pump_on = datetime.time(00, pump_during)
+                self.pump_during = data_pump_setting[2]
+                self.time_pump_on = datetime.time(00, self.pump_during)
 
                 self.time_btwn_pumping = \
                     LightTimer.time_light_on // self.pump_repeat
@@ -292,7 +300,7 @@ class AirstoneTimer:
     def __init__(self):
         pass
 
-    time_air_on = 0
+    air_on = 0
 
     def process_airstone_timer(self):
         while True:
@@ -306,11 +314,11 @@ class AirstoneTimer:
                 cur.execute("SELECT * FROM timers WHERE setting = ?",
                             air_setting)
                 data_air_setting = cur.fetchone()
-                air_on = data_air_setting[1]
-                self.time_air_on = datetime.time(00, air_on)
+                self.air_on = data_air_setting[1]
+                time_air_on = datetime.time(00, self.air_on)
 
                 logger.debug("Airstone gaat %s voor de pomp aan",
-                             self.time_air_on)
+                             time_air_on)
 
                 time.sleep(10)
 
@@ -322,6 +330,71 @@ class AirstoneTimer:
     def run(self):
         thread_1 = threading.Thread(target=self.process_airstone_timer,
                                     daemon=True)
+        thread_1.start()
+
+
+class ProcessTimers:
+    def __init__(self):
+        pass
+
+    def process(self):
+        while True:
+            # Initialise variables
+            repeats = PumpTimer.pump_repeat
+            print("PumpTimer.pump_repeat in ProcessTimers = ",
+                  PumpTimer.pump_repeat)
+
+            # Initialise current time
+            now = datetime.datetime.now().time()
+            date = datetime.date(1, 1, 1)
+
+            # Convert times
+            # Light
+            start_light = datetime.time(LightTimer.start_hour,
+                                        LightTimer.start_min)
+            stop_light = datetime.time(LightTimer.stop_hour,
+                                       LightTimer.stop_min)
+            datetime_start = datetime.datetime.combine(date, start_light)
+            datetime_stop = datetime.datetime.combine(date, stop_light)
+            time_light_on = datetime_stop - datetime_start
+            timedelta_start_light = datetime.timedelta(
+                hours=LightTimer.start_hour, minutes=LightTimer.start_min)
+            # Air
+            timedelta_air_on = datetime.timedelta(
+                hours=00, minutes=AirstoneTimer.air_on)
+            # Pump
+            timedelta_pump_on = datetime.timedelta(
+                hours=00, minutes=PumpTimer.pump_during)
+            print("PumpTimer.pump_repeat in ProcessTimers = ",
+                  PumpTimer.pump_repeat)
+            pump_interval = time_light_on // PumpTimer.pump_repeat
+
+            # Initialise lists
+            pump_start_times = []
+            pump_stop_times = []
+            air_start_times = []
+
+            # Determine first list
+            while repeats > 1:
+                pump_start_times.append(time_light_on + (pump_interval *
+                                                         repeats))
+                repeats = repeats - 1
+            pump_start_times.reverse()
+            pump_start_times.insert(0, timedelta_start_light)
+
+            # Determine other lists depending on first
+            for times in pump_start_times:
+                pump_stop_times.append(times + timedelta_pump_on)
+                air_start_times.append(times - timedelta_air_on)
+            for i in pump_start_times:
+                logger.debug(i)
+            for i in pump_stop_times:
+                logger.debug(i)
+            for i in air_start_times:
+                logger.debug(i)
+
+    def run(self):
+        thread_1 = threading.Thread(target=self.process, daemon=True)
         thread_1.start()
 
 
@@ -1523,6 +1596,10 @@ if __name__ == '__main__':
     # AirstoneTimer class
     at = AirstoneTimer()
     at.run()
+
+    # ProcessTimers class
+    prt = ProcessTimers()
+    prt.run()
 
     # LightOutput class
     lo = LightOutput()

@@ -3,66 +3,59 @@ import threading
 import time
 
 
-class Eerste:
-    var_eerste_voor_init = 0
-    print("var_eerste_voor_init = ", var_eerste_voor_init)
+class ImportData:
+    print("enter ImportData")
+    var_1 = 0
+    print("var_1 = ", var_1)
 
     def __init__(self):
-        var_eerste_in_init = 0
-        print("var_eerste_in_init = ", var_eerste_in_init)
+        print("enter init ImportData")
 
-    def eerste_functie(self, var_in):
-        var_eerste_functie = 0
-        print("var_eerste_functie = ", var_eerste_functie)
+    def get_data(self):
+        print("enter get_data")
         while True:
             try:
-                print("var_eerste_functie in loop = ", var_eerste_functie)
-                var_eerste_functie = var_eerste_functie + 1
-                print("var_tweede_voor_init in loop eerste = ", var_in)
-                time.sleep(5)
+                ImportData.var_1 = input("ImportData in loop = \n")
+                print("ImportData in loop = ", ImportData.var_1)
             except Exception as e:
                 print(e)
 
     def run(self):
-        var_run = 0
-        print("var_run = ", var_run)
-        thread_1 = threading.Thread(target=self.eerste_functie,
-                                    args=(Tweede.var_tweede_voor_init, ))
+        print("enter run get_data")
+        thread_1 = threading.Thread(target=self.get_data)
         thread_1.start()
 
 
-class Tweede:
-    var_tweede_voor_init = 0
-    print("var_tweede_voor_init = ", var_tweede_voor_init)
+class ProcessData:
+    print("enter ProcessData")
 
     def __init__(self):
-        var_tweede_in_init = 0
-        print("var_tweede_in_init = ", var_tweede_in_init)
+        print("enter init ProcessData")
 
-    def tweede_functie(self):
-        var_tweede_functie = 0
-        print("var_tweede_functie = ", var_tweede_functie)
+    def process_data(self):
+        print("enter process_data")
+        counter = 0
+        # data = ImportData.var_1
+        print("counter = ", counter)
         while True:
             try:
-                print("var_tweede_voor_init in loop = ",
-                      self.var_tweede_voor_init)
-                self.var_tweede_voor_init = self.var_tweede_voor_init + 1
+                print("ImportData.var_1 = ", ImportData.var_1)
+                counter = counter + 1
+                print("counter = ", counter)
                 time.sleep(5)
             except Exception as e:
                 print(e)
 
     def run(self):
-        var_run = 0
-        print("var_run = ", var_run)
-        thread_1 = threading.Thread(target=self.tweede_functie)
+        print("enter run process_data")
+        thread_1 = threading.Thread(target=self.process_data, daemon=True)
         thread_1.start()
 
 
 if __name__ == "__main__":
-    var_start_main = 0
-    print("var_start_main = ", var_start_main)
+    print("enter __main__")
 
-    e = Eerste()
-    e.run()
-    t = Tweede()
-    t.run()
+    imports = ImportData()
+    imports.run()
+    pd = ProcessData()
+    pd.run()

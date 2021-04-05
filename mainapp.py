@@ -71,37 +71,37 @@ class LightTimer:
                 timer_on = ("light_on",)
                 cur.execute("SELECT * FROM timers WHERE setting = ?", timer_on)
                 data_timer_on = cur.fetchone()
-                self.start_hour = data_timer_on[1]
-                self.start_min = data_timer_on[2]
-                self.start_light = datetime.time(self.start_hour,
-                                                 self.start_min)
+                LightTimer.start_hour = data_timer_on[1]
+                LightTimer.start_min = data_timer_on[2]
+                LightTimer.start_light = datetime.time(LightTimer.start_hour,
+                                                 LightTimer.start_min)
 
                 # Select stop time from table
                 timer_off = ("light_off",)
                 cur.execute("SELECT * FROM timers WHERE setting = ?",
                             timer_off)
                 data_timer_off = cur.fetchone()
-                self.stop_hour = data_timer_off[1]
-                self.stop_min = data_timer_off[2]
-                self.stop_light = datetime.time(self.stop_hour, self.stop_min)
+                LightTimer.stop_hour = data_timer_off[1]
+                LightTimer.stop_min = data_timer_off[2]
+                LightTimer.stop_light = datetime.time(LightTimer.stop_hour, LightTimer.stop_min)
 
                 # Initialise current time
                 now = datetime.datetime.now().time()
                 date = datetime.date(1, 1, 1)
                 datetime_start = datetime.datetime.combine(date,
-                                                           self.start_light)
+                                                           LightTimer.start_light)
                 datetime_stop = datetime.datetime.combine(date,
-                                                          self.stop_light)
-                self.time_light_on = datetime_stop - datetime_start
+                                                          LightTimer.stop_light)
+                LightTimer.time_light_on = datetime_stop - datetime_start
 
                 logger.debug("Het is %s uur en %s minuten", now.hour,
                              now.minute)
-                logger.debug("Lamp gaat aan om %s", self.start_light)
-                logger.debug("Lamp gaat uit om %s", self.stop_light)
-                logger.debug("Licht is aan gedurende %s", self.time_light_on)
+                logger.debug("Lamp gaat aan om %s", LightTimer.start_light)
+                logger.debug("Lamp gaat uit om %s", LightTimer.stop_light)
+                logger.debug("Licht is aan gedurende %s", LightTimer.time_light_on)
 
                 # Light
-                if self.start_light < now < self.stop_light:
+                if LightTimer.start_light < now < LightTimer.stop_light:
                     LightOutput.light_output = 1
                     logger.debug("LightOutput.light_output = %s",
                                  LightOutput.light_output)
@@ -148,17 +148,17 @@ class PumpTimer:
                 cur.execute("SELECT * FROM timers WHERE setting = ?",
                             pump_setting)
                 data_pump_setting = cur.fetchone()
-                self.pump_repeat = data_pump_setting[1]
-                self.pump_during = data_pump_setting[2]
-                self.time_pump_on = datetime.time(00, self.pump_during)
+                PumpTimer.pump_repeat = data_pump_setting[1]
+                PumpTimer.pump_during = data_pump_setting[2]
+                PumpTimer.time_pump_on = datetime.time(00, PumpTimer.pump_during)
 
-                self.time_btwn_pumping = \
-                    LightTimer.time_light_on // self.pump_repeat
+                PumpTimer.time_btwn_pumping = \
+                    LightTimer.time_light_on // PumpTimer.pump_repeat
 
                 logger.debug("Pomp werkt gedurende %s en gaat %s keer aan om "
                              "de %s",
-                             self.time_pump_on, self.pump_repeat,
-                             self.time_btwn_pumping)
+                             PumpTimer.time_pump_on, PumpTimer.pump_repeat,
+                             PumpTimer.time_btwn_pumping)
 
                 time.sleep(10)
 
@@ -191,8 +191,8 @@ class AirstoneTimer:
                 cur.execute("SELECT * FROM timers WHERE setting = ?",
                             air_setting)
                 data_air_setting = cur.fetchone()
-                self.air_on = data_air_setting[1]
-                time_air_on = datetime.time(00, self.air_on)
+                AirstoneTimer.air_on = data_air_setting[1]
+                time_air_on = datetime.time(00, AirstoneTimer.air_on)
 
                 logger.debug("Airstone gaat %s voor de pomp aan",
                              time_air_on)

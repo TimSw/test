@@ -133,8 +133,6 @@ class PumpTimer:
     pump_during = 0
     time_pump_on = 0
     time_btwn_pumping = 0
-    print("pump_repeat in PumpTimer = ",
-          pump_repeat)
 
     def process_pump_timer(self):
         while True:
@@ -218,8 +216,6 @@ class ProcessTimers:
         while True:
             # Initialise variables
             repeats = PumpTimer.pump_repeat
-            print("PumpTimer.pump_repeat in ProcessTimers = ",
-                  PumpTimer.pump_repeat)
 
             # Initialise current time
             now = datetime.datetime.now().time()
@@ -242,8 +238,6 @@ class ProcessTimers:
             # Pump
             timedelta_pump_on = datetime.timedelta(
                 hours=00, minutes=PumpTimer.pump_during)
-            print("PumpTimer.pump_repeat in ProcessTimers = ",
-                  PumpTimer.pump_repeat)
             pump_interval = time_light_on // PumpTimer.pump_repeat
 
             # Initialise lists

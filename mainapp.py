@@ -282,12 +282,12 @@ class LightOutput:
                 logger.debug("self.light_output = %s", self.light_output)
                 RPi.GPIO.output(29, aan)
                 logger.info("OUTPUT LIGHT ON")
-                time.sleep(10)
+                time.sleep(0,5)
             else:
                 logger.debug("self.light_output = %s", self.light_output)
                 RPi.GPIO.output(29, uit)
                 logger.info("OUTPUT LIGHT OFF")
-                time.sleep(10)
+                time.sleep(0,5)
 
     def run(self):
         thread_1 = threading.Thread(target=self.set_light_output, daemon=True)
@@ -307,12 +307,12 @@ class PumpOutput:
                 logger.debug("self.pump_output = %s", self.pump_output)
                 RPi.GPIO.output(33, aan)
                 logger.info("OUTPUT PUMP ON")
-                time.sleep(10)
+                time.sleep(0,5)
             else:
                 logger.debug("self.pump_output = %s", self.pump_output)
                 RPi.GPIO.output(33, uit)
                 logger.info("OUTPUT PUMP OFF")
-                time.sleep(10)
+                time.sleep(0,5)
 
     def run(self):
         t1 = threading.Thread(target=self.set_pump_output, daemon=True)
@@ -334,12 +334,12 @@ class AirstoneOutput:
                 logger.debug("self.airstone_output = %s", self.airstone_output)
                 RPi.GPIO.output(31, aan)
                 logger.info("OUTPUT AIRSTONE ON")
-                time.sleep(10)
+                time.sleep(0,5)
             else:
                 logger.debug("self.airstone_output = %s", self.airstone_output)
                 RPi.GPIO.output(31, uit)
                 logger.info("OUTPUT AIRSTONE OFF")
-                time.sleep(10)
+                time.sleep(0,5)
 
     def run(self):
         t1 = threading.Thread(target=self.set_airstone_output, daemon=True)

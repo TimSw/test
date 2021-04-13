@@ -4,6 +4,9 @@ import datetime
 # Initialise current time
 now = datetime.datetime.now().time()
 date = datetime.date(1, 1, 1)
+timedelta_now = datetime.timedelta(hours=datetime.datetime.now().hour,
+                                   minutes=datetime.datetime.now().minute)
+print("timedelta_now = ", timedelta_now)
 
 # Initialise variables
 # Light
@@ -15,6 +18,7 @@ stop_min = 15
 pump_repeat = int(input("Please enter a number of times the pump should "
                         "repeat: "))
 print("pump_repeat = ", pump_repeat)
+repeats = pump_repeat - 1
 pump_during = 10
 print("pump_during = ", pump_during)
 # Air
@@ -53,9 +57,10 @@ air_start_times = []
 air_stop_times = []
 
 # Determine first list
-while pump_repeat > 1:
-    pump_start_times.append(time_light_on + (pump_interval * pump_repeat))
-    pump_repeat = pump_repeat - 1
+while repeats > 0:
+    pump_start_times.append(timedelta_start_light +
+                            (pump_interval * repeats))
+    repeats = repeats - 1
 pump_start_times.reverse()
 pump_start_times.insert(0, timedelta_start_light)
 
@@ -71,3 +76,29 @@ for i in pump_stop_times:
     print(i)
 for i in air_start_times:
     print(i)
+
+# Set outputs
+print("timedelta_now = ", timedelta_now)
+
+# Set outputs
+#teller = len(pump_start_times)
+#print("Number of elements in the list: ", teller)
+#print(len(pump_start_times))
+#for times in pump_start_times:
+output_on = 0
+for times in range(len(pump_start_times)):
+    print(times)
+    if pump_start_times[times] < timedelta_now < pump_stop_times[times]:
+        print("pump_start_times[times] = ", pump_start_times[times])
+        print("timedelta_now = ", timedelta_now)
+        print("pump_stop_times[times] = ", pump_stop_times[times])
+        print("ON")
+        output_on = 1
+    else:
+        print("off")
+
+if output_on == 1:
+    print("OUTPUT ON")
+    output_on = 0
+else:
+    print("OUTPUT OFF")

@@ -21,7 +21,7 @@ rfh = logging.handlers.RotatingFileHandler("mainapp.log", "a", 2560000, 3)
 rfh.setLevel(logging.DEBUG)
 # create console handler with a higher log level
 ch = logging.StreamHandler()
-ch.setLevel(logging.DEBUG)
+ch.setLevel(logging.INFO)
 # create formatter and add it to the handlers
 formatter = logging.Formatter(
     "%(asctime)s - %(name)s - %(levelname)s - %(lineno)d: %(message)s")
@@ -74,7 +74,7 @@ class LightTimer:
                 LightTimer.start_hour = data_timer_on[1]
                 LightTimer.start_min = data_timer_on[2]
                 LightTimer.start_light = datetime.time(LightTimer.start_hour,
-                                                 LightTimer.start_min)
+                                                       LightTimer.start_min)
 
                 # Select stop time from table
                 timer_off = ("light_off",)
@@ -83,7 +83,8 @@ class LightTimer:
                 data_timer_off = cur.fetchone()
                 LightTimer.stop_hour = data_timer_off[1]
                 LightTimer.stop_min = data_timer_off[2]
-                LightTimer.stop_light = datetime.time(LightTimer.stop_hour, LightTimer.stop_min)
+                LightTimer.stop_light = datetime.time(LightTimer.stop_hour,
+                                                      LightTimer.stop_min)
 
                 # Initialise current time
                 now = datetime.datetime.now().time()
@@ -98,20 +99,10 @@ class LightTimer:
                              now.minute)
                 logger.debug("Lamp gaat aan om %s", LightTimer.start_light)
                 logger.debug("Lamp gaat uit om %s", LightTimer.stop_light)
-                logger.debug("Licht is aan gedurende %s", LightTimer.time_light_on)
+                logger.debug("Licht is aan gedurende %s",
+                             LightTimer.time_light_on)
 
-                # Light
-                if LightTimer.start_light < now < LightTimer.stop_light:
-                    LightOutput.light_output = 1
-                    logger.debug("LightOutput.light_output = %s",
-                                 LightOutput.light_output)
-                    logger.info("TIMER LIGHT ON")
-                else:
-                    LightOutput.light_output = 0
-                    logger.debug("LightOutput.light_output = %s",
-                                 LightOutput.light_output)
-                    logger.info("TIMER LIGHT OFF")
-
+                # TODO sleep time
                 time.sleep(10)
 
             except Exception as e:
@@ -148,7 +139,8 @@ class PumpTimer:
                 data_pump_setting = cur.fetchone()
                 PumpTimer.pump_repeat = data_pump_setting[1]
                 PumpTimer.pump_during = data_pump_setting[2]
-                PumpTimer.time_pump_on = datetime.time(00, PumpTimer.pump_during)
+                PumpTimer.time_pump_on = datetime.time(00,
+                                                       PumpTimer.pump_during)
 
                 PumpTimer.time_btwn_pumping = \
                     LightTimer.time_light_on // PumpTimer.pump_repeat
@@ -158,6 +150,7 @@ class PumpTimer:
                              PumpTimer.time_pump_on, PumpTimer.pump_repeat,
                              PumpTimer.time_btwn_pumping)
 
+                # TODO sleep time
                 time.sleep(10)
 
             except Exception as e:
@@ -195,6 +188,7 @@ class AirstoneTimer:
                 logger.debug("Airstone gaat %s voor de pomp aan",
                              time_air_on)
 
+                # TODO sleep time
                 time.sleep(10)
 
             except Exception as e:
@@ -215,11 +209,15 @@ class ProcessTimers:
     def process(self):
         while True:
             # Initialise variables
-            repeats = PumpTimer.pump_repeat
+            repeats = PumpTimer.pump_repeat - 1
 
             # Initialise current time
             now = datetime.datetime.now().time()
             date = datetime.date(1, 1, 1)
+            timedelta_now = datetime.timedelta(
+                hours=datetime.datetime.now().hour,
+                minutes=datetime.datetime.now().minute)
+            logger.debug("timedelta_now = %s", timedelta_now)
 
             # Convert times
             # Light
@@ -245,13 +243,30 @@ class ProcessTimers:
             pump_stop_times = []
             air_start_times = []
 
+            # Debugging
+            logger.debug("pump_start_times = %s", pump_start_times)
+            logger.debug("pump_stop_times = %s", pump_stop_times)
+            logger.debug("air_start_times = %s", air_start_times)
+            logger.debug("now = %s", now)
+            logger.debug("start_light = %s", start_light)
+            logger.debug("stop_light = %s", stop_light)
+            logger.debug("time_light_on = %s", time_light_on)
+            logger.debug("timedelta_start_light = %s", timedelta_start_light)
+            logger.debug("timedelta_air_on = %s", timedelta_air_on)
+            logger.debug("timedelta_pump_on = %s", timedelta_pump_on)
+            logger.debug("PumpTimer.pump_repeat = %s", PumpTimer.pump_repeat)
+            logger.debug("pump_interval = %s", pump_interval)
+
             # Determine first list
-            while repeats > 1:
-                pump_start_times.append(time_light_on + (pump_interval *
-                                                         repeats))
+            while repeats > 0:
+                pump_start_times.append(timedelta_start_light +
+                                        (pump_interval * repeats))
                 repeats = repeats - 1
+            logger.debug("pump_start_times = %s", pump_start_times)
             pump_start_times.reverse()
+            logger.debug("pump_start_times = %s", pump_start_times)
             pump_start_times.insert(0, timedelta_start_light)
+            logger.debug("pump_start_times = %s", pump_start_times)
 
             # Determine other lists depending on first
             for times in pump_start_times:
@@ -264,6 +279,70 @@ class ProcessTimers:
             for i in air_start_times:
                 logger.debug(i)
 
+            # Process Times
+            # Light
+            if start_light < now < stop_light:
+                LightOutput.light_output = 1
+                logger.debug("LightOutput.light_output = %s",
+                             LightOutput.light_output)
+                logger.info("PROCESS OUTPUT LIGHT ON")
+            else:
+                LightOutput.light_output = 0
+                logger.debug("LightOutput.light_output = %s",
+                             LightOutput.light_output)
+                logger.info("PROCESS OUTPUT LIGHT OFF")
+
+            # Pump
+            pump_on = 0
+            for times in range(len(pump_start_times)):
+                logger.debug(times)
+                if pump_start_times[times] < timedelta_now < \
+                        pump_stop_times[times]:
+                    logger.debug("pump_start_times[times] = %s",
+                                 pump_start_times[times])
+                    logger.debug("timedelta_now = %s", timedelta_now)
+                    logger.debug("pump_stop_times[times] = %s",
+                                 pump_stop_times[times])
+                    logger.debug("ON")
+                    pump_on = 1
+                else:
+                    logger.debug("OFF")
+
+            if pump_on == 1:
+                logger.info("PROCESS OUTPUT PUMP ON")
+                PumpOutput.pump_output = 1
+                pump_on = 0
+            else:
+                logger.info("PROCESS OUTPUT PUMP OFF")
+                PumpOutput.pump_output = 0
+
+            # Airstone
+            airstone_on = 0
+            for times in range(len(pump_start_times)):
+                logger.debug(times)
+                if air_start_times[times] < timedelta_now < \
+                        pump_stop_times[times]:
+                    logger.debug("air_start_times[times] = %s",
+                                 air_start_times[times])
+                    logger.debug("timedelta_now = %s", timedelta_now)
+                    logger.debug("pump_stop_times[times] = %s",
+                                 pump_stop_times[times])
+                    logger.debug("ON")
+                    airstone_on = 1
+                else:
+                    logger.debug("OFF")
+
+            if airstone_on == 1:
+                logger.info("PROCESS OUTPUT AIRSTONE ON")
+                AirstoneOutput.airstone_output = 1
+                airstone_on = 0
+            else:
+                logger.info("PROCESS OUTPUT AIRSTONE OFF")
+                AirstoneOutput.airstone_output = 0
+
+            # TODO sleep time
+            time.sleep(5)
+
     def run(self):
         thread_1 = threading.Thread(target=self.process, daemon=True)
         thread_1.start()
@@ -274,7 +353,6 @@ class LightOutput:
         pass
 
     light_output = 0
-    logger.debug("light_output in LightOutput class = %s", light_output)
 
     def set_light_output(self):
         while True:
@@ -282,11 +360,13 @@ class LightOutput:
                 logger.debug("self.light_output = %s", self.light_output)
                 RPi.GPIO.output(29, aan)
                 logger.info("OUTPUT LIGHT ON")
+                # TODO sleep time
                 time.sleep(0.5)
             else:
                 logger.debug("self.light_output = %s", self.light_output)
                 RPi.GPIO.output(29, uit)
                 logger.info("OUTPUT LIGHT OFF")
+                # TODO sleep time
                 time.sleep(0.5)
 
     def run(self):
@@ -299,7 +379,6 @@ class PumpOutput:
         pass
 
     pump_output = 0
-    logger.debug("pump_output in PumpOutput class = %s", pump_output)
 
     def set_pump_output(self):
         while True:
@@ -307,11 +386,13 @@ class PumpOutput:
                 logger.debug("self.pump_output = %s", self.pump_output)
                 RPi.GPIO.output(33, aan)
                 logger.info("OUTPUT PUMP ON")
+                # TODO sleep time
                 time.sleep(0.5)
             else:
                 logger.debug("self.pump_output = %s", self.pump_output)
                 RPi.GPIO.output(33, uit)
                 logger.info("OUTPUT PUMP OFF")
+                # TODO sleep time
                 time.sleep(0.5)
 
     def run(self):
@@ -324,8 +405,6 @@ class AirstoneOutput:
         pass
 
     airstone_output = 0
-    logger.debug("airstone_output in AirstoneOutput class = %s",
-                 airstone_output)
 
     def set_airstone_output(self):
         while True:
@@ -334,11 +413,13 @@ class AirstoneOutput:
                 logger.debug("self.airstone_output = %s", self.airstone_output)
                 RPi.GPIO.output(31, aan)
                 logger.info("OUTPUT AIRSTONE ON")
+                # TODO sleep time
                 time.sleep(0.5)
             else:
                 logger.debug("self.airstone_output = %s", self.airstone_output)
                 RPi.GPIO.output(31, uit)
                 logger.info("OUTPUT AIRSTONE OFF")
+                # TODO sleep time
                 time.sleep(0.5)
 
     def run(self):

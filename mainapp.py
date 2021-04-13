@@ -206,7 +206,12 @@ class ProcessTimers:
     def __init__(self):
         pass
 
+    light_output = 0
+    pump_output = 0
+    airstone_output = 0
+
     def process(self):
+
         while True:
             # Initialise variables
             repeats = PumpTimer.pump_repeat - 1
@@ -282,14 +287,14 @@ class ProcessTimers:
             # Process Times
             # Light
             if start_light < now < stop_light:
-                LightOutput.light_output = 1
+                ProcessTimers.light_output = 1
                 logger.debug("LightOutput.light_output = %s",
-                             LightOutput.light_output)
+                             ProcessTimers.light_output)
                 logger.info("PROCESS OUTPUT LIGHT ON")
             else:
-                LightOutput.light_output = 0
+                ProcessTimers.light_output = 0
                 logger.debug("LightOutput.light_output = %s",
-                             LightOutput.light_output)
+                             ProcessTimers.light_output)
                 logger.info("PROCESS OUTPUT LIGHT OFF")
 
             # Pump
@@ -310,11 +315,11 @@ class ProcessTimers:
 
             if pump_on == 1:
                 logger.info("PROCESS OUTPUT PUMP ON")
-                PumpOutput.pump_output = 1
+                ProcessTimers.pump_output = 1
                 pump_on = 0
             else:
                 logger.info("PROCESS OUTPUT PUMP OFF")
-                PumpOutput.pump_output = 0
+                ProcessTimers.pump_output = 0
 
             # Airstone
             airstone_on = 0
@@ -334,11 +339,11 @@ class ProcessTimers:
 
             if airstone_on == 1:
                 logger.info("PROCESS OUTPUT AIRSTONE ON")
-                AirstoneOutput.airstone_output = 1
+                ProcessTimers.airstone_output = 1
                 airstone_on = 0
             else:
                 logger.info("PROCESS OUTPUT AIRSTONE OFF")
-                AirstoneOutput.airstone_output = 0
+                ProcessTimers.airstone_output = 0
 
             # TODO sleep time
             time.sleep(5)
@@ -356,14 +361,15 @@ class LightOutput:
 
     def set_light_output(self):
         while True:
-            if self.light_output == 1 and LightSetting.light_setting == 1:
-                logger.debug("self.light_output = %s", self.light_output)
+            if (LightOutput.light_output or ProcessTimers.light_output) == 1 \
+                    and LightSetting.light_setting == 1:
+                logger.debug("self.light_output = %s", LightOutput.light_output)
                 RPi.GPIO.output(29, aan)
                 logger.info("OUTPUT LIGHT ON")
                 # TODO sleep time
                 time.sleep(0.5)
             else:
-                logger.debug("self.light_output = %s", self.light_output)
+                logger.debug("self.light_output = %s", LightOutput.light_output)
                 RPi.GPIO.output(29, uit)
                 logger.info("OUTPUT LIGHT OFF")
                 # TODO sleep time
@@ -382,14 +388,15 @@ class PumpOutput:
 
     def set_pump_output(self):
         while True:
-            if self.pump_output == 1 and PumpSetting.pump_setting == 1:
-                logger.debug("self.pump_output = %s", self.pump_output)
+            if (PumpOutput.pump_output or ProcessTimers.pump_output) == 1 \
+                    and PumpSetting.pump_setting == 1:
+                logger.debug("self.pump_output = %s", PumpOutput.pump_output)
                 RPi.GPIO.output(33, aan)
                 logger.info("OUTPUT PUMP ON")
                 # TODO sleep time
                 time.sleep(0.5)
             else:
-                logger.debug("self.pump_output = %s", self.pump_output)
+                logger.debug("self.pump_output = %s", PumpOutput.pump_output)
                 RPi.GPIO.output(33, uit)
                 logger.info("OUTPUT PUMP OFF")
                 # TODO sleep time
@@ -408,15 +415,17 @@ class AirstoneOutput:
 
     def set_airstone_output(self):
         while True:
-            if self.airstone_output == 1 and \
-                    AirstoneSetting.airstone_setting == 1:
-                logger.debug("self.airstone_output = %s", self.airstone_output)
+            if (AirstoneOutput.airstone_output or ProcessTimers.airstone_output) == 1 \
+                    and AirstoneSetting.airstone_setting == 1:
+                logger.debug("self.airstone_output = %s",
+                             AirstoneOutput.airstone_output)
                 RPi.GPIO.output(31, aan)
                 logger.info("OUTPUT AIRSTONE ON")
                 # TODO sleep time
                 time.sleep(0.5)
             else:
-                logger.debug("self.airstone_output = %s", self.airstone_output)
+                logger.debug("self.airstone_output = %s",
+                             AirstoneOutput.airstone_output)
                 RPi.GPIO.output(31, uit)
                 logger.info("OUTPUT AIRSTONE OFF")
                 # TODO sleep time

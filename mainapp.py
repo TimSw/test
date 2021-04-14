@@ -4,7 +4,6 @@ import os
 import time
 import datetime
 import threading
-# import logging
 import logging.handlers
 import RPi.GPIO
 import sqlite3
@@ -1185,7 +1184,7 @@ class ClockWindow(QtWidgets.QDialog):
         # Select data
         cur.execute("SELECT * FROM timers WHERE setting = ?", air_setting)
         data_air_setting = cur.fetchone()
-        air_on = data_pump_setting[1]
+        air_on = data_air_setting[1]
         time_air_on = datetime.time(00, air_on)
 
         # Initialise current time
@@ -1570,11 +1569,5 @@ if __name__ == '__main__':
     # AirstoneOutput class
     ao = AirstoneOutput()
     ao.run()
-
-    # Threading
-    # logger.info("Voor creëren thread process_timers")
-    # thread_1 = threading.Thread(target=process_timers, daemon=True)
-    # logger.info("Voor creëren thread process_timers")
-    # thread_1.start()
 
     sys.exit(app.exec_())

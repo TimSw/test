@@ -211,7 +211,6 @@ class ProcessTimers:
     airstone_output = 0
 
     def process(self):
-
         while True:
             # Initialise variables
             repeats = PumpTimer.pump_repeat - 1

@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-from time import sleep
-from picamera import PiCamera
+import time
+import picamera
 
-camera = PiCamera(resolution=(1280, 720), framerate=30)
+camera = picamera.PiCamera(resolution=(1280, 720), framerate=30)
 # Set ISO to the desired value
 camera.iso = 100
 # Wait for the automatic gain control to settle
-sleep(2)
+time.sleep(2)
 # Now fix the values
 camera.shutter_speed = camera.exposure_speed
 camera.exposure_mode = 'off'
@@ -15,4 +15,4 @@ camera.awb_mode = 'off'
 camera.awb_gains = g
 for filename in camera.capture_continuous("images/img{counter:03d}.jpg"):
     print("Captured %s" % filename)
-    sleep(300)  # wait 5 minutes
+    time.sleep(300)  # wait 5 minutes

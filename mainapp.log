@@ -547,3 +547,905 @@
 2021-04-16 10:26:14,822 - root - INFO - 388: OUTPUT PUMP OFF
 2021-04-16 10:26:14,822 - root - INFO - 417: OUTPUT AIRSTONE OFF
 2021-04-16 10:26:14,823 - root - INFO - 361: OUTPUT LIGHT OFF
+2021-04-16 10:49:54,346 - root - DEBUG - 438: data_light = ('light', 0)
+2021-04-16 10:49:54,347 - root - DEBUG - 440: Setting light_on_off = 0
+2021-04-16 10:49:54,348 - root - INFO - 448: light_setting in LightSetting class = 0
+2021-04-16 10:49:54,351 - root - DEBUG - 464: data_pump = ('pump', 0)
+2021-04-16 10:49:54,351 - root - DEBUG - 466: Setting pump_on_off = 0
+2021-04-16 10:49:54,351 - root - INFO - 474: pump_setting in PumpSetting class = 0
+2021-04-16 10:49:54,352 - root - DEBUG - 490: data_airstone = ('airstone', 0)
+2021-04-16 10:49:54,352 - root - DEBUG - 492: Setting airstone_on_off = 0
+2021-04-16 10:49:54,353 - root - INFO - 500: airstone_setting in AirstoneSetting class = 0
+2021-04-16 10:49:54,735 - root - INFO - 561: End <__main__.Window object at 0x7fa5e828cd30>
+2021-04-16 10:49:54,737 - root - DEBUG - 211: timedelta_now = 10:49:00
+2021-04-16 10:49:54,737 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:49:54,737 - root - DEBUG - 238: pump_start_times = []
+2021-04-16 10:49:54,738 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:49:54,738 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:49:54,738 - root - DEBUG - 175: Airstone gaat 00:20:00 voor de pomp aan
+2021-04-16 10:49:54,739 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:49:54,739 - root - DEBUG - 135: Pomp werkt gedurende 00:05:00 en gaat 8 keer aan om de 0
+2021-04-16 10:49:54,739 - root - DEBUG - 239: pump_stop_times = []
+2021-04-16 10:49:54,739 - root - DEBUG - 85: Het is 10 uur en 49 minuten
+2021-04-16 10:49:54,739 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:49:54,740 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:49:54,741 - root - DEBUG - 240: air_start_times = []
+2021-04-16 10:49:54,741 - root - DEBUG - 87: Lamp gaat aan om 08:00:00
+2021-04-16 10:49:54,741 - root - DEBUG - 241: now = 10:49:54.736998
+2021-04-16 10:49:54,742 - root - DEBUG - 88: Lamp gaat uit om 18:00:00
+2021-04-16 10:49:54,742 - root - DEBUG - 242: start_light = 00:00:00
+2021-04-16 10:49:54,742 - root - DEBUG - 89: Licht is aan gedurende 10:00:00
+2021-04-16 10:49:54,742 - root - DEBUG - 243: stop_light = 00:00:00
+2021-04-16 10:49:54,743 - root - DEBUG - 244: time_light_on = 0:00:00
+2021-04-16 10:49:54,743 - root - DEBUG - 245: timedelta_start_light = 0:00:00
+2021-04-16 10:49:54,743 - root - DEBUG - 246: timedelta_air_on = 0:00:00
+2021-04-16 10:49:54,744 - root - DEBUG - 247: timedelta_pump_on = 0:00:00
+2021-04-16 10:49:54,744 - root - DEBUG - 248: PumpTimer.pump_repeat = 8
+2021-04-16 10:49:54,744 - root - DEBUG - 249: pump_interval = 0:00:00
+2021-04-16 10:49:54,744 - root - DEBUG - 256: pump_start_times = []
+2021-04-16 10:49:54,744 - root - DEBUG - 258: pump_start_times = []
+2021-04-16 10:49:54,745 - root - DEBUG - 260: pump_start_times = [datetime.timedelta(0)]
+2021-04-16 10:49:54,745 - root - DEBUG - 267: 0:00:00
+2021-04-16 10:49:54,745 - root - DEBUG - 269: 0:00:00
+2021-04-16 10:49:54,745 - root - DEBUG - 271: 0:00:00
+2021-04-16 10:49:54,746 - root - DEBUG - 282: LightOutput.light_output = 0
+2021-04-16 10:49:54,746 - root - INFO - 284: PROCESS OUTPUT LIGHT OFF
+2021-04-16 10:49:54,746 - root - DEBUG - 289: 0
+2021-04-16 10:49:54,747 - root - DEBUG - 300: OFF
+2021-04-16 10:49:54,747 - root - INFO - 307: PROCESS OUTPUT PUMP OFF
+2021-04-16 10:49:54,748 - root - DEBUG - 313: 0
+2021-04-16 10:49:54,748 - root - DEBUG - 324: OFF
+2021-04-16 10:49:54,749 - root - INFO - 331: PROCESS OUTPUT AIRSTONE OFF
+2021-04-16 10:49:55,243 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:49:55,244 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:49:55,244 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:49:55,244 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:49:55,244 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:49:55,244 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:49:55,747 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:49:55,747 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:49:55,747 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:49:55,748 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:49:55,748 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:49:55,748 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:49:56,249 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:49:56,249 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:49:56,249 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:49:56,250 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:49:56,250 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:49:56,250 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:49:56,750 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:49:56,750 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:49:56,751 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:49:56,751 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:49:56,751 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:49:56,751 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:49:57,255 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:49:57,255 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:49:57,255 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:49:57,256 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:49:57,256 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:49:57,256 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:49:57,761 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:49:57,761 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:49:57,762 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:49:57,762 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:49:57,762 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:49:57,762 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:49:58,266 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:49:58,266 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:49:58,266 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:49:58,266 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:49:58,267 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:49:58,267 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:49:58,768 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:49:58,768 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:49:58,769 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:49:58,769 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:49:58,769 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:49:58,769 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:49:59,274 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:49:59,275 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:49:59,275 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:49:59,275 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:49:59,275 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:49:59,275 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:49:59,753 - root - DEBUG - 211: timedelta_now = 10:49:00
+2021-04-16 10:49:59,754 - root - DEBUG - 238: pump_start_times = []
+2021-04-16 10:49:59,754 - root - DEBUG - 239: pump_stop_times = []
+2021-04-16 10:49:59,755 - root - DEBUG - 240: air_start_times = []
+2021-04-16 10:49:59,755 - root - DEBUG - 241: now = 10:49:59.753653
+2021-04-16 10:49:59,755 - root - DEBUG - 242: start_light = 08:00:00
+2021-04-16 10:49:59,755 - root - DEBUG - 243: stop_light = 18:00:00
+2021-04-16 10:49:59,756 - root - DEBUG - 244: time_light_on = 10:00:00
+2021-04-16 10:49:59,756 - root - DEBUG - 245: timedelta_start_light = 8:00:00
+2021-04-16 10:49:59,756 - root - DEBUG - 246: timedelta_air_on = 0:20:00
+2021-04-16 10:49:59,756 - root - DEBUG - 247: timedelta_pump_on = 0:05:00
+2021-04-16 10:49:59,757 - root - DEBUG - 248: PumpTimer.pump_repeat = 8
+2021-04-16 10:49:59,757 - root - DEBUG - 249: pump_interval = 1:15:00
+2021-04-16 10:49:59,757 - root - DEBUG - 256: pump_start_times = [datetime.timedelta(seconds=60300), datetime.timedelta(seconds=55800), datetime.timedelta(seconds=51300), datetime.timedelta(seconds=46800), datetime.timedelta(seconds=42300), datetime.timedelta(seconds=37800), datetime.timedelta(seconds=33300)]
+2021-04-16 10:49:59,757 - root - DEBUG - 258: pump_start_times = [datetime.timedelta(seconds=33300), datetime.timedelta(seconds=37800), datetime.timedelta(seconds=42300), datetime.timedelta(seconds=46800), datetime.timedelta(seconds=51300), datetime.timedelta(seconds=55800), datetime.timedelta(seconds=60300)]
+2021-04-16 10:49:59,757 - root - DEBUG - 260: pump_start_times = [datetime.timedelta(seconds=28800), datetime.timedelta(seconds=33300), datetime.timedelta(seconds=37800), datetime.timedelta(seconds=42300), datetime.timedelta(seconds=46800), datetime.timedelta(seconds=51300), datetime.timedelta(seconds=55800), datetime.timedelta(seconds=60300)]
+2021-04-16 10:49:59,758 - root - DEBUG - 267: 8:00:00
+2021-04-16 10:49:59,758 - root - DEBUG - 267: 9:15:00
+2021-04-16 10:49:59,758 - root - DEBUG - 267: 10:30:00
+2021-04-16 10:49:59,758 - root - DEBUG - 267: 11:45:00
+2021-04-16 10:49:59,758 - root - DEBUG - 267: 13:00:00
+2021-04-16 10:49:59,758 - root - DEBUG - 267: 14:15:00
+2021-04-16 10:49:59,758 - root - DEBUG - 267: 15:30:00
+2021-04-16 10:49:59,758 - root - DEBUG - 267: 16:45:00
+2021-04-16 10:49:59,759 - root - DEBUG - 269: 8:05:00
+2021-04-16 10:49:59,759 - root - DEBUG - 269: 9:20:00
+2021-04-16 10:49:59,759 - root - DEBUG - 269: 10:35:00
+2021-04-16 10:49:59,759 - root - DEBUG - 269: 11:50:00
+2021-04-16 10:49:59,759 - root - DEBUG - 269: 13:05:00
+2021-04-16 10:49:59,759 - root - DEBUG - 269: 14:20:00
+2021-04-16 10:49:59,759 - root - DEBUG - 269: 15:35:00
+2021-04-16 10:49:59,760 - root - DEBUG - 269: 16:50:00
+2021-04-16 10:49:59,760 - root - DEBUG - 271: 7:40:00
+2021-04-16 10:49:59,760 - root - DEBUG - 271: 8:55:00
+2021-04-16 10:49:59,760 - root - DEBUG - 271: 10:10:00
+2021-04-16 10:49:59,760 - root - DEBUG - 271: 11:25:00
+2021-04-16 10:49:59,760 - root - DEBUG - 271: 12:40:00
+2021-04-16 10:49:59,760 - root - DEBUG - 271: 13:55:00
+2021-04-16 10:49:59,760 - root - DEBUG - 271: 15:10:00
+2021-04-16 10:49:59,761 - root - DEBUG - 271: 16:25:00
+2021-04-16 10:49:59,761 - root - DEBUG - 277: LightOutput.light_output = 1
+2021-04-16 10:49:59,761 - root - INFO - 279: PROCESS OUTPUT LIGHT ON
+2021-04-16 10:49:59,761 - root - DEBUG - 289: 0
+2021-04-16 10:49:59,761 - root - DEBUG - 300: OFF
+2021-04-16 10:49:59,761 - root - DEBUG - 289: 1
+2021-04-16 10:49:59,761 - root - DEBUG - 300: OFF
+2021-04-16 10:49:59,761 - root - DEBUG - 289: 2
+2021-04-16 10:49:59,762 - root - DEBUG - 300: OFF
+2021-04-16 10:49:59,762 - root - DEBUG - 289: 3
+2021-04-16 10:49:59,762 - root - DEBUG - 300: OFF
+2021-04-16 10:49:59,762 - root - DEBUG - 289: 4
+2021-04-16 10:49:59,762 - root - DEBUG - 300: OFF
+2021-04-16 10:49:59,762 - root - DEBUG - 289: 5
+2021-04-16 10:49:59,762 - root - DEBUG - 300: OFF
+2021-04-16 10:49:59,762 - root - DEBUG - 289: 6
+2021-04-16 10:49:59,762 - root - DEBUG - 300: OFF
+2021-04-16 10:49:59,763 - root - DEBUG - 289: 7
+2021-04-16 10:49:59,763 - root - DEBUG - 300: OFF
+2021-04-16 10:49:59,763 - root - INFO - 307: PROCESS OUTPUT PUMP OFF
+2021-04-16 10:49:59,763 - root - DEBUG - 313: 0
+2021-04-16 10:49:59,763 - root - DEBUG - 324: OFF
+2021-04-16 10:49:59,763 - root - DEBUG - 313: 1
+2021-04-16 10:49:59,763 - root - DEBUG - 324: OFF
+2021-04-16 10:49:59,763 - root - DEBUG - 313: 2
+2021-04-16 10:49:59,764 - root - DEBUG - 324: OFF
+2021-04-16 10:49:59,764 - root - DEBUG - 313: 3
+2021-04-16 10:49:59,764 - root - DEBUG - 324: OFF
+2021-04-16 10:49:59,764 - root - DEBUG - 313: 4
+2021-04-16 10:49:59,764 - root - DEBUG - 324: OFF
+2021-04-16 10:49:59,764 - root - DEBUG - 313: 5
+2021-04-16 10:49:59,764 - root - DEBUG - 324: OFF
+2021-04-16 10:49:59,764 - root - DEBUG - 313: 6
+2021-04-16 10:49:59,764 - root - DEBUG - 324: OFF
+2021-04-16 10:49:59,765 - root - DEBUG - 313: 7
+2021-04-16 10:49:59,765 - root - DEBUG - 324: OFF
+2021-04-16 10:49:59,765 - root - INFO - 331: PROCESS OUTPUT AIRSTONE OFF
+2021-04-16 10:49:59,780 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:49:59,780 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:49:59,781 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:49:59,781 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:49:59,781 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:49:59,781 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:00,283 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:00,284 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:00,284 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:00,284 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:00,285 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:00,285 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:00,787 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:00,788 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:00,788 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:00,788 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:00,790 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:00,790 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:01,293 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:01,294 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:01,294 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:01,294 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:01,294 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:01,294 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:01,800 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:01,800 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:01,800 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:01,800 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:01,801 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:01,801 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:02,304 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:02,304 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:02,305 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:02,305 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:02,305 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:02,305 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:02,808 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:02,809 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:02,809 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:02,809 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:02,809 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:02,810 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:03,314 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:03,314 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:03,315 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:03,315 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:03,315 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:03,315 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:03,818 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:03,818 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:03,818 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:03,819 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:03,819 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:03,819 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:04,321 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:04,322 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:04,322 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:04,322 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:04,323 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:04,323 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:04,746 - root - DEBUG - 85: Het is 10 uur en 50 minuten
+2021-04-16 10:50:04,746 - root - DEBUG - 135: Pomp werkt gedurende 00:05:00 en gaat 8 keer aan om de 1:15:00
+2021-04-16 10:50:04,747 - root - DEBUG - 175: Airstone gaat 00:20:00 voor de pomp aan
+2021-04-16 10:50:04,747 - root - DEBUG - 87: Lamp gaat aan om 08:00:00
+2021-04-16 10:50:04,747 - root - DEBUG - 88: Lamp gaat uit om 18:00:00
+2021-04-16 10:50:04,748 - root - DEBUG - 89: Licht is aan gedurende 10:00:00
+2021-04-16 10:50:04,769 - root - DEBUG - 211: timedelta_now = 10:50:00
+2021-04-16 10:50:04,770 - root - DEBUG - 238: pump_start_times = []
+2021-04-16 10:50:04,770 - root - DEBUG - 239: pump_stop_times = []
+2021-04-16 10:50:04,770 - root - DEBUG - 240: air_start_times = []
+2021-04-16 10:50:04,770 - root - DEBUG - 241: now = 10:50:04.769273
+2021-04-16 10:50:04,770 - root - DEBUG - 242: start_light = 08:00:00
+2021-04-16 10:50:04,770 - root - DEBUG - 243: stop_light = 18:00:00
+2021-04-16 10:50:04,771 - root - DEBUG - 244: time_light_on = 10:00:00
+2021-04-16 10:50:04,771 - root - DEBUG - 245: timedelta_start_light = 8:00:00
+2021-04-16 10:50:04,771 - root - DEBUG - 246: timedelta_air_on = 0:20:00
+2021-04-16 10:50:04,771 - root - DEBUG - 247: timedelta_pump_on = 0:05:00
+2021-04-16 10:50:04,771 - root - DEBUG - 248: PumpTimer.pump_repeat = 8
+2021-04-16 10:50:04,771 - root - DEBUG - 249: pump_interval = 1:15:00
+2021-04-16 10:50:04,772 - root - DEBUG - 256: pump_start_times = [datetime.timedelta(seconds=60300), datetime.timedelta(seconds=55800), datetime.timedelta(seconds=51300), datetime.timedelta(seconds=46800), datetime.timedelta(seconds=42300), datetime.timedelta(seconds=37800), datetime.timedelta(seconds=33300)]
+2021-04-16 10:50:04,772 - root - DEBUG - 258: pump_start_times = [datetime.timedelta(seconds=33300), datetime.timedelta(seconds=37800), datetime.timedelta(seconds=42300), datetime.timedelta(seconds=46800), datetime.timedelta(seconds=51300), datetime.timedelta(seconds=55800), datetime.timedelta(seconds=60300)]
+2021-04-16 10:50:04,772 - root - DEBUG - 260: pump_start_times = [datetime.timedelta(seconds=28800), datetime.timedelta(seconds=33300), datetime.timedelta(seconds=37800), datetime.timedelta(seconds=42300), datetime.timedelta(seconds=46800), datetime.timedelta(seconds=51300), datetime.timedelta(seconds=55800), datetime.timedelta(seconds=60300)]
+2021-04-16 10:50:04,772 - root - DEBUG - 267: 8:00:00
+2021-04-16 10:50:04,772 - root - DEBUG - 267: 9:15:00
+2021-04-16 10:50:04,772 - root - DEBUG - 267: 10:30:00
+2021-04-16 10:50:04,773 - root - DEBUG - 267: 11:45:00
+2021-04-16 10:50:04,773 - root - DEBUG - 267: 13:00:00
+2021-04-16 10:50:04,773 - root - DEBUG - 267: 14:15:00
+2021-04-16 10:50:04,773 - root - DEBUG - 267: 15:30:00
+2021-04-16 10:50:04,773 - root - DEBUG - 267: 16:45:00
+2021-04-16 10:50:04,773 - root - DEBUG - 269: 8:05:00
+2021-04-16 10:50:04,773 - root - DEBUG - 269: 9:20:00
+2021-04-16 10:50:04,773 - root - DEBUG - 269: 10:35:00
+2021-04-16 10:50:04,774 - root - DEBUG - 269: 11:50:00
+2021-04-16 10:50:04,774 - root - DEBUG - 269: 13:05:00
+2021-04-16 10:50:04,774 - root - DEBUG - 269: 14:20:00
+2021-04-16 10:50:04,774 - root - DEBUG - 269: 15:35:00
+2021-04-16 10:50:04,774 - root - DEBUG - 269: 16:50:00
+2021-04-16 10:50:04,774 - root - DEBUG - 271: 7:40:00
+2021-04-16 10:50:04,774 - root - DEBUG - 271: 8:55:00
+2021-04-16 10:50:04,775 - root - DEBUG - 271: 10:10:00
+2021-04-16 10:50:04,775 - root - DEBUG - 271: 11:25:00
+2021-04-16 10:50:04,775 - root - DEBUG - 271: 12:40:00
+2021-04-16 10:50:04,775 - root - DEBUG - 271: 13:55:00
+2021-04-16 10:50:04,775 - root - DEBUG - 271: 15:10:00
+2021-04-16 10:50:04,775 - root - DEBUG - 271: 16:25:00
+2021-04-16 10:50:04,775 - root - DEBUG - 277: LightOutput.light_output = 1
+2021-04-16 10:50:04,776 - root - INFO - 279: PROCESS OUTPUT LIGHT ON
+2021-04-16 10:50:04,776 - root - DEBUG - 289: 0
+2021-04-16 10:50:04,776 - root - DEBUG - 300: OFF
+2021-04-16 10:50:04,776 - root - DEBUG - 289: 1
+2021-04-16 10:50:04,776 - root - DEBUG - 300: OFF
+2021-04-16 10:50:04,776 - root - DEBUG - 289: 2
+2021-04-16 10:50:04,776 - root - DEBUG - 300: OFF
+2021-04-16 10:50:04,776 - root - DEBUG - 289: 3
+2021-04-16 10:50:04,777 - root - DEBUG - 300: OFF
+2021-04-16 10:50:04,777 - root - DEBUG - 289: 4
+2021-04-16 10:50:04,777 - root - DEBUG - 300: OFF
+2021-04-16 10:50:04,777 - root - DEBUG - 289: 5
+2021-04-16 10:50:04,777 - root - DEBUG - 300: OFF
+2021-04-16 10:50:04,777 - root - DEBUG - 289: 6
+2021-04-16 10:50:04,777 - root - DEBUG - 300: OFF
+2021-04-16 10:50:04,777 - root - DEBUG - 289: 7
+2021-04-16 10:50:04,778 - root - DEBUG - 300: OFF
+2021-04-16 10:50:04,778 - root - INFO - 307: PROCESS OUTPUT PUMP OFF
+2021-04-16 10:50:04,778 - root - DEBUG - 313: 0
+2021-04-16 10:50:04,778 - root - DEBUG - 324: OFF
+2021-04-16 10:50:04,778 - root - DEBUG - 313: 1
+2021-04-16 10:50:04,778 - root - DEBUG - 324: OFF
+2021-04-16 10:50:04,778 - root - DEBUG - 313: 2
+2021-04-16 10:50:04,779 - root - DEBUG - 324: OFF
+2021-04-16 10:50:04,779 - root - DEBUG - 313: 3
+2021-04-16 10:50:04,779 - root - DEBUG - 324: OFF
+2021-04-16 10:50:04,779 - root - DEBUG - 313: 4
+2021-04-16 10:50:04,779 - root - DEBUG - 324: OFF
+2021-04-16 10:50:04,779 - root - DEBUG - 313: 5
+2021-04-16 10:50:04,780 - root - DEBUG - 324: OFF
+2021-04-16 10:50:04,780 - root - DEBUG - 313: 6
+2021-04-16 10:50:04,780 - root - DEBUG - 324: OFF
+2021-04-16 10:50:04,780 - root - DEBUG - 313: 7
+2021-04-16 10:50:04,780 - root - DEBUG - 324: OFF
+2021-04-16 10:50:04,780 - root - INFO - 331: PROCESS OUTPUT AIRSTONE OFF
+2021-04-16 10:50:04,825 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:04,826 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:04,826 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:04,826 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:04,826 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:04,826 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:05,330 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:05,331 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:05,331 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:05,331 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:05,332 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:05,332 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:05,833 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:05,834 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:05,834 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:05,834 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:05,834 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:05,834 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:06,338 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:06,339 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:06,339 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:06,339 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:06,339 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:06,340 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:06,842 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:06,842 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:06,842 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:06,842 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:06,843 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:06,843 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:07,347 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:07,347 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:07,348 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:07,348 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:07,348 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:07,348 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:07,851 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:07,852 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:07,852 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:07,852 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:07,852 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:07,853 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:08,354 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:08,354 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:08,354 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:08,355 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:08,355 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:08,356 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:08,860 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:08,861 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:08,861 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:08,861 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:08,861 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:08,862 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:09,363 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:09,363 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:09,363 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:09,363 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:09,364 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:09,364 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:09,780 - root - DEBUG - 211: timedelta_now = 10:50:00
+2021-04-16 10:50:09,781 - root - DEBUG - 238: pump_start_times = []
+2021-04-16 10:50:09,781 - root - DEBUG - 239: pump_stop_times = []
+2021-04-16 10:50:09,781 - root - DEBUG - 240: air_start_times = []
+2021-04-16 10:50:09,781 - root - DEBUG - 241: now = 10:50:09.780896
+2021-04-16 10:50:09,781 - root - DEBUG - 242: start_light = 08:00:00
+2021-04-16 10:50:09,782 - root - DEBUG - 243: stop_light = 18:00:00
+2021-04-16 10:50:09,782 - root - DEBUG - 244: time_light_on = 10:00:00
+2021-04-16 10:50:09,782 - root - DEBUG - 245: timedelta_start_light = 8:00:00
+2021-04-16 10:50:09,782 - root - DEBUG - 246: timedelta_air_on = 0:20:00
+2021-04-16 10:50:09,782 - root - DEBUG - 247: timedelta_pump_on = 0:05:00
+2021-04-16 10:50:09,782 - root - DEBUG - 248: PumpTimer.pump_repeat = 8
+2021-04-16 10:50:09,783 - root - DEBUG - 249: pump_interval = 1:15:00
+2021-04-16 10:50:09,783 - root - DEBUG - 256: pump_start_times = [datetime.timedelta(seconds=60300), datetime.timedelta(seconds=55800), datetime.timedelta(seconds=51300), datetime.timedelta(seconds=46800), datetime.timedelta(seconds=42300), datetime.timedelta(seconds=37800), datetime.timedelta(seconds=33300)]
+2021-04-16 10:50:09,783 - root - DEBUG - 258: pump_start_times = [datetime.timedelta(seconds=33300), datetime.timedelta(seconds=37800), datetime.timedelta(seconds=42300), datetime.timedelta(seconds=46800), datetime.timedelta(seconds=51300), datetime.timedelta(seconds=55800), datetime.timedelta(seconds=60300)]
+2021-04-16 10:50:09,783 - root - DEBUG - 260: pump_start_times = [datetime.timedelta(seconds=28800), datetime.timedelta(seconds=33300), datetime.timedelta(seconds=37800), datetime.timedelta(seconds=42300), datetime.timedelta(seconds=46800), datetime.timedelta(seconds=51300), datetime.timedelta(seconds=55800), datetime.timedelta(seconds=60300)]
+2021-04-16 10:50:09,783 - root - DEBUG - 267: 8:00:00
+2021-04-16 10:50:09,784 - root - DEBUG - 267: 9:15:00
+2021-04-16 10:50:09,784 - root - DEBUG - 267: 10:30:00
+2021-04-16 10:50:09,784 - root - DEBUG - 267: 11:45:00
+2021-04-16 10:50:09,784 - root - DEBUG - 267: 13:00:00
+2021-04-16 10:50:09,785 - root - DEBUG - 267: 14:15:00
+2021-04-16 10:50:09,785 - root - DEBUG - 267: 15:30:00
+2021-04-16 10:50:09,786 - root - DEBUG - 267: 16:45:00
+2021-04-16 10:50:09,786 - root - DEBUG - 269: 8:05:00
+2021-04-16 10:50:09,786 - root - DEBUG - 269: 9:20:00
+2021-04-16 10:50:09,786 - root - DEBUG - 269: 10:35:00
+2021-04-16 10:50:09,787 - root - DEBUG - 269: 11:50:00
+2021-04-16 10:50:09,787 - root - DEBUG - 269: 13:05:00
+2021-04-16 10:50:09,787 - root - DEBUG - 269: 14:20:00
+2021-04-16 10:50:09,787 - root - DEBUG - 269: 15:35:00
+2021-04-16 10:50:09,787 - root - DEBUG - 269: 16:50:00
+2021-04-16 10:50:09,788 - root - DEBUG - 271: 7:40:00
+2021-04-16 10:50:09,788 - root - DEBUG - 271: 8:55:00
+2021-04-16 10:50:09,788 - root - DEBUG - 271: 10:10:00
+2021-04-16 10:50:09,788 - root - DEBUG - 271: 11:25:00
+2021-04-16 10:50:09,789 - root - DEBUG - 271: 12:40:00
+2021-04-16 10:50:09,789 - root - DEBUG - 271: 13:55:00
+2021-04-16 10:50:09,789 - root - DEBUG - 271: 15:10:00
+2021-04-16 10:50:09,789 - root - DEBUG - 271: 16:25:00
+2021-04-16 10:50:09,789 - root - DEBUG - 277: LightOutput.light_output = 1
+2021-04-16 10:50:09,789 - root - INFO - 279: PROCESS OUTPUT LIGHT ON
+2021-04-16 10:50:09,789 - root - DEBUG - 289: 0
+2021-04-16 10:50:09,790 - root - DEBUG - 300: OFF
+2021-04-16 10:50:09,790 - root - DEBUG - 289: 1
+2021-04-16 10:50:09,790 - root - DEBUG - 300: OFF
+2021-04-16 10:50:09,790 - root - DEBUG - 289: 2
+2021-04-16 10:50:09,790 - root - DEBUG - 300: OFF
+2021-04-16 10:50:09,790 - root - DEBUG - 289: 3
+2021-04-16 10:50:09,790 - root - DEBUG - 300: OFF
+2021-04-16 10:50:09,790 - root - DEBUG - 289: 4
+2021-04-16 10:50:09,790 - root - DEBUG - 300: OFF
+2021-04-16 10:50:09,791 - root - DEBUG - 289: 5
+2021-04-16 10:50:09,791 - root - DEBUG - 300: OFF
+2021-04-16 10:50:09,791 - root - DEBUG - 289: 6
+2021-04-16 10:50:09,791 - root - DEBUG - 300: OFF
+2021-04-16 10:50:09,791 - root - DEBUG - 289: 7
+2021-04-16 10:50:09,791 - root - DEBUG - 300: OFF
+2021-04-16 10:50:09,791 - root - INFO - 307: PROCESS OUTPUT PUMP OFF
+2021-04-16 10:50:09,792 - root - DEBUG - 313: 0
+2021-04-16 10:50:09,792 - root - DEBUG - 324: OFF
+2021-04-16 10:50:09,792 - root - DEBUG - 313: 1
+2021-04-16 10:50:09,792 - root - DEBUG - 324: OFF
+2021-04-16 10:50:09,792 - root - DEBUG - 313: 2
+2021-04-16 10:50:09,793 - root - DEBUG - 324: OFF
+2021-04-16 10:50:09,793 - root - DEBUG - 313: 3
+2021-04-16 10:50:09,793 - root - DEBUG - 324: OFF
+2021-04-16 10:50:09,793 - root - DEBUG - 313: 4
+2021-04-16 10:50:09,794 - root - DEBUG - 324: OFF
+2021-04-16 10:50:09,794 - root - DEBUG - 313: 5
+2021-04-16 10:50:09,794 - root - DEBUG - 324: OFF
+2021-04-16 10:50:09,794 - root - DEBUG - 313: 6
+2021-04-16 10:50:09,795 - root - DEBUG - 324: OFF
+2021-04-16 10:50:09,795 - root - DEBUG - 313: 7
+2021-04-16 10:50:09,795 - root - DEBUG - 324: OFF
+2021-04-16 10:50:09,796 - root - INFO - 331: PROCESS OUTPUT AIRSTONE OFF
+2021-04-16 10:50:09,867 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:09,867 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:09,868 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:09,868 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:09,868 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:09,868 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:10,370 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:10,370 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:10,371 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:10,371 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:10,371 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:10,371 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:10,874 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:10,875 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:10,874 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:10,877 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:10,879 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:10,880 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:11,383 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:11,384 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:11,384 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:11,384 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:11,385 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:11,385 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:11,887 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:11,887 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:11,887 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:11,887 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:11,888 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:11,888 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:12,391 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:12,392 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:12,392 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:12,392 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:12,392 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:12,393 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:12,897 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:12,898 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:12,898 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:12,898 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:12,898 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:12,898 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:13,402 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:13,402 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:13,402 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:13,402 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:13,403 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:13,403 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:13,905 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:13,905 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:13,905 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:13,906 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:13,909 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:13,909 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:14,408 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:14,408 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:14,409 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:14,409 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:14,414 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:14,415 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:14,752 - root - DEBUG - 135: Pomp werkt gedurende 00:05:00 en gaat 8 keer aan om de 1:15:00
+2021-04-16 10:50:14,752 - root - DEBUG - 175: Airstone gaat 00:20:00 voor de pomp aan
+2021-04-16 10:50:14,752 - root - DEBUG - 85: Het is 10 uur en 50 minuten
+2021-04-16 10:50:14,753 - root - DEBUG - 87: Lamp gaat aan om 08:00:00
+2021-04-16 10:50:14,753 - root - DEBUG - 88: Lamp gaat uit om 18:00:00
+2021-04-16 10:50:14,753 - root - DEBUG - 89: Licht is aan gedurende 10:00:00
+2021-04-16 10:50:14,798 - root - DEBUG - 211: timedelta_now = 10:50:00
+2021-04-16 10:50:14,798 - root - DEBUG - 238: pump_start_times = []
+2021-04-16 10:50:14,798 - root - DEBUG - 239: pump_stop_times = []
+2021-04-16 10:50:14,799 - root - DEBUG - 240: air_start_times = []
+2021-04-16 10:50:14,799 - root - DEBUG - 241: now = 10:50:14.798266
+2021-04-16 10:50:14,799 - root - DEBUG - 242: start_light = 08:00:00
+2021-04-16 10:50:14,799 - root - DEBUG - 243: stop_light = 18:00:00
+2021-04-16 10:50:14,799 - root - DEBUG - 244: time_light_on = 10:00:00
+2021-04-16 10:50:14,800 - root - DEBUG - 245: timedelta_start_light = 8:00:00
+2021-04-16 10:50:14,800 - root - DEBUG - 246: timedelta_air_on = 0:20:00
+2021-04-16 10:50:14,800 - root - DEBUG - 247: timedelta_pump_on = 0:05:00
+2021-04-16 10:50:14,800 - root - DEBUG - 248: PumpTimer.pump_repeat = 8
+2021-04-16 10:50:14,800 - root - DEBUG - 249: pump_interval = 1:15:00
+2021-04-16 10:50:14,800 - root - DEBUG - 256: pump_start_times = [datetime.timedelta(seconds=60300), datetime.timedelta(seconds=55800), datetime.timedelta(seconds=51300), datetime.timedelta(seconds=46800), datetime.timedelta(seconds=42300), datetime.timedelta(seconds=37800), datetime.timedelta(seconds=33300)]
+2021-04-16 10:50:14,801 - root - DEBUG - 258: pump_start_times = [datetime.timedelta(seconds=33300), datetime.timedelta(seconds=37800), datetime.timedelta(seconds=42300), datetime.timedelta(seconds=46800), datetime.timedelta(seconds=51300), datetime.timedelta(seconds=55800), datetime.timedelta(seconds=60300)]
+2021-04-16 10:50:14,803 - root - DEBUG - 260: pump_start_times = [datetime.timedelta(seconds=28800), datetime.timedelta(seconds=33300), datetime.timedelta(seconds=37800), datetime.timedelta(seconds=42300), datetime.timedelta(seconds=46800), datetime.timedelta(seconds=51300), datetime.timedelta(seconds=55800), datetime.timedelta(seconds=60300)]
+2021-04-16 10:50:14,804 - root - DEBUG - 267: 8:00:00
+2021-04-16 10:50:14,806 - root - DEBUG - 267: 9:15:00
+2021-04-16 10:50:14,808 - root - DEBUG - 267: 10:30:00
+2021-04-16 10:50:14,808 - root - DEBUG - 267: 11:45:00
+2021-04-16 10:50:14,809 - root - DEBUG - 267: 13:00:00
+2021-04-16 10:50:14,809 - root - DEBUG - 267: 14:15:00
+2021-04-16 10:50:14,809 - root - DEBUG - 267: 15:30:00
+2021-04-16 10:50:14,810 - root - DEBUG - 267: 16:45:00
+2021-04-16 10:50:14,810 - root - DEBUG - 269: 8:05:00
+2021-04-16 10:50:14,810 - root - DEBUG - 269: 9:20:00
+2021-04-16 10:50:14,810 - root - DEBUG - 269: 10:35:00
+2021-04-16 10:50:14,810 - root - DEBUG - 269: 11:50:00
+2021-04-16 10:50:14,810 - root - DEBUG - 269: 13:05:00
+2021-04-16 10:50:14,810 - root - DEBUG - 269: 14:20:00
+2021-04-16 10:50:14,810 - root - DEBUG - 269: 15:35:00
+2021-04-16 10:50:14,811 - root - DEBUG - 269: 16:50:00
+2021-04-16 10:50:14,811 - root - DEBUG - 271: 7:40:00
+2021-04-16 10:50:14,811 - root - DEBUG - 271: 8:55:00
+2021-04-16 10:50:14,811 - root - DEBUG - 271: 10:10:00
+2021-04-16 10:50:14,811 - root - DEBUG - 271: 11:25:00
+2021-04-16 10:50:14,811 - root - DEBUG - 271: 12:40:00
+2021-04-16 10:50:14,811 - root - DEBUG - 271: 13:55:00
+2021-04-16 10:50:14,811 - root - DEBUG - 271: 15:10:00
+2021-04-16 10:50:14,811 - root - DEBUG - 271: 16:25:00
+2021-04-16 10:50:14,812 - root - DEBUG - 277: LightOutput.light_output = 1
+2021-04-16 10:50:14,812 - root - INFO - 279: PROCESS OUTPUT LIGHT ON
+2021-04-16 10:50:14,812 - root - DEBUG - 289: 0
+2021-04-16 10:50:14,813 - root - DEBUG - 300: OFF
+2021-04-16 10:50:14,813 - root - DEBUG - 289: 1
+2021-04-16 10:50:14,813 - root - DEBUG - 300: OFF
+2021-04-16 10:50:14,813 - root - DEBUG - 289: 2
+2021-04-16 10:50:14,813 - root - DEBUG - 300: OFF
+2021-04-16 10:50:14,814 - root - DEBUG - 289: 3
+2021-04-16 10:50:14,814 - root - DEBUG - 300: OFF
+2021-04-16 10:50:14,814 - root - DEBUG - 289: 4
+2021-04-16 10:50:14,814 - root - DEBUG - 300: OFF
+2021-04-16 10:50:14,814 - root - DEBUG - 289: 5
+2021-04-16 10:50:14,815 - root - DEBUG - 300: OFF
+2021-04-16 10:50:14,815 - root - DEBUG - 289: 6
+2021-04-16 10:50:14,815 - root - DEBUG - 300: OFF
+2021-04-16 10:50:14,816 - root - DEBUG - 289: 7
+2021-04-16 10:50:14,817 - root - DEBUG - 300: OFF
+2021-04-16 10:50:14,817 - root - INFO - 307: PROCESS OUTPUT PUMP OFF
+2021-04-16 10:50:14,818 - root - DEBUG - 313: 0
+2021-04-16 10:50:14,819 - root - DEBUG - 324: OFF
+2021-04-16 10:50:14,820 - root - DEBUG - 313: 1
+2021-04-16 10:50:14,820 - root - DEBUG - 324: OFF
+2021-04-16 10:50:14,820 - root - DEBUG - 313: 2
+2021-04-16 10:50:14,820 - root - DEBUG - 324: OFF
+2021-04-16 10:50:14,820 - root - DEBUG - 313: 3
+2021-04-16 10:50:14,820 - root - DEBUG - 324: OFF
+2021-04-16 10:50:14,820 - root - DEBUG - 313: 4
+2021-04-16 10:50:14,821 - root - DEBUG - 324: OFF
+2021-04-16 10:50:14,821 - root - DEBUG - 313: 5
+2021-04-16 10:50:14,821 - root - DEBUG - 324: OFF
+2021-04-16 10:50:14,821 - root - DEBUG - 313: 6
+2021-04-16 10:50:14,821 - root - DEBUG - 324: OFF
+2021-04-16 10:50:14,821 - root - DEBUG - 313: 7
+2021-04-16 10:50:14,821 - root - DEBUG - 324: OFF
+2021-04-16 10:50:14,821 - root - INFO - 331: PROCESS OUTPUT AIRSTONE OFF
+2021-04-16 10:50:14,910 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:14,910 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:14,911 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:14,911 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:14,915 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:14,916 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:15,414 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:15,414 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:15,415 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:15,415 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:15,422 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:15,422 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:15,917 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:15,918 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:15,918 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:15,918 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:15,927 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:15,928 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:16,421 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:16,421 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:16,421 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:16,422 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:16,429 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:16,429 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:16,924 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:16,924 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:16,924 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:16,925 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:16,930 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:16,931 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:17,427 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:17,427 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:17,427 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:17,428 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:17,433 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:17,434 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:17,930 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:17,931 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:17,932 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:17,933 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:17,936 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:17,937 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:18,439 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:18,439 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:18,440 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:18,440 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:18,440 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:18,441 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:18,942 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:18,942 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:18,943 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:18,943 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:18,943 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:18,943 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:19,445 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:19,446 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:19,446 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:19,446 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:19,446 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:19,446 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:19,825 - root - DEBUG - 211: timedelta_now = 10:50:00
+2021-04-16 10:50:19,825 - root - DEBUG - 238: pump_start_times = []
+2021-04-16 10:50:19,825 - root - DEBUG - 239: pump_stop_times = []
+2021-04-16 10:50:19,826 - root - DEBUG - 240: air_start_times = []
+2021-04-16 10:50:19,826 - root - DEBUG - 241: now = 10:50:19.824986
+2021-04-16 10:50:19,826 - root - DEBUG - 242: start_light = 08:00:00
+2021-04-16 10:50:19,826 - root - DEBUG - 243: stop_light = 18:00:00
+2021-04-16 10:50:19,826 - root - DEBUG - 244: time_light_on = 10:00:00
+2021-04-16 10:50:19,827 - root - DEBUG - 245: timedelta_start_light = 8:00:00
+2021-04-16 10:50:19,827 - root - DEBUG - 246: timedelta_air_on = 0:20:00
+2021-04-16 10:50:19,827 - root - DEBUG - 247: timedelta_pump_on = 0:05:00
+2021-04-16 10:50:19,827 - root - DEBUG - 248: PumpTimer.pump_repeat = 8
+2021-04-16 10:50:19,827 - root - DEBUG - 249: pump_interval = 1:15:00
+2021-04-16 10:50:19,828 - root - DEBUG - 256: pump_start_times = [datetime.timedelta(seconds=60300), datetime.timedelta(seconds=55800), datetime.timedelta(seconds=51300), datetime.timedelta(seconds=46800), datetime.timedelta(seconds=42300), datetime.timedelta(seconds=37800), datetime.timedelta(seconds=33300)]
+2021-04-16 10:50:19,828 - root - DEBUG - 258: pump_start_times = [datetime.timedelta(seconds=33300), datetime.timedelta(seconds=37800), datetime.timedelta(seconds=42300), datetime.timedelta(seconds=46800), datetime.timedelta(seconds=51300), datetime.timedelta(seconds=55800), datetime.timedelta(seconds=60300)]
+2021-04-16 10:50:19,829 - root - DEBUG - 260: pump_start_times = [datetime.timedelta(seconds=28800), datetime.timedelta(seconds=33300), datetime.timedelta(seconds=37800), datetime.timedelta(seconds=42300), datetime.timedelta(seconds=46800), datetime.timedelta(seconds=51300), datetime.timedelta(seconds=55800), datetime.timedelta(seconds=60300)]
+2021-04-16 10:50:19,829 - root - DEBUG - 267: 8:00:00
+2021-04-16 10:50:19,829 - root - DEBUG - 267: 9:15:00
+2021-04-16 10:50:19,830 - root - DEBUG - 267: 10:30:00
+2021-04-16 10:50:19,830 - root - DEBUG - 267: 11:45:00
+2021-04-16 10:50:19,830 - root - DEBUG - 267: 13:00:00
+2021-04-16 10:50:19,830 - root - DEBUG - 267: 14:15:00
+2021-04-16 10:50:19,831 - root - DEBUG - 267: 15:30:00
+2021-04-16 10:50:19,831 - root - DEBUG - 267: 16:45:00
+2021-04-16 10:50:19,831 - root - DEBUG - 269: 8:05:00
+2021-04-16 10:50:19,831 - root - DEBUG - 269: 9:20:00
+2021-04-16 10:50:19,832 - root - DEBUG - 269: 10:35:00
+2021-04-16 10:50:19,832 - root - DEBUG - 269: 11:50:00
+2021-04-16 10:50:19,832 - root - DEBUG - 269: 13:05:00
+2021-04-16 10:50:19,832 - root - DEBUG - 269: 14:20:00
+2021-04-16 10:50:19,832 - root - DEBUG - 269: 15:35:00
+2021-04-16 10:50:19,832 - root - DEBUG - 269: 16:50:00
+2021-04-16 10:50:19,833 - root - DEBUG - 271: 7:40:00
+2021-04-16 10:50:19,833 - root - DEBUG - 271: 8:55:00
+2021-04-16 10:50:19,833 - root - DEBUG - 271: 10:10:00
+2021-04-16 10:50:19,833 - root - DEBUG - 271: 11:25:00
+2021-04-16 10:50:19,833 - root - DEBUG - 271: 12:40:00
+2021-04-16 10:50:19,834 - root - DEBUG - 271: 13:55:00
+2021-04-16 10:50:19,834 - root - DEBUG - 271: 15:10:00
+2021-04-16 10:50:19,834 - root - DEBUG - 271: 16:25:00
+2021-04-16 10:50:19,834 - root - DEBUG - 277: LightOutput.light_output = 1
+2021-04-16 10:50:19,834 - root - INFO - 279: PROCESS OUTPUT LIGHT ON
+2021-04-16 10:50:19,834 - root - DEBUG - 289: 0
+2021-04-16 10:50:19,835 - root - DEBUG - 300: OFF
+2021-04-16 10:50:19,835 - root - DEBUG - 289: 1
+2021-04-16 10:50:19,835 - root - DEBUG - 300: OFF
+2021-04-16 10:50:19,835 - root - DEBUG - 289: 2
+2021-04-16 10:50:19,835 - root - DEBUG - 300: OFF
+2021-04-16 10:50:19,835 - root - DEBUG - 289: 3
+2021-04-16 10:50:19,836 - root - DEBUG - 300: OFF
+2021-04-16 10:50:19,836 - root - DEBUG - 289: 4
+2021-04-16 10:50:19,836 - root - DEBUG - 300: OFF
+2021-04-16 10:50:19,836 - root - DEBUG - 289: 5
+2021-04-16 10:50:19,837 - root - DEBUG - 300: OFF
+2021-04-16 10:50:19,837 - root - DEBUG - 289: 6
+2021-04-16 10:50:19,837 - root - DEBUG - 300: OFF
+2021-04-16 10:50:19,838 - root - DEBUG - 289: 7
+2021-04-16 10:50:19,838 - root - DEBUG - 300: OFF
+2021-04-16 10:50:19,838 - root - INFO - 307: PROCESS OUTPUT PUMP OFF
+2021-04-16 10:50:19,839 - root - DEBUG - 313: 0
+2021-04-16 10:50:19,839 - root - DEBUG - 324: OFF
+2021-04-16 10:50:19,839 - root - DEBUG - 313: 1
+2021-04-16 10:50:19,840 - root - DEBUG - 324: OFF
+2021-04-16 10:50:19,840 - root - DEBUG - 313: 2
+2021-04-16 10:50:19,840 - root - DEBUG - 324: OFF
+2021-04-16 10:50:19,840 - root - DEBUG - 313: 3
+2021-04-16 10:50:19,840 - root - DEBUG - 324: OFF
+2021-04-16 10:50:19,841 - root - DEBUG - 313: 4
+2021-04-16 10:50:19,841 - root - DEBUG - 324: OFF
+2021-04-16 10:50:19,841 - root - DEBUG - 313: 5
+2021-04-16 10:50:19,841 - root - DEBUG - 324: OFF
+2021-04-16 10:50:19,841 - root - DEBUG - 313: 6
+2021-04-16 10:50:19,842 - root - DEBUG - 324: OFF
+2021-04-16 10:50:19,842 - root - DEBUG - 313: 7
+2021-04-16 10:50:19,842 - root - DEBUG - 324: OFF
+2021-04-16 10:50:19,842 - root - INFO - 331: PROCESS OUTPUT AIRSTONE OFF
+2021-04-16 10:50:19,950 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:19,950 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:19,950 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:19,951 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:19,952 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:19,953 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:20,458 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:20,459 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:20,459 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:20,459 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:20,459 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:20,459 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:20,960 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:20,960 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:20,960 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:20,961 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:20,961 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:20,961 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:21,461 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:21,462 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:21,466 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:21,466 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:21,466 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:21,467 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:21,965 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:21,965 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:21,971 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:21,972 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:21,972 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:21,972 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:22,468 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:22,469 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:22,478 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:22,478 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:22,478 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:22,478 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:22,970 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:22,971 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:22,979 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:22,980 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:22,980 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:22,980 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:23,475 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:23,475 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:23,482 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:23,483 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:23,483 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:23,483 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:23,976 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:23,976 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:23,984 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:23,984 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:23,987 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:23,987 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:24,481 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:24,482 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:24,488 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:24,488 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:24,489 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:24,489 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:24,759 - root - DEBUG - 135: Pomp werkt gedurende 00:05:00 en gaat 8 keer aan om de 1:15:00
+2021-04-16 10:50:24,759 - root - DEBUG - 175: Airstone gaat 00:20:00 voor de pomp aan
+2021-04-16 10:50:24,759 - root - DEBUG - 85: Het is 10 uur en 50 minuten
+2021-04-16 10:50:24,760 - root - DEBUG - 87: Lamp gaat aan om 08:00:00
+2021-04-16 10:50:24,760 - root - DEBUG - 88: Lamp gaat uit om 18:00:00
+2021-04-16 10:50:24,760 - root - DEBUG - 89: Licht is aan gedurende 10:00:00
+2021-04-16 10:50:24,846 - root - DEBUG - 211: timedelta_now = 10:50:00
+2021-04-16 10:50:24,846 - root - DEBUG - 238: pump_start_times = []
+2021-04-16 10:50:24,847 - root - DEBUG - 239: pump_stop_times = []
+2021-04-16 10:50:24,847 - root - DEBUG - 240: air_start_times = []
+2021-04-16 10:50:24,847 - root - DEBUG - 241: now = 10:50:24.846258
+2021-04-16 10:50:24,848 - root - DEBUG - 242: start_light = 08:00:00
+2021-04-16 10:50:24,848 - root - DEBUG - 243: stop_light = 18:00:00
+2021-04-16 10:50:24,848 - root - DEBUG - 244: time_light_on = 10:00:00
+2021-04-16 10:50:24,848 - root - DEBUG - 245: timedelta_start_light = 8:00:00
+2021-04-16 10:50:24,849 - root - DEBUG - 246: timedelta_air_on = 0:20:00
+2021-04-16 10:50:24,849 - root - DEBUG - 247: timedelta_pump_on = 0:05:00
+2021-04-16 10:50:24,849 - root - DEBUG - 248: PumpTimer.pump_repeat = 8
+2021-04-16 10:50:24,849 - root - DEBUG - 249: pump_interval = 1:15:00
+2021-04-16 10:50:24,850 - root - DEBUG - 256: pump_start_times = [datetime.timedelta(seconds=60300), datetime.timedelta(seconds=55800), datetime.timedelta(seconds=51300), datetime.timedelta(seconds=46800), datetime.timedelta(seconds=42300), datetime.timedelta(seconds=37800), datetime.timedelta(seconds=33300)]
+2021-04-16 10:50:24,850 - root - DEBUG - 258: pump_start_times = [datetime.timedelta(seconds=33300), datetime.timedelta(seconds=37800), datetime.timedelta(seconds=42300), datetime.timedelta(seconds=46800), datetime.timedelta(seconds=51300), datetime.timedelta(seconds=55800), datetime.timedelta(seconds=60300)]
+2021-04-16 10:50:24,850 - root - DEBUG - 260: pump_start_times = [datetime.timedelta(seconds=28800), datetime.timedelta(seconds=33300), datetime.timedelta(seconds=37800), datetime.timedelta(seconds=42300), datetime.timedelta(seconds=46800), datetime.timedelta(seconds=51300), datetime.timedelta(seconds=55800), datetime.timedelta(seconds=60300)]
+2021-04-16 10:50:24,850 - root - DEBUG - 267: 8:00:00
+2021-04-16 10:50:24,851 - root - DEBUG - 267: 9:15:00
+2021-04-16 10:50:24,851 - root - DEBUG - 267: 10:30:00
+2021-04-16 10:50:24,851 - root - DEBUG - 267: 11:45:00
+2021-04-16 10:50:24,851 - root - DEBUG - 267: 13:00:00
+2021-04-16 10:50:24,852 - root - DEBUG - 267: 14:15:00
+2021-04-16 10:50:24,852 - root - DEBUG - 267: 15:30:00
+2021-04-16 10:50:24,852 - root - DEBUG - 267: 16:45:00
+2021-04-16 10:50:24,852 - root - DEBUG - 269: 8:05:00
+2021-04-16 10:50:24,852 - root - DEBUG - 269: 9:20:00
+2021-04-16 10:50:24,853 - root - DEBUG - 269: 10:35:00
+2021-04-16 10:50:24,853 - root - DEBUG - 269: 11:50:00
+2021-04-16 10:50:24,853 - root - DEBUG - 269: 13:05:00
+2021-04-16 10:50:24,853 - root - DEBUG - 269: 14:20:00
+2021-04-16 10:50:24,853 - root - DEBUG - 269: 15:35:00
+2021-04-16 10:50:24,854 - root - DEBUG - 269: 16:50:00
+2021-04-16 10:50:24,854 - root - DEBUG - 271: 7:40:00
+2021-04-16 10:50:24,854 - root - DEBUG - 271: 8:55:00
+2021-04-16 10:50:24,854 - root - DEBUG - 271: 10:10:00
+2021-04-16 10:50:24,855 - root - DEBUG - 271: 11:25:00
+2021-04-16 10:50:24,855 - root - DEBUG - 271: 12:40:00
+2021-04-16 10:50:24,855 - root - DEBUG - 271: 13:55:00
+2021-04-16 10:50:24,855 - root - DEBUG - 271: 15:10:00
+2021-04-16 10:50:24,855 - root - DEBUG - 271: 16:25:00
+2021-04-16 10:50:24,856 - root - DEBUG - 277: LightOutput.light_output = 1
+2021-04-16 10:50:24,856 - root - INFO - 279: PROCESS OUTPUT LIGHT ON
+2021-04-16 10:50:24,856 - root - DEBUG - 289: 0
+2021-04-16 10:50:24,856 - root - DEBUG - 300: OFF
+2021-04-16 10:50:24,856 - root - DEBUG - 289: 1
+2021-04-16 10:50:24,857 - root - DEBUG - 300: OFF
+2021-04-16 10:50:24,857 - root - DEBUG - 289: 2
+2021-04-16 10:50:24,857 - root - DEBUG - 300: OFF
+2021-04-16 10:50:24,857 - root - DEBUG - 289: 3
+2021-04-16 10:50:24,857 - root - DEBUG - 300: OFF
+2021-04-16 10:50:24,857 - root - DEBUG - 289: 4
+2021-04-16 10:50:24,857 - root - DEBUG - 300: OFF
+2021-04-16 10:50:24,857 - root - DEBUG - 289: 5
+2021-04-16 10:50:24,858 - root - DEBUG - 300: OFF
+2021-04-16 10:50:24,858 - root - DEBUG - 289: 6
+2021-04-16 10:50:24,858 - root - DEBUG - 300: OFF
+2021-04-16 10:50:24,858 - root - DEBUG - 289: 7
+2021-04-16 10:50:24,858 - root - DEBUG - 300: OFF
+2021-04-16 10:50:24,858 - root - INFO - 307: PROCESS OUTPUT PUMP OFF
+2021-04-16 10:50:24,859 - root - DEBUG - 313: 0
+2021-04-16 10:50:24,859 - root - DEBUG - 324: OFF
+2021-04-16 10:50:24,859 - root - DEBUG - 313: 1
+2021-04-16 10:50:24,859 - root - DEBUG - 324: OFF
+2021-04-16 10:50:24,859 - root - DEBUG - 313: 2
+2021-04-16 10:50:24,859 - root - DEBUG - 324: OFF
+2021-04-16 10:50:24,859 - root - DEBUG - 313: 3
+2021-04-16 10:50:24,860 - root - DEBUG - 324: OFF
+2021-04-16 10:50:24,860 - root - DEBUG - 313: 4
+2021-04-16 10:50:24,860 - root - DEBUG - 324: OFF
+2021-04-16 10:50:24,860 - root - DEBUG - 313: 5
+2021-04-16 10:50:24,860 - root - DEBUG - 324: OFF
+2021-04-16 10:50:24,860 - root - DEBUG - 313: 6
+2021-04-16 10:50:24,860 - root - DEBUG - 324: OFF
+2021-04-16 10:50:24,861 - root - DEBUG - 313: 7
+2021-04-16 10:50:24,861 - root - DEBUG - 324: OFF
+2021-04-16 10:50:24,861 - root - INFO - 331: PROCESS OUTPUT AIRSTONE OFF
+2021-04-16 10:50:25,015 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:25,015 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:25,015 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:25,151 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:25,151 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:25,152 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:25,152 - root - INFO - 1512: End <__main__.ShutdownWindow object at 0x7fa5e828e700>
+2021-04-16 10:50:25,657 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:25,657 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:25,657 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:25,659 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:25,660 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:25,660 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:26,160 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:26,161 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:26,161 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:26,161 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:26,161 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:26,162 - root - INFO - 387: OUTPUT PUMP OFF
+2021-04-16 10:50:26,662 - root - DEBUG - 413: self.airstone_output = 0
+2021-04-16 10:50:26,663 - root - DEBUG - 358: self.light_output = 0
+2021-04-16 10:50:26,663 - root - INFO - 416: OUTPUT AIRSTONE OFF
+2021-04-16 10:50:26,663 - root - INFO - 360: OUTPUT LIGHT OFF
+2021-04-16 10:50:26,663 - root - DEBUG - 385: self.pump_output = 0
+2021-04-16 10:50:26,664 - root - INFO - 387: OUTPUT PUMP OFF

@@ -4,42 +4,20 @@ import os
 import time
 import datetime
 import threading
+import logging
 import logging.handlers
 import logging.config
-import logging
 import RPi.GPIO
 import sqlite3
 import pyqtgraph
 import pg_time_axis
 from PyQt5 import QtWidgets, QtCore, QtGui
 
-"""
-# Initialise logger
-# create logger with 'mainapp'
-logger = logging.getLogger("mainapp")
-logger.setLevel(logging.DEBUG)
-# create rotating file handler which logs even debug messages
-rfh = logging.handlers.RotatingFileHandler("mainapp.log", "a", 2560000, 3)
-rfh.setLevel(logging.DEBUG)
-# create console handler with a higher log level
-ch = logging.StreamHandler()
-ch.setLevel(logging.INFO)
-# create formatter and add it to the handlers
-formatter = logging.Formatter(
-    "%(asctime)s - %(name)s - %(levelname)s - %(lineno)d: %(message)s")
-#  "%(asctime)s - %(filename)s - %(name)s - %(levelname)s - %(message)s")
-rfh.setFormatter(formatter)
-ch.setFormatter(formatter)
-# add the handlers to the logger
-logger.addHandler(rfh)
-logger.addHandler(ch)
-"""
-
 # Logging
 # Open logging configuration
 logging.config.fileConfig("logging.conf")
 # create logger
-logger = logging.getLogger("mainapp")
+logger = logging.getLogger("root")
 
 # Define data.db directory
 data_db = "data.db"

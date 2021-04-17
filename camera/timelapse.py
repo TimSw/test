@@ -2,7 +2,9 @@
 import time
 import picamera
 
-camera = picamera.PiCamera(resolution=(1280, 720), framerate=30, rotation=90)
+camera = picamera.PiCamera(resolution=(1280, 720), framerate=30)
+# Rotate 90°
+camera.rotation = 90
 # Set ISO to the desired value
 camera.iso = 100
 # Wait for the automatic gain control to settle

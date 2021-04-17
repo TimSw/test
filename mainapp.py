@@ -614,6 +614,7 @@ class TemperatureWindow(QtWidgets.QDialog):
         lbl_delete_all = QtWidgets.QLabel("All", self)
         lbl_delete_bad = QtWidgets.QLabel("Bad", self)
 
+        # TODO refresh plot widget
         plot_widget = PlotWindow()
 
         h_box = QtWidgets.QHBoxLayout()

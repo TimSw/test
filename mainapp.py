@@ -844,6 +844,9 @@ class WaterWindow(QtWidgets.QDialog):
         pb_home.setIconSize(icon_size)
         pb_home.clicked.connect(self.go_main_window)
 
+        # TODO refresh plot widget
+        plot_widget = MoisturePlot()
+
         h_box = QtWidgets.QHBoxLayout()
         h_box.addWidget(self.tb_pomp)
         h_box.addWidget(self.tb_airstone)
@@ -851,7 +854,7 @@ class WaterWindow(QtWidgets.QDialog):
         h_box.addWidget(pb_home)
 
         v_box = QtWidgets.QVBoxLayout()
-        v_box.addStretch(0)
+        v_box.addWidget(plot_widget)
         v_box.addLayout(h_box)
 
         self.setLayout(v_box)
@@ -887,6 +890,52 @@ class WaterWindow(QtWidgets.QDialog):
             logger.debug("AirstoneOutput.airstone_output = %s",
                          AirstoneOutput.airstone_output)
             logger.info("BUTTON AIRSTONE WATERWINDOW OFF")
+
+
+class MoisturePlot(pyqtgraph.PlotWidget):
+    def __init__(self):
+        pyqtgraph.PlotWidget.__init__(self)
+
+        # Initialise sqlite
+        con = sqlite3.connect(data_db)
+        cur = con.cursor()
+
+        # Initialise data arrays
+        x_timestamp = []
+        y_moisture = []
+        x2data = []
+        y_av_moisture = []
+
+        # Select all data ordered and append lists
+        cur.execute(
+            "SELECT * FROM moisture ORDER BY timestamp DESC LIMIT 1440")
+        data = cur.fetchall()
+        for row in data:
+            x_timestamp.append(row[0])
+            y_moisture.append(row[1])
+
+        # Average value
+        average_1 = sum(y_moisture) / float(len(y_moisture))
+        for i in y_moisture:
+            y_av_moisture.append(average_1)
+
+        x2data = x_timestamp
+
+        # Add the Date-time axis
+        axis = pg_time_axis.DateAxisItem(orientation='bottom')
+        axis.attachToPlotItem(self.getPlotItem())
+
+        # Plot data
+        self.plot(x=x_timestamp, y=y_moisture, pen="r", name="Sensor 1")
+        self.plot(x=x2data, y=y_av_moisture, pen="r", name="Av Sensor 1")
+
+        # Save (commit) the changes
+        con.commit()
+
+        # Close connection
+        con.close()
+
+        logger.info("End %s", self)
 
 
 class ClockWindow(QtWidgets.QDialog):

@@ -844,12 +844,30 @@ class WaterWindow(QtWidgets.QDialog):
         pb_home.setIconSize(icon_size)
         pb_home.clicked.connect(self.go_main_window)
 
+        pb_delete_all = QtWidgets.QToolButton(self)
+        pb_delete_all.setIcon(QtGui.QIcon("icons/IconRecycle.png"))
+        pb_delete_all.setIconSize(icon_size)
+        pb_delete_all.clicked.connect(self.delete_all_data)
+
+        pb_delete_bad = QtWidgets.QToolButton(self)
+        pb_delete_bad.setIcon(QtGui.QIcon("icons/IconRecycle.png"))
+        pb_delete_bad.setIconSize(icon_size)
+        pb_delete_bad.clicked.connect(self.delete_bad_data)
+
+        lbl_delete_all = QtWidgets.QLabel("All", self)
+        lbl_delete_bad = QtWidgets.QLabel("Bad", self)
+
         # TODO refresh plot widget
         plot_widget = MoisturePlot()
 
         h_box = QtWidgets.QHBoxLayout()
         h_box.addWidget(self.tb_pomp)
         h_box.addWidget(self.tb_airstone)
+        h_box.addStretch(0)
+        h_box.addWidget(pb_delete_all)
+        h_box.addWidget(lbl_delete_all)
+        h_box.addWidget(pb_delete_bad)
+        h_box.addWidget(lbl_delete_bad)
         h_box.addStretch(0)
         h_box.addWidget(pb_home)
 
@@ -865,6 +883,58 @@ class WaterWindow(QtWidgets.QDialog):
         self.cams = Window()
         self.cams.show()
         self.close()
+
+    def delete_all_data(self):
+        pb_reply = QtWidgets.QMessageBox.question(self, 'Warning!',
+                                                  "Delete all data?",
+                                                  QtWidgets.QMessageBox.Yes |
+                                                  QtWidgets.QMessageBox.No,
+                                                  QtWidgets.QMessageBox.No)
+        if pb_reply == QtWidgets.QMessageBox.Yes:
+            # Initialise sqlite
+            con = sqlite3.connect(data_db)
+            cur = con.cursor()
+
+            # Create table
+            cur.execute('''CREATE TABLE IF NOT EXISTS moisture
+                        (timestamp real, moisture real)''')
+
+            # Delete all data
+            cur.execute("DELETE FROM moisture")
+
+            # Save (commit) the changes
+            con.commit()
+
+            # Close connection
+            con.close()
+        else:
+            pass
+
+    def delete_bad_data(self):
+        pb_reply = QtWidgets.QMessageBox.question(self, 'Warning!',
+                                                  "Delete bad readings?",
+                                                  QtWidgets.QMessageBox.Yes |
+                                                  QtWidgets.QMessageBox.No,
+                                                  QtWidgets.QMessageBox.No)
+        if pb_reply == QtWidgets.QMessageBox.Yes:
+            # Initialise sqlite
+            con = sqlite3.connect(data_db)
+            cur = con.cursor()
+
+            # Create table
+            cur.execute('''CREATE TABLE IF NOT EXISTS moisture
+                        (timestamp real, moisture real)''')
+
+            # Delete all data
+            cur.execute('''DELETE FROM moisture WHERE moisture = 0''')
+
+            # Save (commit) the changes
+            con.commit()
+
+            # Close connection
+            con.close()
+        else:
+            pass
 
     # TODO make btn_action compatible with multiple buttons
     def btn_action_pump(self):

@@ -975,6 +975,8 @@ class MoisturePlot(pyqtgraph.PlotWidget):
         y_moisture = []
         x2data = []
         y_av_moisture = []
+        y_dry = []
+        y_wet = []
 
         # Select all data ordered and append lists
         cur.execute(
@@ -991,13 +993,22 @@ class MoisturePlot(pyqtgraph.PlotWidget):
 
         x2data = x_timestamp
 
+        # High/Low limit
+        dry = 590
+        wet = 236
+        for i in y_moisture:
+            y_dry.append(dry)
+            y_wet.append(wet)
+
         # Add the Date-time axis
         axis = pg_time_axis.DateAxisItem(orientation='bottom')
         axis.attachToPlotItem(self.getPlotItem())
 
         # Plot data
-        self.plot(x=x_timestamp, y=y_moisture, pen="r", name="Sensor 1")
-        self.plot(x=x2data, y=y_av_moisture, pen="r", name="Av Sensor 1")
+        self.plot(x=x_timestamp, y=y_moisture, pen="y", name="Sensor 1")
+        self.plot(x=x2data, y=y_av_moisture, pen="y", name="Av Sensor 1")
+        self.plot(x=x2data, y=y_wet, pen="g", name="Wet")
+        self.plot(x=x2data, y=y_dry, pen="r", name="Dry")
 
         # Save (commit) the changes
         con.commit()

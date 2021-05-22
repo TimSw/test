@@ -14,3 +14,5 @@ moisture = 0.00000
 # Read moisture level
 time.sleep(3)
 moisture = arduino.analogRead(A0)  # Analog input
+
+print(moisture)

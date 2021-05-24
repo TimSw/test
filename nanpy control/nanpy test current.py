@@ -42,8 +42,8 @@ for i in range(5):
     print("peakVoltage = ", peakVoltage)
     time.sleep(1)
 
-peakVoltage = peakVoltage / 5
-print("peakVoltage / 5 = ", peakVoltage)
+# peakVoltage = peakVoltage / 5
+# print("peakVoltage / 5 = ", peakVoltage)
 
 # change the peak voltage to the Virtual Value of voltage
 voltageVirtualValue = peakVoltage * 0.707

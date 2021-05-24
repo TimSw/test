@@ -32,6 +32,7 @@ A5 = 19     # D19 - A5 - PC5 - ADC[5] - SCL
 
 # Read analog input
 while True:
-    time.sleep(2)
+    time.sleep(1)
     current = arduino.analogRead(A0)  # Analog input
     print(current)
+

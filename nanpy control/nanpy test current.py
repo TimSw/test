@@ -30,9 +30,31 @@ A3 = 17     # D17 - A3 - PC3 - ADC[3]
 A4 = 18     # D18 - A4 - PC4 - ADC[4] - SDA
 A5 = 19     # D19 - A5 - PC5 - ADC[5] - SCL
 
-# Read analog input
-while True:
+# Initialise parameters
+ACTectionRange = 10         # 5A, 10A, 20A
+VREF = 5                    # 5V
+ACCurrtntValue = 0
+peakVoltage = 0
+voltageVirtualValue = 0     # Vrms
+
+for i in range(5):
+    peakVoltage = arduino.analogRead(A0)   # read peak voltage
+    print("peakVoltage = ", peakVoltage)
     time.sleep(1)
-    current = arduino.analogRead(A0)  # Analog input
-    print(current)
+
+peakVoltage = peakVoltage / 5
+print("peakVoltage / 5 = ", peakVoltage)
+
+# change the peak voltage to the Virtual Value of voltage
+voltageVirtualValue = peakVoltage * 0.707
+print("voltageVirtualValue = ", voltageVirtualValue)
+
+# The circuit is amplified by 2 times, so it is divided by 2
+voltageVirtualValue = (voltageVirtualValue / 1024 * VREF ) / 2
+print("voltageVirtualValue = ", voltageVirtualValue)
+
+ACCurrtntValue = voltageVirtualValue * ACTectionRange
+
+print(ACCurrtntValue)
+
 

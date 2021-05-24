@@ -31,6 +31,7 @@ A4 = 18     # D18 - A4 - PC4 - ADC[4] - SDA
 A5 = 19     # D19 - A5 - PC5 - ADC[5] - SCL
 
 # Read analog input
-time.sleep(2)
-current = arduino.analogRead(A0)  # Analog input
-print(current)
+while True:
+    time.sleep(2)
+    current = arduino.analogRead(A0)  # Analog input
+    print(current)

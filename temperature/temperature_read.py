@@ -82,7 +82,16 @@ except Exception as e:
     logger.exception(e)
 
 # Initialise temperatures:
-temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10 = 0
+temp1 = 0
+temp2 = 0
+temp3 = 0
+temp4 = 0
+temp5 = 0
+temp6 = 0
+temp7 = 0
+temp8 = 0
+temp9 = 0
+temp10 = 0
 
 # Make timestamp
 now = time.time()

@@ -31,29 +31,28 @@ A4 = 18     # D18 - A4 - PC4 - ADC[4] - SDA
 A5 = 19     # D19 - A5 - PC5 - ADC[5] - SCL
 
 # Initialise parameters
-ACTectionRange = 10         # 5A, 10A, 20A
+sensor_range = 10         # 5A, 10A, 20A
 VREF = 5                    # 5V
-ACCurrtntValue = 0
-peakVoltage = 0
+peak_voltage = 0
 voltageVirtualValue = 0     # Vrms
 
 for i in range(5):
-    peakVoltage = arduino.analogRead(A0)   # read peak voltage
-    print("peakVoltage = ", peakVoltage)
+    peak_voltage = arduino.analogRead(A0)   # read peak voltage
+    print("peak_voltage = ", peak_voltage)
     time.sleep(1)
 
-# peakVoltage = peakVoltage / 5
-# print("peakVoltage / 5 = ", peakVoltage)
+# peak_voltage = peak_voltage / 5
+# print("peak_voltage / 5 = ", peak_voltage)
 
 # change the peak voltage to the Virtual Value of voltage
-voltageVirtualValue = peakVoltage * 0.707
+voltageVirtualValue = peak_voltage * 0.707
 print("voltageVirtualValue = ", voltageVirtualValue)
 
 # The circuit is amplified by 2 times, so it is divided by 2
 voltageVirtualValue = (voltageVirtualValue / 1024 * VREF ) / 2
 print("voltageVirtualValue = ", voltageVirtualValue)
 
-ACCurrtntValue = voltageVirtualValue * ACTectionRange
+ACCurrtntValue = voltageVirtualValue * sensor_range
 
 print(ACCurrtntValue)
 

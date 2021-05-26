@@ -33,5 +33,7 @@ A5 = 19     # D19 - A5 - PC5 - ADC[5] - SCL
 # Control outputs
 arduino.pinMode(D7, arduino.OUTPUT)
 arduino.digitalWrite(D7, arduino.HIGH)
+print("OUTPUT HIGH")
 time.sleep(1)
 arduino.digitalWrite(D7, arduino.LOW)
+print("OUTPUT LOW")

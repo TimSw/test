@@ -3,7 +3,7 @@ import time
 
 # Initialise connection
 # connection = nanpy.SerialManager(device="/dev/ttyUSB0")
-connection = nanpy.SerialManager(device="/dev/ttyUSB1")
+connection = nanpy.SerialManager(device="/dev/ttyUSB0")
 arduino = nanpy.ArduinoApi(connection=connection)
 
 # Define pin's

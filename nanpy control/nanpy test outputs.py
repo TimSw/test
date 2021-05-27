@@ -1,6 +1,7 @@
 import nanpy
 import time
 
+print("CONNECT")
 # Initialise connection
 # connection = nanpy.SerialManager(device="/dev/ttyUSB0")
 connection = nanpy.SerialManager(device="/dev/ttyUSB0")
@@ -32,11 +33,13 @@ A5 = 19     # D19 - A5 - PC5 - ADC[5] - SCL
 
 # Control outputs
 time.sleep(5)
-arduino.pinMode(D7, arduino.OUTPUT)
+print("DEFINE")
+arduino.pinMode(D6, arduino.OUTPUT)
 time.sleep(5)
-arduino.digitalWrite(D7, arduino.HIGH)
+arduino.digitalWrite(D6, arduino.LOW)
 print("OUTPUT HIGH")
 time.sleep(5)
-arduino.digitalWrite(D7, arduino.LOW)
+arduino.digitalWrite(D6, arduino.HIGH)
 print("OUTPUT LOW")
 time.sleep(120)
+print("STOP")
